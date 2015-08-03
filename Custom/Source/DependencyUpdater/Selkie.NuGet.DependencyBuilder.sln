@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selkie.NuGet.PackageToDependency", "Selkie.NuGet.PackageToDependency\Selkie.NuGet.PackageToDependency.csproj", "{5B3B7C44-F1A6-451F-AFF5-5BC6B5FF8D6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selkie.NuGet.PackageToDependency.Tests", "Selkie.NuGet.PackageToDependency.Tests\Selkie.NuGet.PackageToDependency.Tests.csproj", "{F63284C8-2DA9-4A1E-9F75-806C3C184487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Selkie.NuGet.DependencyUpdater", "Selkie.NuGet.DependencyUpdater\Selkie.NuGet.DependencyUpdater.csproj", "{BE0D8D9F-69C0-4B5E-AAE2-3557F81F2992}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B3B7C44-F1A6-451F-AFF5-5BC6B5FF8D6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3B7C44-F1A6-451F-AFF5-5BC6B5FF8D6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3B7C44-F1A6-451F-AFF5-5BC6B5FF8D6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3B7C44-F1A6-451F-AFF5-5BC6B5FF8D6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F63284C8-2DA9-4A1E-9F75-806C3C184487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F63284C8-2DA9-4A1E-9F75-806C3C184487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F63284C8-2DA9-4A1E-9F75-806C3C184487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F63284C8-2DA9-4A1E-9F75-806C3C184487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE0D8D9F-69C0-4B5E-AAE2-3557F81F2992}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE0D8D9F-69C0-4B5E-AAE2-3557F81F2992}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE0D8D9F-69C0-4B5E-AAE2-3557F81F2992}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE0D8D9F-69C0-4B5E-AAE2-3557F81F2992}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
