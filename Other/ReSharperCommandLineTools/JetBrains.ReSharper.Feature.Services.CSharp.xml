@@ -4,6 +4,16 @@
         <name>JetBrains.ReSharper.Feature.Services.CSharp</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedUsingStatement">
+            <summary>
+            Using statement is lifted if resource expression is lifted
+            or all resource variables are initialized by lifted expressions.
+            </summary>
+            <example>
+             using (var t = x.M()) { } => using (var t = x?.M()) { }
+             using (x.M()) { }         => using (x?.M()) { }
+            </example>
+        </member>
         <member name="T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedAssignmentStatement">
             <summary>
             Expression statement with assignment is lifted if destination
@@ -29,7 +39,7 @@
         </member>
         <member name="T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedDeclarationStatement">
             <summary>
-            Declaration statement is lifted if all it's variables are initialized by lifted expression.
+            Declaration statement is lifted if all it's variables are initialized by lifted expressions.
             </summary>
             <example>
              var t = x.M(); => var t = x?.M();
@@ -44,7 +54,16 @@
              x.M(); => x?.M();
             </example>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedIfStatement" -->
+        <member name="T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedIfStatement">
+            <summary>
+            If statement with no else block is lifted when condition
+            is lifted (or if first of conjuncted conditions can be lifted).
+            </summary>
+            <example>
+             if (x != null) { }
+             if (x != null &amp;&amp; ...) { }
+            </example>
+        </member>
         <member name="T:JetBrains.ReSharper.Feature.Services.CSharp.ConditionalAccess.Statements.LiftedJumpStatement">
             <summary>
             Jump statement (break/continue/return/goto/goto case/yield break) is lifted if merged.

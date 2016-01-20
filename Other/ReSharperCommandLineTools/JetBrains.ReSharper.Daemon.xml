@@ -4,6 +4,10 @@
         <name>JetBrains.ReSharper.Daemon</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.ReSharper.Daemon.Impl.SlowTooltipProvider">
+            Calculates tooltip inside ShouldShowToolTip method which is called in UI thread. 
+            Use this provider only when there is no other way to calculate if a tooltip should be shown
+        </member>
         <member name="T:JetBrains.ReSharper.Daemon.OptionPages.Inspections.CodeInspectionSettingsPage">
             <summary>
               Main settings for the code inspection.
@@ -55,11 +59,7 @@
             </summary>
         </member>
         <member name="M:JetBrains.ReSharper.Daemon.Impl.DaemonEnablePolicy.IsDaemonEnabled(JetBrains.DocumentModel.IDocument)">
-            <summary>
-            Primary filter for daemon
-            </summary>
-            <param name="document"></param>
-            <returns></returns>
+            <summary>Primary filter for daemon</summary>
         </member>
         <member name="M:JetBrains.ReSharper.Daemon.CaretDependentFeatures.MatchingBraceContextHighlighterBase.IsValidNode(JetBrains.ReSharper.Psi.Tree.ITokenNode)">
             <summary>

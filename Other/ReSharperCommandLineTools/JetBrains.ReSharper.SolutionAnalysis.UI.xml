@@ -4040,7 +4040,12 @@
             Uses the legacy WC impl thru the old adapter previously used by Status Bar for all its controls.
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:JetBrains.ReSharper.Daemon.SolutionAnalysis.UI.Indicator.BarProgressStatusControlWindowlessControl" -->
+        <member name="T:JetBrains.ReSharper.Daemon.SolutionAnalysis.UI.Indicator.BarProgressStatusControlWindowlessControl">
+            <summary>
+            WC view for Bar-mode of the SWA status progress control.
+            Delegates to the old one-for-all (round &amp; bar) WC implementation, which is now backing the bar mode.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.Daemon.SolutionAnalysis.UI.Indicator.RoundProgressStatusControlAutomation.ProgressFraction">
             <summary>
             Model input. [0…1] progress position.

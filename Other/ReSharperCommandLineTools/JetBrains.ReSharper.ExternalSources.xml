@@ -4,6 +4,13 @@
         <name>JetBrains.ReSharper.ExternalSources</name>
     </assembly>
     <members>
+        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.ExplorerNodesModel.Core.ExplorerNode.GetChildren">
+            <summary>
+            Override this method if you don't want to extend your children-getting logic.
+            Otherwise use IExplorerNodesProviders to provide this logic.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="P:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.PdbGeneration.IPdbGenerationParameters.Folder">
             <summary>
             Folder for pdb and sources generation
@@ -33,6 +40,11 @@
         <member name="M:JetBrains.ReSharper.ExternalSources.Generation.ToolWindow.GenerationView.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Resources.BindExternalSourcesProviderBase">
+            <summary>
+            Binds various decompiled files to assemblies
             </summary>
         </member>
         <member name="T:JetBrains.ReSharper.ExternalSources.Resources.AssemblyExplorerThemedIcons">
@@ -1396,13 +1408,6 @@
             <param name="result">list of filtered nodes</param>
             <param name="filter">node filter condition</param>
         </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.ExplorerNodesModel.Core.ExplorerNode.GetChildren">
-            <summary>
-            Override this method if you don't want to extend your children-getting logic.
-            Otherwise use IExplorerNodesProviders to provide this logic.
-            </summary>
-            <returns></returns>
-        </member>
         <member name="T:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.ExplorerNodesModel.Core.IRecursionCauseNode">
             <summary>
             Nodes which may couse recursion should implement this interface
@@ -1467,6 +1472,11 @@
             removes this mapping when ProjFileNode will be removed from AssemblyExplorer tree
             </summary>    
             <remarks>This method should be called after Project property is initialized (with binding assembly)</remarks>
+        </member>
+        <member name="F:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.ExplorerNodesModel.Persistence.PersistentAssemblyProvider.BsjbExtensionWithDot">
+            <summary>
+            File extension for metadata blob files
+            </summary>
         </member>
         <member name="T:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.FileTypes.FileIconsResources">
             <summary>
@@ -1720,11 +1730,6 @@
             <param name="target">target to locate</param>
             <param name="solution"></param>
         </member>
-        <member name="T:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Resources.BindExternalSourcesProviderBase">
-            <summary>
-            Binds various decompiled files to assemblies
-            </summary>
-        </member>
         <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.ExportedProject.ProjFileModel.Export.AssemblyExplorerExportToProjectActionHandler.AskUser(JetBrains.Util.FileSystemPath,JetBrains.ProjectModel.ISolution)">
             <summary>
             Shows task dialog,
@@ -1847,29 +1852,21 @@
         <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Resources.ResourceNavigationUtil.ReadResource(System.Object)">
             <param name="navigationTarget">Either ManifestResourceData or NetResourceEntryData</param>
         </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.GetTargetPlatform(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile)">
-            <example>"x86", "x64", "msil"</example>
+        <member name="M:JetBrains.ReSharper.ExternalSources.Navigation.Goto.MetadataTokenUtils.GetConstantStringParentCompiledElementByToken(JetBrains.Metadata.Access.MetadataToken,JetBrains.ReSharper.Psi.Modules.IAssemblyPsiModule,JetBrains.Metadata.Reader.API.IMetadataAssembly)">
+            <summary>
+            Find field/parameter/property with token (constant string parent)
+            </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.GetPlatformShortName(JetBrains.Application.platforms.PlatformID)">
-            <example>".Net Framework v4.0 Client"</example>
+        <member name="T:JetBrains.ReSharper.ExternalSources.Navigation.Goto.StringMatcher">
+            <summary>
+            Wraps IdentifierMatcher,
+            changes it's behaviour to substring matching
+            for special filter string
+            (text surrounded with quotes or double quotes, this text has more than one character)
+            </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentNameAndVersion(JetBrains.Metadata.Utils.AssemblyNameInfo)">
-            <example>"Assembly, 1.2.3.4"</example>
-        </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentNameAndVersion(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile)">
-            <example>"Assembly, 1.2.3.4"</example>
-        </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentVersionAndPlatform(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile)">
-            <example>"1.2.3.4, x86, .Net Framework v4.5"</example>
-        </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentNameVersionPlatform(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile)">
-            <example>"Assembly, 1.2.3.4, x86, .Net Framework v4.5"</example>
-        </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentVersionPlatformGac(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile,JetBrains.Application.platforms.PlatformManager)">
-            <example>"2.0.0.0, x86, .Net Framework v2.0, GAC"</example>
-        </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.AssemblyExplorer.Utils.AssemblyVersionUtil.PresentNameVersionPlatformGac(JetBrains.ProjectModel.Model2.Assemblies.Interfaces.IAssemblyFile,JetBrains.Application.platforms.PlatformManager)">
-            <example>"System.Web, 2.0.0.0, x86, .Net Framework v2.0, GAC"</example>
+        <member name="F:JetBrains.ReSharper.ExternalSources.Navigation.Goto.StringMatcher.mySubstringMatcher">
+            <remarks>false - IdentifierMatcher behaviour</remarks>
         </member>
         <member name="T:JetBrains.ReSharper.ExternalSources.OpenFromGac.OpenFromGacDialog">
             <summary>
@@ -1975,12 +1972,12 @@
             the contents of this method with the code editor.
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.ExternalSources.ReSharperIntegration.ExternalSourcesPointsProvider.FindSpecificElementInFile(JetBrains.ReSharper.Feature.Services.Navigation.CompiledElementNavigationInfo,JetBrains.DataStructures.IJetReadOnlyCollection{JetBrains.ReSharper.Feature.Services.ExternalSource.ExternalSourcesMapping},JetBrains.ReSharper.Psi.Modules.IAssemblyPsiModule,JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext,JetBrains.Application.Progress.IProgressIndicator,JetBrains.ReSharper.ExternalSources.ReSharperIntegration.ExternalSourceFile[]@)">
+        <member name="M:JetBrains.ReSharper.ExternalSources.ReSharperIntegration.ExternalSourcesPointsProvider.FindSpecificElementInFile(JetBrains.ReSharper.Feature.Services.Navigation.CompiledElementNavigationInfo,JetBrains.DataStructures.IJetReadOnlyCollection{JetBrains.ReSharper.Feature.Services.ExternalSource.ExternalSourcesMapping},JetBrains.ReSharper.Psi.Modules.IAssemblyPsiModule,JetBrains.Application.Progress.IProgressIndicator,JetBrains.ReSharper.ExternalSources.ReSharperIntegration.ExternalSourceFile[]@)">
             <param name="compiledElementNavigationInfo">DeclaredElement to find. I.e. we want to navigate to a specific ITypeMember in externalSources</param>
             <param name="files">ExternalSourcesMappings to parse and find elements in</param>
             <param name="assemblyPsiModule">IPsiModule which mapping files were generated against</param>
-            <param name="resolveContext">Resolve context of the feature</param>
             <param name="indicator"></param>
+            <param name="externalSourceFiles"></param>
             <returns></returns>
         </member>
         <member name="T:JetBrains.ReSharper.ExternalSources.ReSharperIntegration.ExternalSourcesOptionsPageControl">

@@ -274,11 +274,14 @@
             <summary>Get search domain for given special finder</summary>
             <returns>Return null to cancel search</returns>
         </member>
-        <member name="T:JetBrains.ReSharper.Features.Navigation.Core.DeclaredElementNavigation.DefaultDeclaredElementNavigator">
+        <member name="M:JetBrains.ReSharper.Features.Navigation.Features.Goto.GoToMetadataToken.GotoMetadataTokenAction.EnableShowInFindResults(JetBrains.ReSharper.Feature.Services.Navigation.Goto.Controllers.GotoMetadataTokenController,JetBrains.DataFlow.LifetimeDefinition)">
             <summary>
-            Provides declared element's navigation using context searches
-            <c>JetBrains.ReSharper.Feature.Services.ContextNavigation.ContextSearches.IDeclarationSearch</c>.
-            Context Searches are language specific feature part components, mostly working on finder
+            Executes when the Plus Button is clicked, or when the last menu item is executed.
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Features.Navigation.Features.Goto.GoToWord.GotoWordAction.EnableShowInFindResults(JetBrains.ReSharper.Feature.Services.Navigation.Goto.Controllers.GotoWordController,JetBrains.DataFlow.LifetimeDefinition)">
+            <summary>
+            Executes when the Plus Button is clicked, or when the last menu item is executed.
             </summary>
         </member>
         <member name="M:JetBrains.ReSharper.Features.Navigation.Core.RecentFiles.RecentFilesCommands.ShowRecentEdits">
@@ -293,9 +296,6 @@
         </member>
         <member name="M:JetBrains.ReSharper.Features.Navigation.Core.Search.SearchRequests.SearchProjectItemReferencedCodeRequest.#ctor(System.Collections.Generic.IEnumerable{JetBrains.ProjectModel.IProjectItem},JetBrains.ProjectModel.ISolution,System.Boolean,System.Boolean,System.Collections.Generic.List{JetBrains.ProjectModel.IModule})">
             <param name="referencedCodeScope">Constraint for results to reference elements only from indicated modules. Use null if there is no constraint.</param>
-        </member>
-        <member name="M:JetBrains.ReSharper.Features.Navigation.Features.FindDeclarations.DeclarationHyperlinkBase.GetRangeFromDeclaration">
-             This code is modified copy from GotoDeclarationAction.GetCandidates
         </member>
         <member name="T:JetBrains.ReSharper.Features.Navigation.Features.FindDeclarations.GotoTypeDeclarationAction">
             <summary>
@@ -326,12 +326,10 @@
             Return custom filtered type members from all type elements inside indicated source file.
             </summary>
             <param name="sourceFile"></param>
-            <returns></returns>
+            <returns></returns>   
         </member>
-        <member name="T:JetBrains.ReSharper.Features.Navigation.Goto.GotoProviders.GotoStringProvider.TokenAssemblyMvid">
-            <summary>
-            String token (in US heap), assembly, assembly MVID
-            </summary>
+        <member name="M:JetBrains.ReSharper.Features.Navigation.Utils.ElementInDocumentUtils.GetRangeFromDeclaration(JetBrains.ProjectModel.ISolution,JetBrains.DocumentModel.DocumentOffset)">
+             This code is modified copy from GotoDeclarationAction.GetCandidates
         </member>
     </members>
 </doc>

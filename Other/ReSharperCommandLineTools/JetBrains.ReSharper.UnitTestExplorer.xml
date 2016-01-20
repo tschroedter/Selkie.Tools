@@ -190,6 +190,36 @@
             Generic Unit Testing theme-sample icons.
             </summary>
         </member>
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.TestElementNodeView">
+            <summary>
+            TestElementNodeView
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.TestElementNodeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.UnitTestNodeView">
+            <summary>
+            UnitTestNodeView
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.UnitTestNodeView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.UnitTestTreeNodeWithPropagatedStatusView">
+            <summary>
+            UnitTestTreeNodeWithPropagatedStatusView
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.src.Common.TreeModel.Views.UnitTestTreeNodeWithPropagatedStatusView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.UnitTestExplorer.Options.View.UnitTestingProcessesCountView">
             <summary>
             UnitTestingProcessesCountView
@@ -200,114 +230,80 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:JetBrains.ReSharper.UnitTestExplorer.Actions.UnitTestContextActionBase">
-            <summary>
-            Base class for all context actions with Unit Test Elements.
-            </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Actions.UnitTestContextActionBase.Update(JetBrains.ActionManagement.ActionPresentation,System.Boolean,JetBrains.ReSharper.UnitTestFramework.IUnitTestSessionView,JetBrains.ProjectModel.ISolution)">
-            <summary>
-            Action update. Due to performance reasons, doesn't find tests exactly, but only ensures there's at least one element available.
-            </summary>
-            <param name="presentation"></param>
-            <param name="hasAnyTests"></param>
-            <param name="session">Is not null only when called from session</param>
-            <param name="solution"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Actions.UnitTestContextActionBase.Execute(JetBrains.ReSharper.UnitTestFramework.IUnitTestElements,JetBrains.ReSharper.UnitTestFramework.IUnitTestSessionView,JetBrains.ProjectModel.ISolution,JetBrains.Application.DataContext.IDataContext)">
-            <summary>
-            Executes provided elements. elements can be null when nothing is selected.
-            </summary>
-            <param name="elements"></param>
-            <param name="session"> </param>
-            <param name="solution"> </param>
-            <param name="context"></param>
-            <returns></returns>
-        </member>
         <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.Preview.FlowDocumentModificationCookie.#ctor(System.Windows.Documents.FlowDocument,JetBrains.Util.ILogger)">
             <summary>
             Uses internal <see cref="T:System.Windows.Documents.FlowDocument"/>'s API to suspend layout during batch update.
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.Preview.IUnitTestPreviewPanelFactory.QueryCloseInstances(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestSessionView})">
-            <summary>
-            
-            </summary>
-            <param name="sessions"></param>
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.Preview.IUnitTestSessionManagerPreviewPanelFactory.QueryCloseInstances(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestSession})">
             <returns><value>true</value> to cancel closing given sessions</returns>
         </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.Name">
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.src.Session.StatusPanel.UnitTestSessionStatusBar">
             <summary>
-            Session name
+            UnitTestSessionStatusBar
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.Locked">
-            <summary>
-            Is session locked?
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.Filter">
-            <summary>
-            Shown tests
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.TrackActiveElement">
-            <summary>
-            Track active element in tree
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.AutoScrollOutput">
-            <summary>
-            Auto scroll to bottom of output panel during test run
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.ShowTime">
-            <summary>
-            Show test time
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.BuildPolicy">
-            <summary>
-            Solution build policy before running tests
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.GroupingIndex">
-            <summary>
-            Index of tree grouping provider
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.PlatformType">
-            <summary>
-            PlatformType (x86/x64) to run tests
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.PlatformVersion">
-            <summary>
-            RuntimeEnvironment (CLR2/4) to run tests
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionPersistentData.Elements">
-            <summary>
-            Element ids in session.
-            </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionManager.CleanUpSessionsFromSettings">
-            <summary>
-            To remove after 9.1
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionStatusPanel">
-            <summary>
-            Interaction logic for UnitTestStatusPanelWPF.xaml
-            </summary>
-            <summary>
-            UnitTestSessionStatusPanel
-            </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionStatusPanel.InitializeComponent">
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.src.Session.StatusPanel.UnitTestSessionStatusBar.InitializeComponent">
             <summary>
             InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionDescriptorBase.FilterAdapter.ResultManagerDependency.RootKey">
+            <summary>
+            Nodes residing inside <see cref="P:JetBrains.TreeModels.ITreeModel.ChildrenRaw"/> collection don't have 
+            their <see cref="P:JetBrains.TreeModels.ITreeModelNode.Parent"/> property set to anything. We do have to
+            monitor them as as any other node of the tree. So we use this fake node as a replacement
+            for the absent parent.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionProgressBar">
+            <summary>
+            UnitTestSessionProgressBar
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.UnitTestExplorer.Session.UnitTestSessionProgressBar.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.LayoutDesigner.Controls.Themes.ToolboxResourceDictionary">
+            <summary>
+            ToolboxResourceDictionary
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.LayoutDesigner.Controls.Themes.ToolboxResourceDictionary.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:XamlGeneratedNamespace.GeneratedInternalTypeHelper">
+            <summary>
+            GeneratedInternalTypeHelper
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateInstance(System.Type,System.Globalization.CultureInfo)">
+            <summary>
+            CreateInstance
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.GetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            GetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.SetPropertyValue(System.Reflection.PropertyInfo,System.Object,System.Object,System.Globalization.CultureInfo)">
+            <summary>
+            SetPropertyValue
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.CreateDelegate(System.Type,System.Object,System.String)">
+            <summary>
+            CreateDelegate
+            </summary>
+        </member>
+        <member name="M:XamlGeneratedNamespace.GeneratedInternalTypeHelper.AddEventHandler(System.Reflection.EventInfo,System.Object,System.Delegate)">
+            <summary>
+            AddEventHandler
             </summary>
         </member>
     </members>

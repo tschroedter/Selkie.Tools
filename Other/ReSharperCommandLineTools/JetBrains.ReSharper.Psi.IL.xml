@@ -89,6 +89,14 @@
               <code>themediconmanager.GetIcon&lt;PsiILThemedIcons.Il&gt;()        // Icon image for rendering</code>
             </example>
         </member>
+        <member name="M:JetBrains.ReSharper.Psi.IL.Impl.Resolve.IlTypeFactory.CreateDeclaredType(JetBrains.ReSharper.Psi.Modules.IPsiModule,JetBrains.ReSharper.Psi.Tree.ITokenNode,System.Boolean,System.Boolean)">
+            <summary>typeKeyword should be type of token of one of predefined types.</summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Psi.IL.Tree.ITypeMemberUsage.Type">
+            <summary>
+            Type of field or return type of method
+            </summary>
+        </member>
         <member name="M:JetBrains.ReSharper.Psi.IL.Parsing.ILMissingTokensInserter.Run(JetBrains.ReSharper.Psi.ExtensionsAPI.Tree.TreeElement)">
             <remarks>
             This code relies that TokenStart and TokenEnd return -1 when it reaches end of file.

@@ -670,9 +670,25 @@
             Determined location of R# cache directory
             </summary>
         </member>
+        <member name="M:JetBrains.ProjectModel.Caches.SolutionCachesConfigurationExtensions.GetPersistentBoolProperty(JetBrains.ProjectModel.Caches.ISolutionCaches,JetBrains.DataFlow.Lifetime,System.String,JetBrains.Util.ILogger)">
+            <summary>
+            TODO: implement using single table.
+            </summary>
+            <param name="solutionCaches"></param>
+            <param name="lifetime"></param>
+            <param name="name"></param>
+            <param name="logger"></param>
+            <returns></returns>
+        </member>
         <member name="F:JetBrains.ProjectModel.Caches.SolutionCaches.SolutionCachesVersion">
             <summary>
             Increase this number to force rebuild all caches
+            How to change version:
+            Increment number in prefix and write your branch version.
+            E.g.
+            27:wave04/winnie.solbuilderprototype
+            28:wave04/branchfornavigation
+            29:wave04/branchforcontinioustesting
             </summary>
         </member>
         <member name="T:JetBrains.ProjectModel.Transaction.IProjectModelBatchChange">
@@ -686,9 +702,303 @@
             </summary>
             
         </member>
-        <member name="T:JetBrains.ProjectModel.Properties.IProjectPropertiesRequest">
+        <member name="P:JetBrains.ProjectModel.ProjectFileType.Extensions">
             <summary>
-            Requires 
+            Do not use directly. Use IProjectFileExtensions.GetExtensions instead.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ProjectModel.KnownProjectFileType.Name">
+            <summary>
+            Specifies special ID for services, which has semantic "for any project file type"
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Shared.FileMatcher">
+            <summary>
+            Functions for matching file names with patterns. 
+            </summary>
+        </member>
+        <member name="F:Microsoft.Build.Shared.FileMatcher.s_invalidPathChars">
+            <summary>
+            Cache of the list of invalid path characters, because this method returns a clone (for security reasons)
+            which can cause significant transient allocations
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.HasWildcards(System.String)">
+            <summary>
+            Determines whether the given path has any wild card characters.
+            </summary>
+            <param name="filespec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.HasWildcardsOrSemicolon(System.String)">
+            <summary>
+            Determines whether the given path has any wild card characters.
+            </summary>
+            <param name="filespec"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.HasWildcardsSemicolonItemOrPropertyReferences(System.String)">
+            <summary>
+            Determines whether the given path has any wild card characters or any semicolons.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetAccessibleFileSystemEntries(Microsoft.Build.Shared.FileMatcher.FileSystemEntity,System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Get the files and\or folders specified by the given path and pattern.
+            </summary>
+            <param name="entityType">Whether Files, Directories or both.</param>
+            <param name="path">The path to search.</param>
+            <param name="pattern">The pattern to search.</param>
+            <param name="projectDirectory">The directory for the project within which the call is made</param>
+            <param name="stripProjectDirectory">If true the project directory should be stripped</param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetAccessibleFilesAndDirectories(System.String,System.String)">
+            <summary>
+            Returns an array of file system entries matching the specified search criteria. Inaccessible or non-existent file
+            system entries are skipped.
+            </summary>
+            <param name="path"></param>
+            <param name="pattern"></param>
+            <returns>Array of matching file system entries (can be empty).</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetAccessibleFiles(System.String,System.String,System.String,System.Boolean)">
+            <summary>
+            Same as Directory.GetFiles(...) except that files that
+            aren't accessible are skipped instead of throwing an exception.
+            
+            Other exceptions are passed through.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="filespec">The pattern.</param>
+            <param name="projectDirectory">The project directory</param>
+            <param name="stripProjectDirectory"></param>
+            <returns>Files that can be accessed.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetAccessibleDirectories(System.String,System.String)">
+            <summary>
+            Same as Directory.GetDirectories(...) except that files that
+            aren't accessible are skipped instead of throwing an exception.
+            
+            Other exceptions are passed through.
+            </summary>
+            <param name="path">The path.</param>
+            <param name="pattern">Pattern to match</param>
+            <returns>Accessible directories.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetLongPathName(System.String)">
+            <summary>
+            Given a path name, get its long version.
+            </summary>
+            <param name="path">The short path.</param>
+            <returns>The long path.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetLongPathName(System.String,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries)">
+            <summary>
+            Given a path name, get its long version.
+            </summary>
+            <param name="path">The short path.</param>
+            <param name="getFileSystemEntries">Delegate.</param>
+            <returns>The long path.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.SplitFileSpec(System.String,System.String@,System.String@,System.String@,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries)">
+            <summary>
+            Given a filespec, split it into left-most 'fixed' dir part, middle 'wildcard' dir part, and filename part.
+            The filename part may have wildcard characters in it.
+            </summary>
+            <param name="filespec">The filespec to be decomposed.</param>
+            <param name="fixedDirectoryPart">Receives the fixed directory part.</param>
+            <param name="wildcardDirectoryPart">The wildcard directory part.</param>
+            <param name="filenamePart">The filename part.</param>
+            <param name="getFileSystemEntries">Delegate.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.PreprocessFileSpecForSplitting(System.String,System.String@,System.String@,System.String@)">
+            <summary>
+            Do most of the grunt work of splitting the filespec into parts.
+            Does not handle post-processing common to the different matching
+            paths.
+            </summary>
+            <param name="filespec">The filespec to be decomposed.</param>
+            <param name="fixedDirectoryPart">Receives the fixed directory part.</param>
+            <param name="wildcardDirectoryPart">The wildcard directory part.</param>
+            <param name="filenamePart">The filename part.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.RemoveInitialDotSlash(System.String[])">
+            <summary>
+            Removes the leading ".\" from all of the paths in the array. 
+            </summary>
+            <param name="paths">Paths to remove .\ from.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.IsDirectorySeparator(System.Char)">
+            <summary>
+            Checks if the char is a DirectorySeparatorChar or a AltDirectorySeparatorChar
+            </summary>
+            <param name="c"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.RemoveProjectDirectory(System.String[],System.String)">
+            <summary>
+            Removes the current directory converting the file back to relative path 
+            </summary>
+            <param name="paths">Paths to remove current directory from.</param>
+            <param name="projectDirectory"></param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetFilesRecursive(System.Collections.IList,System.String,System.String,System.String,System.Int32,System.Text.RegularExpressions.Regex,System.Boolean,System.String,System.Boolean,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries)">
+            <summary>
+            Get all files that match either the file-spec or the regular expression. 
+            </summary>
+            <param name="listOfFiles">List of files that gets populated.</param>
+            <param name="baseDirectory">The path to enumerate</param>
+            <param name="remainingWildcardDirectory">The remaining, wildcard part of the directory.</param>
+            <param name="filespec">The filespec.</param>
+            <param name="extensionLengthToEnforce"></param>
+            <param name="regexFileMatch">Wild-card matching.</param>
+            <param name="needsRecursion">If true, then recursion is required.</param>
+            <param name="projectDirectory"></param>
+            <param name="stripProjectDirectory"></param>
+            <param name="getFileSystemEntries">Delegate.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.RegularExpressionFromFileSpec(System.String,System.String,System.String,System.Boolean@)">
+            <summary>
+            Given a file spec, create a regular expression that will match that
+            file spec.
+            
+            PERF WARNING: this method is called in performance-critical
+            scenarios, so keep it fast and cheap
+            </summary>
+            <param name="fixedDirectoryPart">The fixed directory part.</param>
+            <param name="wildcardDirectoryPart">The wildcard directory part.</param>
+            <param name="filenamePart">The filename part.</param>
+            <param name="isLegalFileSpec">Receives whether this pattern is legal or not.</param>
+            <returns>The regular expression string.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetFileSpecInfo(System.String,System.Text.RegularExpressions.Regex@,System.Boolean@,System.Boolean@,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries)">
+            <summary>
+            Given a filespec, get the information needed for file matching. 
+            </summary>
+            <param name="filespec">The filespec.</param>
+            <param name="regexFileMatch">Receives the regular expression.</param>
+            <param name="needsRecursion">Receives the flag that is true if recursion is required.</param>
+            <param name="isLegalFileSpec">Receives the flag that is true if the filespec is legal.</param>
+            <param name="getFileSystemEntries">Delegate.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetFileSpecInfo(System.String,System.String@,System.String@,System.String@,System.String@,System.Boolean@,System.Boolean@,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries)">
+            <summary>
+            Given a filespec, get the information needed for file matching.
+            </summary>
+            <param name="filespec">The filespec.</param>
+            <param name="fixedDirectoryPart">Receives the fixed directory part.</param>
+            <param name="wildcardDirectoryPart">Receives the wildcard directory part.</param>
+            <param name="filenamePart">Receives the filename part.</param>
+            <param name="matchFileExpression">Receives the regular expression.</param>
+            <param name="needsRecursion">Receives the flag that is true if recursion is required.</param>
+            <param name="isLegalFileSpec">Receives the flag that is true if the filespec is legal.</param>
+            <param name="getFileSystemEntries">Delegate.</param>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.FileMatch(System.String,System.String)">
+            <summary>
+            Given a pattern (filespec) and a candidate filename (fileToMatch)
+            return matching information.
+            </summary>
+            <param name="filespec">The filespec.</param>
+            <param name="fileToMatch">The candidate to match against.</param>
+            <returns>The result class.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetFiles(System.String,System.String)">
+            <summary>
+            Given a filespec, find the files that match. 
+            Will never throw IO exceptions: if there is no match, returns the input verbatim.
+            </summary>
+            <param name="projectDirectoryUnescaped">The project directory.</param>
+            <param name="filespecUnescaped">Get files that match the given file spec.</param>
+            <returns>The array of files.</returns>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.GetFiles(System.String,System.String,Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries,Microsoft.Build.Shared.DirectoryExists)">
+            <summary>
+            Given a filespec, find the files that match. 
+            Will never throw IO exceptions: if there is no match, returns the input verbatim.
+            </summary>
+            <param name="projectDirectoryUnescaped">The project directory.</param>
+            <param name="filespecUnescaped">Get files that match the given file spec.</param>
+            <param name="getFileSystemEntries">Get files that match the given file spec.</param>
+            <param name="directoryExists">Determine whether a directory exists.</param>
+            <returns>The array of files.</returns>
+        </member>
+        <member name="T:Microsoft.Build.Shared.FileMatcher.FileSystemEntity">
+            <summary>
+            The type of entity that GetFileSystemEntries should return.
+            </summary>
+        </member>
+        <member name="T:Microsoft.Build.Shared.FileMatcher.GetFileSystemEntries">
+            <summary>
+            Delegate defines the GetFileSystemEntries signature that GetLongPathName uses
+            to enumerate directories on the file system.
+            </summary>
+            <param name="entityType">Files, Directories, or Files and Directories</param>
+            <param name="path">The path to search.</param>
+            <param name="pattern">The file pattern.</param>
+            <param name="projectDirectory"></param>
+            <param name="stripProjectDirectory"></param>
+            <returns>The array of filesystem entries.</returns>
+        </member>
+        <member name="T:Microsoft.Build.Shared.FileMatcher.Result">
+            <summary>
+            The results of a match between a filespec and a file name.
+            </summary>
+        </member>
+        <member name="M:Microsoft.Build.Shared.FileMatcher.Result.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ProjectModel.ExtraData.IMsBuildDataProvider">
+            <summary>
+            This is a marking interface for entities that provide data
+            </summary>
+        </member>
+        <member name="T:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage">
+            <summary>
+            Storage of compile items and references that may not be available via Visual Studio API
+            The items are used to create additional references and PsiSourceFiles to make sure there is no red code in solution
+            </summary>
+        </member>
+        <member name="M:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.TryGetData(JetBrains.Util.FileSystemPath)">
+            <summary>
+            Get data if exists for the project file path
+            </summary>
+            <param name="projectFilePath">Path to the project file of the project in questiuon</param>
+            <returns>Data if created</returns>
+        </member>
+        <member name="M:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.PerformBulkChange(JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Temporary suppresses firing changes until all the changes are made
+            </summary>
+            <param name="lifetime">Suppression lifetime</param>
+        </member>
+        <member name="M:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.SetData(JetBrains.ProjectModel.ExtraData.IMsBuildDataProvider,JetBrains.Util.FileSystemPath,JetBrains.ProjectModel.ExtraData.IMsBuildData)">
+            <summary>
+            Sets new provider data
+            </summary>
+            <param name="provider">Data provider</param>
+            <param name="projectFilePath">Path to the project file</param>
+            <param name="data">Data itself</param>
+        </member>
+        <member name="M:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.Clear(JetBrains.ProjectModel.ExtraData.IMsBuildDataProvider)">
+            <summary>
+            Clears all the provider data
+            </summary>
+            <param name="provider">Data provider</param>
+        </member>
+        <member name="M:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.Clear(JetBrains.ProjectModel.ExtraData.IMsBuildDataProvider,System.Func{JetBrains.Util.FileSystemPath,System.Boolean})">
+            <summary>
+            Clears provider data that matches <see cref="!:filter"/>
+            </summary>
+            <param name="provider">Data provider</param>
+            <param name="filter">Project file path filter</param>
+        </member>
+        <member name="P:JetBrains.ProjectModel.ExtraData.IMsBuildDataStorage.Changed">
+            <summary>
+            Fired when data corresponding to certain project file paths has changed
             </summary>
         </member>
         <member name="M:JetBrains.ProjectModel.Properties.IProjectProperties.UpdateFrom(JetBrains.ProjectModel.Properties.IProjectProperties)">
@@ -697,6 +1007,11 @@
             </summary>
             <param name="properties">Other properties</param>
             <returns>true if values updated, false otherwise</returns>
+        </member>
+        <member name="T:JetBrains.ProjectModel.Properties.IProjectPropertiesRequest">
+            <summary>
+            Requires 
+            </summary>
         </member>
         <member name="M:JetBrains.ProjectModel.Configuration.SolutionSettingsComponent.GetSettingsDocument(JetBrains.Application.Configuration.XmlExternalizationScope)">
             <summary>
@@ -720,16 +1035,6 @@
             Makes sure the project model elements collection does not contain Null items and is non-empty.
             Filters out Nulls, returns Null instead of empty collections.
             In other words, makes it valid for the data rule.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ProjectModel.ProjectFileType.Extensions">
-            <summary>
-            Do not use directly. Use IProjectFileExtensions.GetExtensions instead.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ProjectModel.KnownProjectFileType.Name">
-            <summary>
-            Specifies special ID for services, which has semantic "for any project file type"
             </summary>
         </member>
         <member name="M:JetBrains.ProjectModel.IFileExtensionMapping.GetFileTypes(System.String)">
@@ -1050,7 +1355,7 @@
         <member name="M:JetBrains.ProjectModel.Assemblies.Impl.ModuleReferencesResolveStore.GetReferencesToProject(JetBrains.ProjectModel.IProject)">
             <param name="target"></param>
         </member>
-        <member name="M:JetBrains.ProjectModel.model2.Assemblies.AssemblyToAssemblyResolvers.AssemblyToAssemblyReferencesResolveManager.CreateMetadataAssemblyResolver(JetBrains.Util.FileSystemPath,System.Guid)">
+        <member name="M:JetBrains.ProjectModel.model2.Assemblies.AssemblyToAssemblyResolvers.AssemblyToAssemblyReferencesResolveManager.CreateMetadataAssemblyResolver(JetBrains.Util.FileSystemPath)">
             <param name="assemblyPath"></param>
             <param name="mvid">Mvid of the source assembly is used for performance optimizations. Can be empty.</param>
         </member>
@@ -1113,22 +1418,6 @@
             <param name="platformIdVs">platfrom id obtained from VS</param>
             <param name="flavours"> </param>
             <param name="targetPlatformData"> </param>
-        </member>
-        <member name="T:JetBrains.ProjectModel.Properties.DefaultNamespaceFolderProviderResources">
-            <summary>
-              A strongly-typed resource class, for looking up localized strings, etc.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ProjectModel.Properties.DefaultNamespaceFolderProviderResources.ResourceManager">
-            <summary>
-              Returns the cached ResourceManager instance used by this class.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ProjectModel.Properties.DefaultNamespaceFolderProviderResources.Culture">
-            <summary>
-              Overrides the current thread's CurrentUICulture property for all
-              resource lookups using this strongly typed resource class.
-            </summary>
         </member>
         <member name="T:JetBrains.ProjectModel.Properties.VCXProj.ConfigurationTypes">
             <summary>
@@ -1301,6 +1590,15 @@
             Base for two per-project storages.
             </summary>
         </member>
+        <member name="M:JetBrains.ProjectModel.Settings.Storages.ProjectSettingsStorageComponent.AdviseProjectSettingChange(JetBrains.DataFlow.Lifetime,JetBrains.Application.Settings.SettingsEntry,System.Action{JetBrains.ProjectModel.Settings.Storages.ProjectSettingsStorageComponent.SettingsPerProject},System.Action{JetBrains.DataFlow.Lifetime,JetBrains.ProjectModel.Settings.Storages.ProjectSettingsStorageComponent.SettingsPerProject})">
+            <summary>
+            Advises project setting changes
+            </summary>
+            <param name="lifetime">Lifetime of the subscription</param>
+            <param name="settingsEntry">Settings entry which changes are observed</param>
+            <param name="onprojectSettingsChanged">Handler to be called when project settings created or changed</param>
+            <param name="lefetimeHandler">Optional handler to be called when project settings created to hook to its lifetime</param>
+        </member>
         <member name="T:JetBrains.ProjectModel.Settings.Storages.SolutionSettingsStoragePersonal">
             <summary>
             Per-solution storage excluded from SCC.
@@ -1410,6 +1708,10 @@
             <summary>
             Collection of standard icons
             </summary>
+        </member>
+        <member name="M:JetBrains.ProjectModel.Assemblies.Impl.ModuleReferenceResolveManager.UpdateReferenceAndFire(JetBrains.ProjectModel.Model2.References.IModuleToAssemblyReference,JetBrains.Util.FileSystemPath)">
+            <param name="reference">reference to be updated</param>
+            <param name="resolveResult">might be non-existent file</param>
         </member>
         <member name="T:JetBrains.ProjectModel.BuildAction">
             <summary>
@@ -1672,6 +1974,11 @@
             <summary>
             There're hidden folders in VS Hierarchy. 
             i.e. C:\Windows\Microsoft.NET\Framework\v4.0.30319\Temporary ASP.NET Files\kenticocms\cf18e726\9ae5a8e5\Sources_App_Code
+            </summary>
+        </member>
+        <member name="M:JetBrains.ProjectModel.Update.IProjectDescriptor.SetParentProjectPointer(JetBrains.ProjectModel.Update.IProjectPointer)">
+            <summary>
+            Allows to set parent project
             </summary>
         </member>
         <member name="P:JetBrains.ProjectModel.Update.IProjectDescriptor.Guid">

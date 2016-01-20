@@ -1360,16 +1360,25 @@
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcDisplayTemplateAttribute.#ctor" />
@@ -1381,6 +1390,9 @@
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcDisplayTemplateAttribute.#ctor" />
@@ -1392,6 +1404,9 @@
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcDisplayTemplateAttribute.#ctor" />
@@ -1403,6 +1418,9 @@
   <member name="M:System.Web.Mvc.Html.DisplayExtensions.DisplayFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcDisplayTemplateAttribute.#ctor" />
@@ -1446,16 +1464,25 @@
   <member name="M:System.Web.Mvc.Html.DisplayNameExtensions.DisplayNameFor``2(System.Web.Mvc.HtmlHelper{System.Collections.Generic.IEnumerable{``0}},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.DisplayNameExtensions.DisplayNameFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.DisplayTextExtensions.DisplayTextFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.EditorExtensions.Editor(System.Web.Mvc.HtmlHelper,System.String,System.String)">
@@ -1493,16 +1520,25 @@
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcEditorTemplateAttribute.#ctor" />
@@ -1514,6 +1550,9 @@
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcEditorTemplateAttribute.#ctor" />
@@ -1525,6 +1564,9 @@
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcEditorTemplateAttribute.#ctor" />
@@ -1536,6 +1578,9 @@
   <member name="M:System.Web.Mvc.Html.EditorExtensions.EditorFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="templateName">
       <attribute ctor="M:JetBrains.Annotations.AspMvcEditorTemplateAttribute.#ctor" />
@@ -1941,11 +1986,17 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.CheckBoxFor``1(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.CheckBoxFor``1(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -1959,6 +2010,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.CheckBoxFor``1(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,System.Boolean}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -1992,11 +2046,17 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.HiddenFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.HiddenFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2010,6 +2070,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.HiddenFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2043,11 +2106,17 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.PasswordFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.PasswordFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2061,6 +2130,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.PasswordFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2114,11 +2186,17 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.RadioButtonFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.RadioButtonFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2132,6 +2210,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.RadioButtonFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2185,16 +2266,25 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2208,6 +2298,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2221,6 +2314,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2234,6 +2330,9 @@
   <member name="M:System.Web.Mvc.Html.InputExtensions.TextBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2287,16 +2386,25 @@
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2310,6 +2418,9 @@
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2323,6 +2434,9 @@
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2336,6 +2450,9 @@
   <member name="M:System.Web.Mvc.Html.LabelExtensions.LabelFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2793,11 +2910,17 @@
   <member name="M:System.Web.Mvc.Html.NameExtensions.IdFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.NameExtensions.NameFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.PartialExtensions.Partial(System.Web.Mvc.HtmlHelper,System.String)">
@@ -2919,11 +3042,17 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2937,6 +3066,9 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2950,11 +3082,17 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -2968,6 +3106,9 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.DropDownListFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3001,11 +3142,17 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.ListBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.SelectExtensions.ListBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3019,6 +3166,9 @@
   <member name="M:System.Web.Mvc.Html.SelectExtensions.ListBoxFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IEnumerable{System.Web.Mvc.SelectListItem},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3092,11 +3242,17 @@
   <member name="M:System.Web.Mvc.Html.TextAreaExtensions.TextAreaFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.TextAreaExtensions.TextAreaFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3110,6 +3266,9 @@
   <member name="M:System.Web.Mvc.Html.TextAreaExtensions.TextAreaFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3123,6 +3282,9 @@
   <member name="M:System.Web.Mvc.Html.TextAreaExtensions.TextAreaFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Int32,System.Int32,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3136,6 +3298,9 @@
   <member name="M:System.Web.Mvc.Html.TextAreaExtensions.TextAreaFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Int32,System.Int32,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3149,6 +3314,9 @@
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidateFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidationMessage(System.Web.Mvc.HtmlHelper,System.String,System.Object)">
@@ -3194,16 +3362,25 @@
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidationMessageFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidationMessageFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidationMessageFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Object)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3217,6 +3394,9 @@
   <member name="M:System.Web.Mvc.Html.ValidationExtensions.ValidationMessageFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String,System.Collections.Generic.IDictionary{System.String,System.Object})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
     <parameter name="htmlAttributes">
       <attribute ctor="M:JetBrains.Annotations.HtmlElementAttributesAttribute.#ctor(System.String)">
@@ -3275,6 +3455,9 @@
   <member name="M:System.Web.Mvc.Html.ValueExtensions.ValueFor``2(System.Web.Mvc.HtmlHelper{``0},System.Linq.Expressions.Expression{System.Func{``0,``1}},System.String)">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.HtmlHelper.AnonymousObjectToHtmlAttributes(System.Object)">
@@ -3372,6 +3555,9 @@
   <member name="M:System.Web.Mvc.ModelMetadata.FromLambdaExpression``2(System.Linq.Expressions.Expression{System.Func{``0,``1}},System.Web.Mvc.ViewDataDictionary{``0})">
     <parameter name="expression">
       <attribute ctor="M:JetBrains.Annotations.InstantHandleAttribute.#ctor" />
+      <attribute ctor="M:JetBrains.Annotations.UsedImplicitlyAttribute.#ctor(JetBrains.Annotations.ImplicitUseKindFlags)">
+        <argument>Assign</argument>
+      </attribute>
     </parameter>
   </member>
   <member name="M:System.Web.Mvc.ReflectedControllerDescriptor.FindAction(System.Web.Mvc.ControllerContext,System.String)">

@@ -41,7 +41,16 @@
             (because in VB is allowed to use any other names)
             </summary>
         </member>
-        <!-- Badly formed XML comment ignored for member "T:JetBrains.Decompiler.Transformations.Conditional.SimplifyConditionalWithLiteralComparisonTransformation" -->
+        <member name="T:JetBrains.Decompiler.Transformations.Conditional.SimplifyConditionalWithLiteralComparisonTransformation">
+            <summary>
+            <list type="bullet">
+            <item><c>($B ? 1U : $E) > 0U</c> -> <c>$B || ($E > 0U)</c> (and vice versa)</item>
+            <item><c>($B ? $E : 0U) > 0U</c> -> <c>$B &amp;&amp; ($E > 0U)</c> (and vice versa)</item>
+            <item><c>($B ? $E : 1U) > 0U</c> -> <c>!$B || ($E > 0U)</c> (and vice versa)</item>
+            <item><c>($B ? 0U : $E) > 0U</c> -> <c>!$B &amp;&amp; ($E > 0U)</c> (and vice versa)</item>
+            </list>
+            </summary>
+        </member>
         <member name="M:JetBrains.Decompiler.Transformations.Conditional.SimplifyConditionalWithLiteralComparisonTransformation.Replace(JetBrains.Decompiler.Ast.IBinaryOperationExpression,JetBrains.Decompiler.Ast.OperationType,System.Boolean,JetBrains.Decompiler.Ast.IExpression,JetBrains.Decompiler.Ast.IExpression,JetBrains.Decompiler.Ast.ILiteralExpression)">
             <summary>
             binaryOperation -> [!]condition operationType (expression > 0U)
@@ -226,6 +235,65 @@
             <param name="delegateCreation"></param>
             <returns></returns>
         </member>
+        <member name="T:JetBrains.Decompiler.Transformations.Bool.EliminateTrivialConditionalTransformation">
+            <summary>
+            <list type="bullet">
+            <item><c>$1 ? true : false</c> -> <c>$1</c></item>
+            <item><c>$1 ? false : true</c> -> <c>!$1</c></item>
+            </list>
+            where <c>$1</c> is typed as <c>bool</c>
+            </summary>
+        </member>
+        <member name="T:JetBrains.Decompiler.Transformations.LocalVariables.InlineArrayInitializersTransformation">
+            <summary>
+            case1:
+            local = arrayCreation
+            ...
+            temp1 = expression1
+            ...
+            tempN = expressionN
+            temp = expression "main expression"
+            local[temp1, ..., tempN] = temp
+            ...
+            
+            or
+            case 2:
+            local = arrayCreation
+            ...
+            temp1 = expression1
+            ...
+            tempN = expressionN
+            local[temp1, ..., tempN] = expression
+            ...
+            
+            ->
+            
+            local = arrayCreation
+            ...
+            local[expression1, ..., expressionN] = expression
+            ...
+            
+            where expression1, ..., expressionN, expression do not change state
+            </summary>
+        </member>
+        <member name="T:JetBrains.Decompiler.Transformations.LocalVariables.InlineCollectionInitializersTransformation">
+            <summary>
+            local = objectCreation
+            ...
+            temp1 = expression1
+            ...
+            tempN = expressionN
+            local.Add(temp1, ..., tempN)
+            ...
+            ->
+            local = objectCreation
+            ...
+            local.Add(expression1, ..., expressionN)
+            ...
+            
+            where expression1, ..., expressionN do not change state
+            </summary>
+        </member>
         <member name="T:JetBrains.Decompiler.Transformations.LocalVariables.InlineMemberInitializersTransformation">
             <summary>
             local = objectCreation
@@ -239,18 +307,8 @@
             local.Member = expression
             ...
             
-            where expression: this, parameter, local variable, this.Field
+            where expression does not change state
             </summary>
-        </member>
-        <member name="M:JetBrains.Decompiler.Transformations.LocalVariables.InlineMemberInitializersTransformation.CheckExpression(JetBrains.Decompiler.Ast.IExpression)">
-            <summary>
-            Checks whether expression is
-            this or parameter or local variable or this.Field
-            (possibly type cast wrapped),
-            i.e. expression does not change state (local variables, fields etc.)
-            </summary>
-            <param name="expression"></param>
-            <returns></returns>
         </member>
         <member name="T:JetBrains.Decompiler.Transformations.LocalVariables.InlineThisTransformation">
             <summary>
@@ -631,7 +689,12 @@
             <param name="handlerStatement"></param>
             <param name="stateVariable">local variable for this.&lt;&gt;1__state</param>
         </member>
-        <!-- Badly formed XML comment ignored for member "M:JetBrains.Decompiler.Transformations.Iterators.IteratorDecompiler.CollectStateValues(System.Collections.Generic.List{JetBrains.Decompiler.Ast.IExpression},JetBrains.Decompiler.Ast.IExpression,JetBrains.Decompiler.Ast.ILocalVariable)" -->
+        <member name="M:JetBrains.Decompiler.Transformations.Iterators.IteratorDecompiler.CollectStateValues(System.Collections.Generic.List{JetBrains.Decompiler.Ast.IExpression},JetBrains.Decompiler.Ast.IExpression,JetBrains.Decompiler.Ast.ILocalVariable)">
+            <summary>
+            expression: stateVariable != stateValue1 &amp;&amp; ... &amp;&amp; stateVariable != stateValueN
+            -> stateValues = stateValues + {stateValue1, ..., stateValueN}
+            </summary>
+        </member>
         <member name="T:JetBrains.Decompiler.Transformations.ObjectModel.ExtractInstanceCtorInitializerTransformation">
             <summary>
             <para>
@@ -669,6 +732,13 @@
             Empty <c>base()</c> call is eliminated. Also instance field initializers are extracted.
             </para>
             </summary>
+        </member>
+        <member name="M:JetBrains.Decompiler.Transformations.LocalVariables.InlineUtil.ExpressionCanChangeState(JetBrains.Decompiler.Ast.IExpression)">
+            <summary>
+            Checks whether expression can change state (local variables, fields etc.)
+            </summary>
+            <param name="expression"></param>
+            <returns></returns>
         </member>
         <member name="M:JetBrains.Decompiler.Transformations.Loops.ExtractForEachTransformationBase`1.InlineItemVariable(JetBrains.Decompiler.Ast.ILocalVariableReferenceExpression,JetBrains.Decompiler.Ast.IStatement)">
             <returns>replaced temp local variable</returns>
@@ -1755,6 +1825,30 @@
             <item>the basic types of <c>$1</c>, <c>$2</c>, and <c>$3</c> are the same</item>
             </list>
         </member>
+        <member name="M:JetBrains.Decompiler.Transformations.Arrays.ExtractArrayAssignmentInitializerTransformation.TryExtractLiteralInitializerFromInlinedArrayInitialization(JetBrains.Decompiler.Ast.IArrayCreationExpression,System.Int32[])">
+            <summary>
+            RuntimeHelpers.InitializeArray((Array) new type[dimensions] /*arrayCreation*/, fieldReference)
+            ->
+            new type[dimensions]{literal initializer}
+            </summary>
+        </member>
+        <member name="M:JetBrains.Decompiler.Transformations.Arrays.ExtractArrayAssignmentInitializerTransformation.GetLiteralInitializerData(JetBrains.Decompiler.Metadata.MetadataTypeCache,JetBrains.Decompiler.Ast.ReferencesFinder,JetBrains.Metadata.Reader.API.IImageBodyReader,JetBrains.Decompiler.Ast.ILocalVariable,JetBrains.Decompiler.Ast.IStatement@,JetBrains.Decompiler.Ast.IExpressionStatement@,JetBrains.Decompiler.Ast.IExpressionStatement@)">
+            <summary>
+            handleVariable = fieldReference // handleAssignmentStatement
+            RuntimeHelpers.InitializeArray((Array) arrayVariable, handleVariable) // initStatement
+            </summary>
+            <returns>data from fieldReference (field initial value)</returns>
+        </member>
+        <member name="M:JetBrains.Decompiler.Transformations.Arrays.ExtractArrayAssignmentInitializerTransformation.ExtractLiteralInitializer(JetBrains.Decompiler.Ast.IArrayCreationExpression,JetBrains.Decompiler.Ast.ILocalVariable,System.Int32[],JetBrains.Decompiler.Ast.IStatement@)">
+            <summary>
+            new type[dimensions] // arrayCreation
+            ...
+            handleVariable = fieldReference // handleAssignmentStatement
+            RuntimeHelpers.InitializeArray((Array) arrayVariable, handleVariable) // initStatement
+            ->
+            new type[dimensions]{literal initializer}
+            </summary>
+        </member>
         <member name="T:JetBrains.Decompiler.Transformations.ObjectModel.ExtractTypeOfTransformation">
             <summary>
             <c>Type.GetTypeFromHandle(__typeref ($1))</c> -> <c>typeof ($1)</c>
@@ -1916,6 +2010,8 @@
         </member>
         <member name="T:JetBrains.Decompiler.Transformations.Bool.ReduceIntegerToBoolTypeCastTransformation">
             <summary>
+            <c>(bool) 1 </c> -> <c>true</c>
+            <c>(bool) 0 </c> -> <c>false</c>
             <c>(bool) $1 </c> -> <c>$1 != 0</c>
             where <c>$1</c> is typed as integer
             </summary>

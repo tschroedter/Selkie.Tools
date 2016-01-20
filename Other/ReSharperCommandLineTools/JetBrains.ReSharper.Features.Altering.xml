@@ -1486,6 +1486,16 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:JetBrains.ReSharper.Features.Altering.PostfixTemplates.PostfixTemplatesSettingsView">
+            <summary>
+            PostfixTemplatesSettingsView
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Features.Altering.PostfixTemplates.PostfixTemplatesSettingsView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Features.Altering.CodeFormatter.CSharp.FileLayout.Presentation.Designers.Themes.ConstraintPresenterDictionary">
             <summary>
             ConstraintPresenterDictionary

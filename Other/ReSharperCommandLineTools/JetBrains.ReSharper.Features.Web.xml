@@ -4,6 +4,11 @@
         <name>JetBrains.ReSharper.Features.Web</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.ReSharper.Features.Web.Navigation.Html.HtmlDeclarationSearch">
+            <summary>
+            Removes go-to-delcaration feature for some html specific declared elements...
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Features.Web.Options.Asp.Editor.AspEditorPage">
             <summary>
               The ASP.NET Editor related options.

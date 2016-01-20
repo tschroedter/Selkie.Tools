@@ -2,7 +2,7 @@
 
 <definitions xmlns="urn:schemas-jetbrains-com:css-xml">
 
-  <!-- CSS propepries -->
+  <!-- CSS properties -->
   <property id="text-decoration-blink" declared-in="3.0">
     <group type="or">
       <name value="inherit" />
@@ -4014,12 +4014,13 @@
         <text value="," />
       </separator>
       <integer tooltip="Is a strictly positive 'integer' representing the amount of equidistant treads composing the stepping function." />
-      <group type="or">
+      <group type="or" min="0" max="1">
         <name value="start" tooltip="Denotes a left-continuous function, so that the first step happens when the animation begins." />
         <name value="end" tooltip="Denotes a right-continuous function, so that the last step happens when the animation ends." />
       </group>
     </group>
   </function>
+  
   <function id="cubic-bezier" declared-in="3.0" url="http://www.w3.org/TR/css3-animations/#animation-timing-function">
     <group>
       <separator>

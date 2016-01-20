@@ -318,6 +318,13 @@
                [rest of string was truncated]&quot;;.
              </summary>
         </member>
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.CodeStyle.Inspection.AttributeCodeStyleSuggestion.BuildAttributeSectionGroup(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.Psi.CSharp.Tree.IAttributeSection})">
+            <summary>
+            Divide attribute sections into groups with the same target
+            </summary>
+            <param name="sections">Plain array of sections</param>
+            <returns>Groups of attribute sectinos with the same target</returns>
+        </member>
         <member name="T:JetBrains.ReSharper.Psi.CSharp.CodeStyle.ICustomIndentHandler">
             <summary>
             Provide custom indentation for the node to format correctly in ASP/Razor
@@ -329,15 +336,25 @@
             <param name="settings"></param>
             <returns><c>null</c> if default indentation should be used, or string which will be used as an indent</returns>
         </member>
+        <member name="T:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.ControlFlowHistoryCheckPointInfo">
+            <summary>
+            Denotes to expression state at specified point
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.ControlFlowWeakVariableInfo.QualifierEqualityComparer.IsEligble(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpExpression)">
+            <summary>
+            Check if given expression is eligible for comparison
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.CSharpControlFlowVariableValue.UNKNOWN">
             <summary>
             Variable state is completely unknown
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.CSharpControlFlowVariableValue.COLLECTION">
+        <member name="F:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.CSharpControlFlowVariableValue.CONTAINER">
             <summary>
-            value for collection variables, should be composed with UNKNOWN/NULL/NOT_NULL flags
-            which means values for elements of the collection
+            value for container-like variables (collections, Lazy, Task), should be composed with UNKNOWN/NULL/NOT_NULL flags
+            which means values for elements of the container
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.CSharpControlFlowVariableValue.WEAK_UNKNOWN">
@@ -358,6 +375,12 @@
         <member name="F:JetBrains.ReSharper.Psi.CSharp.Impl.CodeStyle.MemberReordering.GroupBase.GroupKey.mySampleNode">
             <summary>
             Used to determine the position of the group relative to other groups.
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.ParenthesesUtil.CanUseAssociativityToRemoveParentheses(JetBrains.ReSharper.Psi.CSharp.Tree.IParenthesizedExpression)">
+            <summary>
+            Check if we can omit parentheses in situations like '1 + (2 + 3)' or '"aa" + ("bb" + "cc")'
+            when we can proof binary operator is associative.
             </summary>
         </member>
         <member name="P:JetBrains.ReSharper.Psi.CSharp.Tree.IExtendedType.TypeReference">
@@ -799,7 +822,7 @@
             Reference to C# specs 4.5.4.2 with nikov's comments
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Util.CSharpCollectionTypeUtil.ElementTypeByCollectionType(JetBrains.ReSharper.Psi.IType,JetBrains.ReSharper.Psi.Resolve.IAccessContext,JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpTreeNode)">
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Util.CSharpCollectionTypeUtil.ElementTypeByCollectionType(JetBrains.ReSharper.Psi.IType,JetBrains.ReSharper.Psi.Resolve.IAccessContext,JetBrains.ReSharper.Psi.Tree.ITreeNode)">
             <summary>
             Returns element type if collectionType is a _collection_type_ (described in specification, 15.8.4)
             otherwise, returns null
@@ -815,23 +838,6 @@
             <summary>
             Factory for C# tree nodes creation.
             Format string is specified with $0, $1, ... as placeholders for arguments
-            </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.CodeStyle.CSharpDecorationStage.BuildAttributeSectionGroup(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.Psi.CSharp.Tree.IAttributeSection})">
-            <summary>
-            Divide attribute sections into groups with the same target
-            </summary>
-            <param name="sections">Plain array of sections</param>
-            <returns>Groups of attribute sectinos with the same target</returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.ControlFlowWeakVariableInfo.QualifierEqualityComparer.IsEligble(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpExpression)">
-            <summary>
-            Check if given expression is eligible for comparison
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.ControlFlowHistoryCheckPointInfo">
-            <summary>
-            Denotes to expression state at specified point
             </summary>
         </member>
         <member name="T:JetBrains.ReSharper.Psi.CSharp.Impl.ControlFlow.CSharpControlFlowContext">
@@ -879,7 +885,7 @@
             <summary>Get the possible extern aliases list</summary>
             <returns><c>null</c> if module is not referenced, <c>String.Empty</c> for no alias (i.e. == global)</returns>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.CSharpReferenceBindingUtil.UseExistingAlias(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable,System.Func{JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable,System.Boolean})">
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.CSharpReferenceBindingUtil.UseExistingAlias(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference,System.Func{JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference,System.Boolean})">
             <summary>
             Try to replaced qualified reference by any existing alias
             </summary>
@@ -944,12 +950,12 @@
             NOTE: Do not hold IReferenceName
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.UsingUtil.GetUsingOf(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable)">
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.UsingUtil.GetUsingOf(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference)">
             <summary>
             Get the corresponding using directive (if any) which is used to import references' target
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.UsingUtil.GetImportConflicts(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpTypeAndNamespaceHolderDeclaration,JetBrains.ReSharper.Psi.DeclaredElementInstance,System.String,JetBrains.Util.Key{JetBrains.ReSharper.Psi.DeclaredElementInstance},JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable,System.Action{JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable})">
+        <member name="M:JetBrains.ReSharper.Psi.CSharp.Impl.UsingUtil.GetImportConflicts(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpTypeAndNamespaceHolderDeclaration,JetBrains.ReSharper.Psi.DeclaredElementInstance,System.String,JetBrains.Util.Key{JetBrains.ReSharper.Psi.DeclaredElementInstance},JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference,System.Action{JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference})">
             <summary>
             Builds the list of conflicts which will occur if the given namespace will be imported into given scope.
             References with existing value in UserData by the given key will not be included

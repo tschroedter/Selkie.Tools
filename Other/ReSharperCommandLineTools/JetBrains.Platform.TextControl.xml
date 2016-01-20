@@ -707,6 +707,96 @@
             Gets the owning text control.
             </summary>
         </member>
+        <member name="T:JetBrains.TextControl.CreateTextControlParams`1">
+            <summary>
+            Params for <see cref="M:JetBrains.TextControl.ITextControlManager.CreateTextControl``1(JetBrains.TextControl.CreateTextControlParams{``0})"/>. See concrete inheritors for available text control types.
+            </summary>
+            <typeparam name="TTextControl">Type of the text control.</typeparam>
+        </member>
+        <member name="M:JetBrains.TextControl.CreateTextControlParams`1.#ctor(JetBrains.DocumentModel.IDocument,JetBrains.UI.WindowManagement.WindowFrame)">
+             <summary>
+             Makes params.
+             </summary>
+             <param name="document">
+               The document for which the text control should be created.
+            </param>
+             <param name="frame">The frame that hosts the text control.</param>
+        </member>
+        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.Document">
+            <summary>
+            The document for the new text control.
+            </summary>
+        </member>
+        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.Frame">
+            <summary>
+            The frame hosting the new text control.
+            </summary>
+        </member>
+        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.TextControlType">
+            <summary>
+            Type of the text control to create.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.ReadOnly">
+            <summary>
+            The text control is readonly.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.InWindow">
+            <summary>
+            The text control is embedded into a popup window and requires special processing for Alt+F4, Esc, etc.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.InWpfWindow">
+            <summary>
+            The same as InWindow, but the window is a WPF window which requires a special message translation.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.WantsTabNavigation">
+            <summary>
+            Do not translate Tab and Shift+Tab so that parent form could use them to navigate between controls.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.SuppressCurrentLineHighlight">
+            <summary>
+            Hide VS Current line highlight (a gray dotted box around text control current line).
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.SuppressCaretPositionOnVerticalScrollBar">
+            <summary>
+            Try to suppress caret postion marker on vertical scroll bar (since VS 2013).
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.ZoomControl">
+            <summary>
+            VS text control zoom control.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.VerticalScrollBar">
+            <summary>
+            VS text control vertical scrollbar.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.HorizontalScrollBar">
+            <summary>
+            VS text control horizontal scrollbar.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.LineNumbers">
+            <summary>
+            Show a line number margin.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.VisibleWhitespace">
+            <summary>
+            Show spaces and tabs as visible glyphs.
+            </summary>
+        </member>
+        <member name="P:JetBrains.TextControl.CreateInPlaceTextControlParams.WordWrap">
+            <summary>
+            Turn on word wrap mode.
+            </summary>
+        </member>
         <member name="T:JetBrains.TextControl.ErrorStripe.ErrorStripeMarker">
             <summary>
             Contains information about marker to be shown on an error stripe.
@@ -1365,36 +1455,6 @@
             true if the current object is equal to the <paramref name="other"/> parameter; otherwise, false.
             </returns>
             <param name="other">An object to compare with this object.</param>
-        </member>
-        <member name="T:JetBrains.TextControl.CreateTextControlParams`1">
-            <summary>
-            Params for <see cref="M:JetBrains.TextControl.ITextControlManager.CreateTextControl``1(JetBrains.TextControl.CreateTextControlParams{``0})"/>. See concrete inheritors for available text control types.
-            </summary>
-            <typeparam name="TTextControl">Type of the text control.</typeparam>
-        </member>
-        <member name="M:JetBrains.TextControl.CreateTextControlParams`1.#ctor(JetBrains.DocumentModel.IDocument,JetBrains.UI.WindowManagement.WindowFrame)">
-             <summary>
-             Makes params.
-             </summary>
-             <param name="document">
-               The document for which the text control should be created.
-            </param>
-             <param name="frame">The frame that hosts the text control.</param>
-        </member>
-        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.Document">
-            <summary>
-            The document for the new text control.
-            </summary>
-        </member>
-        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.Frame">
-            <summary>
-            The frame hosting the new text control.
-            </summary>
-        </member>
-        <member name="F:JetBrains.TextControl.CreateTextControlParams`1.TextControlType">
-            <summary>
-            Type of the text control to create.
-            </summary>
         </member>
         <member name="T:JetBrains.TextControl.CreateWinFormsTextControlParams">
             <summary>
@@ -2852,6 +2912,32 @@
             Could be modified on the primary thread in the guarded context only.
             </summary>
         </member>
+        <member name="M:JetBrains.TextControl.ITextControlCreator.CreateShellTextControl(JetBrains.DocumentModel.IDocument,JetBrains.UI.WindowManagement.WindowFrame)">
+             <summary>
+             <para>Creates the text control of the default kind in the current application environment, and attaches it to the given document (there might be multiple text controls for the same document).</para>
+             <para>You're responsible for disposing of the returned text control when needed no more.</para>
+             </summary>
+            <param name="document">
+              The document for the text control.
+            </param>
+            <param name="frame">
+              The logical owner of the text control in the UI hierarchy.
+            </param>
+            <returns>The new text control.</returns>
+             <remarks>
+             <para>Note that Visual Studio Integration uses other methods for attaching to existing Visual Studio text controls.</para>
+             </remarks>
+        </member>
+        <member name="M:JetBrains.TextControl.ITextControlCreator.CreateTextControl``1(JetBrains.TextControl.CreateTextControlParams{``0})">
+            <summary>
+            Creates a new text control for some document (there might be multiple text controls for the same document).
+             The document and the type of the text control created are determined by the <paramref name="param"/>, for which any <see cref="T:JetBrains.TextControl.CreateTextControlParams`1"/> inheritor could be used.
+            </summary>
+            <typeparam name="TTextControl">Type of the text control to create.</typeparam><param name="param">Text control context and parameters.</param>
+            <returns>
+            The new text control.
+            </returns>
+        </member>
         <member name="T:JetBrains.TextControl.TextControlCreator">
             <summary>
             Can create text controls of various kinds.
@@ -2893,7 +2979,7 @@
             Aggregate. Manages adding/removing typing handlers and executing typing on them.
             </summary>
         </member>
-        <member name="M:JetBrains.TextControl.TextControlManager.#ctor(JetBrains.TextControl.TextControlCreator,JetBrains.TextControl.Impl.TextControlTypingHandlers,JetBrains.TextControl.Impl.TextControlProperties,JetBrains.TextControl.RunningTextControls,JetBrains.TextControl.Impl.TextControlManagerDerivativesLegacy,JetBrains.TextControl.DefaultTextControlSchemeManager)">
+        <member name="M:JetBrains.TextControl.TextControlManager.#ctor(JetBrains.TextControl.ITextControlCreator,JetBrains.TextControl.Impl.TextControlTypingHandlers,JetBrains.TextControl.Impl.TextControlProperties,JetBrains.TextControl.RunningTextControls,JetBrains.TextControl.Impl.TextControlManagerDerivativesLegacy,JetBrains.TextControl.DefaultTextControlSchemeManager)">
             <summary>
             Initializes a new instance of the <see cref="T:System.Object"/> class.
             </summary>

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly name="Telerik.Web.Mvc">
   <member name="T:Telerik.Web.Mvc.GridActionAttribute">
-    <attribute ctor="M:JetBrains.Annotations.AspMvcSupressViewErrorAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.AspMvcSuppressViewErrorAttribute.#ctor" />
   </member>
   <member name="M:Telerik.Web.Mvc.Infrastructure.Implementation.AuthorizationContextCache.GetAuthorizationContext(System.Web.Routing.RequestContext,System.String,System.String,System.Web.Routing.RouteValueDictionary)">
     <parameter name="controllerName">

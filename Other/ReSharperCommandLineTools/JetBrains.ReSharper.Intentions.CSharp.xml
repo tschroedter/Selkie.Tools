@@ -109,11 +109,5 @@
             <param name="expression"></param>
             <returns>Returns loop that contains expression in its header</returns>
         </member>
-        <member name="M:JetBrains.ReSharper.Intentions.CSharp.ContextActions.RemoveParenthesisAction.CanUseAssociativityToRemoveParentheses(JetBrains.ReSharper.Psi.CSharp.Tree.IParenthesizedExpression)">
-            <summary>
-            Check if we can omit parentheses in situations like '1 + (2 + 3)' or '"aa" + ("bb" + "cc")'
-            when we can proof binary operator is associative.
-            </summary>
-        </member>
     </members>
 </doc>

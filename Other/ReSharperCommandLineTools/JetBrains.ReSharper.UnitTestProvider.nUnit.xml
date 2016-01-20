@@ -92,6 +92,11 @@
         <member name="P:JetBrains.ReSharper.UnitTestProvider.nUnit.NUnitRowTestElement.UniqueId">
             NUnit's UniqueId of this test case. May change after build. If <c>null</c>, then it equals <see cref="P:JetBrains.ReSharper.UnitTestFramework.IUnitTestElement.Id"/>
         </member>
+        <member name="M:JetBrains.ReSharper.UnitTestProvider.nUnit.NUnitTestFixtureElement.ReferencedNUnitInfo(System.String,JetBrains.ReSharper.UnitTestRunner.nUnit.NUnitVersion)">
+            <summary>
+            Look through actual assembly references and infer version. Use <see cref="F:JetBrains.ReSharper.UnitTestProvider.nUnit.NUnitTestFixtureElement.myNUnitVersion"/> if detect fails.
+            </summary>
+        </member>
         <member name="M:JetBrains.ReSharper.UnitTestProvider.nUnit.NUnitMetadataExplorer.GetAllTestFixtureAttributes(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
             <summary>
             Returns collection of all TestFixture attribute on type, including its base types.

@@ -14,12 +14,13 @@
             Populates <see cref="F:JetBrains.DocumentModel.RangeMarkersManager.GetAllRangeMarkersOnDocument"/> with range markers on the project file on which the document has been created (if so).
             </summary>
         </member>
-        <member name="M:JetBrains.DocumentManagers.Transactions.IProjectModelEditor.AddFile(JetBrains.ProjectModel.IProjectFolder,JetBrains.Util.FileSystemPath)">
+        <member name="M:JetBrains.DocumentManagers.Transactions.IProjectModelEditor.AddFile(JetBrains.ProjectModel.IProjectFolder,JetBrains.Util.FileSystemPath,JetBrains.DocumentManagers.Transactions.IFileCreationContext)">
             <summary>
             Adds specified file to the project 
             </summary>
             <param name="parentFolder">Parent folder</param>
             <param name="location">Path to the file being added</param>
+            <param name="context">Additional untyped data that can be used by AddFileAction. Used in C++ to create files in particular 'filter'</param>
             <returns>Reference to the new project item</returns>
         </member>
         <member name="M:JetBrains.DocumentManagers.Transactions.IProjectModelEditor.AddFolder(JetBrains.ProjectModel.IProjectFolder,System.String,JetBrains.Util.FileSystemPath)">

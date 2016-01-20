@@ -4,6 +4,44 @@
         <name>JetBrains.ReSharper.Feature.Services.ExternalSources</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData">
+            <summary>
+            Mapping between source file ranges and IL offsets,
+            local variable names and scopes
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.GetSequencePoint(JetBrains.Metadata.Access.MetadataToken,System.Int32)">
+            <summary>
+            Sequence point with less or equal IL offset in method with given token
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.GetSortedSequencePoints(JetBrains.Metadata.Access.MetadataToken)">
+            <summary>
+            Sequence points sorted by ilOffset
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.OriginalPdbFilePath">
+            <summary>
+            Path to pdb file from which the data was obtained
+            </summary>
+            <remarks>Should be null for decompiler-generated DebugData</remarks>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.SourceFileIndex">
+            <summary>
+            Index of source in pdb file
+            (if data was obtained from pdb)
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.MethodData.GetSortedSequencePoints">
+            <summary>
+            Sequence points sorted by ilOffset
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DebugData.MethodData.GetSequencePoint(System.Int32)">
+            <summary>
+            Sequence point with less or equal IL offset
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.INavigationDecompilationCache">
             <summary>
             Cache for navigation providers (this cache may be shared)
@@ -19,6 +57,58 @@
             <summary>
             Cache shared for all products in wave
             (is used e.g. for pdb sources)
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.LocalVariableData.Index">
+            <summary>
+            Index in method
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.LocalVariableData.StartOffset">
+            <summary>
+            The start offset of variable visibility scope
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.LocalVariableData.EndOffset">
+            <summary>
+            The end offset of the variable visibility scope 
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.IlOffset">
+            <summary>
+            The IL offset of the sequence point measured from the beginning of the method (in bytes)
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.StartLine">
+            <summary>
+            The starting line number of the sequence point
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.StartColumn">
+            <summary>
+            The starting column number of the sequence point
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.EndLine">
+            <summary>
+            The ending line number of the sequence point
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.EndColumn">
+            <summary>
+            The ending column number of the sequence point
+            </summary>
+        </member>
+        <member name="P:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.SequencePointData.IsHidden">
+            <summary>
+            if sequence point is hidden then the debugger will skip over it
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementBinder.BindDeclarations(JetBrains.ReSharper.Psi.Tree.IFile,JetBrains.ReSharper.Psi.Modules.IPsiModule,System.Boolean)">
+            <summary>
+            Bind declarations in <paramref name="file"/> to corresponding declared elements in psiModule.
+            WARNING: all references of psiModule must be loaded beforehand because
+            binding process uses xmldocids which requires all types to be resolved correctly.
             </summary>
         </member>
         <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.DecompilationCacheStructure.#ctor(JetBrains.Application.Environment.Components.ProductSettingsLocation,System.Boolean)">
@@ -130,13 +220,6 @@
             </summary>
             <param name="pdbFileName">short file name with pdb extension</param>
             <param name="pdbSignature">hex representation of pdb signature and age</param>
-        </member>
-        <member name="M:JetBrains.ReSharper.Feature.Services.ExternalSources.Utils.DeclaredElementBinder.BindDeclarations(JetBrains.ReSharper.Psi.Tree.IFile,JetBrains.ReSharper.Psi.Modules.IPsiModule,System.Boolean)">
-            <summary>
-            Bind declarations in <paramref name="file"/> to corresponding declared elements in psiModule.
-            WARNING: all references of psiModule must be loaded beforehand because
-            binding process uses xmldocids which requires all types to be resolved correctly.
-            </summary>
         </member>
         <member name="T:JetBrains.ReSharper.Feature.Services.ExternalSources.Core.Impl.ExternalSourcesForceSourceCookie">
             <summary>

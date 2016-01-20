@@ -3887,14 +3887,6 @@
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:System.ComponentModel.PropertyDescriptor.SetValue(System.Object,System.Object)">
-    <parameter name="value">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-    <parameter name="component">
-      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
-    </parameter>
-  </member>
   <member name="M:System.ComponentModel.PropertyDescriptor.ShouldSerializeValue(System.Object)">
     <parameter name="component">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />

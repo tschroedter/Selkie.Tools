@@ -755,7 +755,7 @@
             References with existing value in UserData by the given key will not be included
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.VB.Impl.VBImportsUtil.GetImportOf(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReferenceWithGlobalSymbolTable)">
+        <member name="M:JetBrains.ReSharper.Psi.VB.Impl.VBImportsUtil.GetImportOf(JetBrains.ReSharper.Psi.ExtensionsAPI.Resolve.IQualifiableReference)">
             <summary>
             Get the corresponding using directive (if any) which is used to import references' target
             </summary>
@@ -868,7 +868,7 @@
             NOTE: Do not hold IReferenceName
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Psi.VB.VBTypeFactory.CreatePredefinedTypeByKeyword(JetBrains.ReSharper.Psi.Parsing.TokenNodeType,JetBrains.ReSharper.Psi.Modules.IPsiModule,JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext)">
+        <member name="M:JetBrains.ReSharper.Psi.VB.VBTypeFactory.CreatePredefinedTypeByKeyword(JetBrains.ReSharper.Psi.Parsing.TokenNodeType,JetBrains.ReSharper.Psi.Modules.IPsiModule)">
             <remarks>tokenType should be type of token of one of predefined types.</remarks>
         </member>
         <member name="T:JetBrains.ReSharper.Psi.VB.CodeStyle.ICustomIndentHandler">

@@ -4,6 +4,362 @@
         <name>JetBrains.Platform.Interop.WinApi</name>
     </assembly>
     <members>
+        <member name="F:JetBrains.Interop.WinApi.Constants.StringCompareFlags.SORT_DIGITSASNUMBERS">
+            <since>Windows NT 6.1</since>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT">
+            <summary>
+             Examples for the following formats assume a fictitous company
+             which hooks into the global X.500 and DNS name spaces as follows.
+             Enterprise root domain in DNS is
+                  widget.com
+             Enterprise root domain in X.500 (RFC 1779 format) is
+                  O=Widget, C=US
+             There exists the child domain
+                  engineering.widget.com
+             equivalent to
+                  OU=Engineering, O=Widget, C=US
+             There exists a container within the Engineering domain
+                  OU=Software, OU=Engineering, O=Widget, C=US
+             There exists the user
+                  CN=John Doe, OU=Software, OU=Engineering, O=Widget, C=US
+             And this user's downlevel (pre-ADS) user name is
+                  Engineering\JohnDoe
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameUnknown">
+            <summary>  unknown name type </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameFullyQualifiedDN">
+            <summary>  CN=John Doe, OU=Software, OU=Engineering, O=Widget, C=US </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameSamCompatible">
+            <summary>  Engineering\JohnDoe </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameDisplay">
+            <summary>  Probably "John Doe" but could be something else.  I.e. The </summary>
+            <summary>  display name is not necessarily the defining RDN. </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameUniqueId">
+            <summary>  String-ized GUID as returned by IIDFromString(). </summary>
+            <summary>  eg: {4fa050f0-f561-11cf-bdd9-00aa003a77b6} </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameCanonical">
+            <summary>  engineering.widget.com/software/John Doe </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameUserPrincipal">
+            <summary>  someone@example.com </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameCanonicalEx">
+            <summary>  Same as NameCanonical except that rightmost '/' is </summary>
+            <summary>  replaced with '\n' - even in domain-only case. </summary>
+            <summary>  eg: engineering.widget.com/software\nJohn Doe </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameServicePrincipal">
+            <summary>  www/srv.engineering.com/engineering.com </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT.NameDnsDomain">
+            <summary>  DNS domain name + SAM username </summary>
+            <summary>  eg: engineering.widget.com\JohnDoe </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.Locale.LOCALE_NAME_MAX_LENGTH">
+            <summary>
+            8 characters for language <br />
+            8 characters for region <br />
+            64 characters for suffix (script) <br />
+            2 characters for '-' separators <br />
+            2 characters for prefix like "i-" or "x-" <br />
+            1 null termination
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.Locale.LOCALE_INVARIANT">
+            <summary>
+            Windows XP: The locale used for operating system-level functions that require consistent and locale-independent results. For example, the invariant locale is used when an application compares character strings using the CompareString function and expects a consistent result regardless of the user locale. The settings of the invariant locale are similar to those for English (United States) but should not be used to display formatted data. Typically, an application does not use LOCALE_INVARIANT because it expects the results of an action to depend on the rules governing each individual locale. The value of LOCALE_INVARIANT IS 0x007f.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.Locale.LOCALE_NAME_INVARIANT">
+            <summary>
+            Name of an invariant locale that provides stable locale and calendar data.
+            </summary>
+            <since>Windows NT 6.0</since>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.Locale.LOCALE_NAME_SYSTEM_DEFAULT">
+            <summary>
+            Name of the current operating system locale.
+            </summary>
+            <since>Windows NT 6.0</since>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.Locale.LOCALE_NAME_USER_DEFAULT">
+            <summary>
+            Name of the current user locale, matching the preference set in the regional and language options portion of Control Panel. This locale can be different from the locale for the current user interface language.
+            </summary>
+            <since>Windows NT 6.0</since>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.LocaleDependentMappingFlags.LCMAP_TITLECASE">
+            <since>win7</since>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.CCH_RM_MAX_APP_NAME">
+            <summary>
+            CCH_RM_MAX_APP_NAME - maximum character count of application friendly name.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.CCH_RM_MAX_SVC_NAME">
+            <summary>
+            CCH_RM_MAX_SVC_NAME - maximum character count of service short name.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.RM_SESSION_KEY_LEN">
+            <summary>
+            RM_SESSION_KEY_LEN - size in bytes of binary session key.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.CCH_RM_SESSION_KEY">
+            <summary>
+            CCH_RM_SESSION_KEY - character count of text-encoded session key.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.RM_INVALID_PROCESS">
+            <summary>
+            Uninitialized value for Process ID.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RestartManagerConstants.RM_INVALID_TS_SESSION">
+            <summary>
+            Uninitialized value for TS Session ID.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS">
+            <summary>
+            Describes the current status of an application that is acted upon by the Restart Manager.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusUnknown">
+            <summary>
+            Application in unknown state or state not important.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusRunning">
+            <summary>
+            Application is currently running.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusStopped">
+            <summary>
+            Application stopped by Restart Manager.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusStoppedOther">
+            <summary>
+            Application detected stopped by outside action.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusRestarted">
+            <summary>
+            Application restarted by Restart Manager.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusErrorOnStop">
+            <summary>
+            An error occurred when stopping this application.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusErrorOnRestart">
+            <summary>
+            An error occurred when restarting this application.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusShutdownMasked">
+            <summary>
+            Shutdown action masked by filer.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_STATUS.RmStatusRestartMasked">
+            <summary>
+            Restart action masked by filter.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE">
+            <summary>
+            Specifies the type of application that is described by the <see cref="T:JetBrains.Interop.WinApi.RM_PROCESS_INFO"/> structure.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmUnknownApp">
+            <summary>
+            The application cannot be classified as any other type. An application of this type can only be shut down by a forced shutdown.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmMainWindow">
+            <summary>
+            A Windows application run as a stand-alone process that displays a top-level window.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmOtherWindow">
+            <summary>
+            A Windows application that does not run as a stand-alone process and does not display a top-level window.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmService">
+            <summary>
+            The application is a Windows service.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmExplorer">
+            <summary>
+            The application is Windows Explorer.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmConsole">
+            <summary>
+            The application is a stand-alone console application.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_APP_TYPE.RmCritical">
+            <summary>
+            A system restart is required to complete the installation because a process cannot be shut down. The process cannot be shut down because of the following reasons. The process may be a critical process. The current user may not have permission to shut down the process. The process may belong to the primary installer that started the Restart Manager.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON">
+            <summary>
+            Describes the reasons a restart of the system is needed.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonNone">
+            <summary>
+            Reboot not required.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonPermissionDenied">
+            <summary>
+            Current user does not have permission to shut down one or more detected processes.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonSessionMismatch">
+            <summary>
+            One or more processes are running in another TS session.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonCriticalProcess">
+            <summary>
+            A critical process has been detected.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonCriticalService">
+            <summary>
+            A critical service has been detected.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RM_REBOOT_REASON.RmRebootReasonDetectedSelf">
+            <summary>
+            The current process has been detected.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.RstrtmgrDll">
+            <summary>
+             Rstrtmgr.dll (Restart Manager) functions.
+             Must be 64bit-safe.
+            </summary>
+            <remarks>
+             IMPORTANT! Rules for authoring the class (v1.1):
+             (1) All the function declarations MUST be 64-bit aware.
+             (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration,
+                and you MUST ensure that each parameter has a proper size.
+             (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version
+                (such a reason MUST be indicated in XmlDoc). <c>CharSet = CharSet.Unicode</c>.
+             (4) ExactSpelling MUST be TRUE. Add the "…W" suffix wherever needed.
+             (5) SetLastError SHOULD be considered individually for each function. Setting it to <c>True</c> allows to report the errors,
+                but slows down the execution of critical members.
+             (6) These properties MUST be explicitly set on DllImport attributes of EACH import:
+                CharSet, PreserveSig, SetLastError, ExactSpelling.
+             (7) CLR names MUST be used for types instead of C# ones, eg "Int32" not "int" and "Int64" not "long".
+                This greately improves the understanding of the parameter sizes.
+             (8) Sign of the types MUST be favored, eg "DWORD" is "UInt32" not "Int32".
+             (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr.
+                This way we outline the unsafety of the native calls, and also make it more clear for the 64bit transition.
+                Eg "HANDLE" is "void*". If the rule forces you to mark some assembly as unsafe, it's an indication a managed utility
+                incapsulating the call and the handle should be provided in one of the already-unsafe assemblies.
+             (A) Same rules must apply to members of the structures.
+             (B) All of the structures MUST have the [StructLayout(LayoutKind.Sequential)], [NoReorder] attributes, as appropriate.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.RstrtmgrDll.RmEndSession(System.UInt32)">
+            <summary>
+            Ends the Restart Manager session. This function should be called by the primary installer that has previously started the session by calling the RmStartSession function. The RmEndSession function can be called by a secondary installer that is joined to the session once no more resources need to be registered by the secondary installer.
+            </summary>
+            <param name="dwSessionHandle">A handle to an existing Restart Manager session.</param>
+            <returns>This is the most recent error received. The function can return one of the system error codes that are defined in Winerror.h.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.RstrtmgrDll.RmGetList(System.UInt32,System.UInt32*,System.UInt32*,JetBrains.Interop.WinApi.RM_PROCESS_INFO*,System.UInt32*)">
+            <summary>
+            Gets a list of all applications and services that are currently using resources that have been registered with the Restart Manager session.
+            </summary>
+            <param name="dwSessionHandle">A handle to an existing Restart Manager session.</param>
+            <param name="pnProcInfoNeeded">A pointer to an array size necessary to receive RM_PROCESS_INFO structures required to return information for all affected applications and services.</param>
+            <param name="pnProcInfo">A pointer to the total number of RM_PROCESS_INFO structures in an array and number of structures filled.</param>
+            <param name="rgAffectedApps">An array of RM_PROCESS_INFO structures that list the applications and services using resources that have been registered with the session.</param>
+            <param name="lpdwRebootReasons">Pointer to location that receives a value of the RM_REBOOT_REASON enumeration that describes the reason a system restart is needed.</param>
+            <returns>This is the most recent error received. The function can return one of the system error codes that are defined in Winerror.h.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.RstrtmgrDll.RmRegisterResources(System.UInt32,System.UInt32,System.Char**,System.UInt32,JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS*,System.UInt32,System.Char**)">
+            <summary>
+            Registers resources to a Restart Manager session. The Restart Manager uses the list of resources registered with the session to determine which applications and services must be shut down and restarted. Resources can be identified by filenames, service short names, or <see cref="T:JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS"/> structures that describe running applications. The RmRegisterResources function can be used by a primary or secondary installer.
+            </summary>
+            <param name="dwSessionHandle">A handle to an existing Restart Manager session.</param>
+            <param name="nFiles">The number of files being registered.</param>
+            <param name="rgsFilenames">An array of null-terminated strings of full filename paths. This parameter can be NULL if nFiles is 0.</param>
+            <param name="nApplications">The number of processes being registered.</param>
+            <param name="rgApplications">An array of <see cref="T:JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS"/> structures. This parameter can be NULL if nApplications is 0.</param>
+            <param name="nServices">The number of services to be registered.</param>
+            <param name="rgsServiceNames">An array of null-terminated strings of service short names. This parameter can be NULL if nServices is 0.</param>
+            <returns>This is the most recent error received. The function can return one of the system error codes that are defined in Winerror.h. </returns>
+            <remarks>Each call to the RmRegisterResources function performs relatively expensive write operations. Do not call this function once per file, instead group related files together into components and register these together.</remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.RstrtmgrDll.RmStartSession(System.UInt32*,System.UInt32,System.Char*)">
+            <summary>
+            Starts a new Restart Manager session. A maximum of 64 Restart Manager sessions per user session can be open on the system at the same time. When this function starts a session, it returns a session handle and session key that can be used in subsequent calls to the Restart Manager API.
+            </summary>
+            <param name="pSessionHandle">A pointer to the handle of a Restart Manager session. The session handle can be passed in subsequent calls to the Restart Manager API.</param>
+            <param name="dwSessionFlags">Reserved. This parameter should be 0.</param>
+            <param name="strSessionKey">A null-terminated string that contains the session key to the new session. The string must be allocated before calling the RmStartSession function. Must be at least CCH_RM_SESSION_KEY+1 unicode characters in length.</param>
+            <returns>This is the most recent error received. The function can return one of the system error codes that are defined in Winerror.h.</returns>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Secur32Dll">
+            <summary>
+            Secur32.dll functions.
+            Must be 64bit-safe.
+            </summary>
+            <remarks>
+            IMPORTANT! Rules for authoring the class (v1.1):
+            (1) All the function declarations MUST be 64-bit aware.
+            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration,
+               and you MUST ensure that each parameter has a proper size.
+            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version
+               (such a reason MUST be indicated in XmlDoc). <c>CharSet = CharSet.Unicode</c>.
+            (4) ExactSpelling MUST be TRUE. Add the "…W" suffix wherever needed.
+            (5) SetLastError SHOULD be considered individually for each function. Setting it to <c>True</c> allows to report the errors,
+               but slows down the execution of critical members.
+            (6) These properties MUST be explicitly set on DllImport attributes of EACH import:
+               CharSet, PreserveSig, SetLastError, ExactSpelling.
+            (7) CLR names MUST be used for types instead of C# ones, eg "Int32" not "int" and "Int64" not "long".
+               This greately improves the understanding of the parameter sizes.
+            (8) Sign of the types MUST be favored, eg "DWORD" is "UInt32" not "Int32".
+            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr.
+               This way we outline the unsafety of the native calls, and also make it more clear for the 64bit transition.
+               Eg "HANDLE" is "void*". If the rule forces you to mark some assembly as unsafe, it's an indication a managed utility
+               incapsulating the call and the handle should be provided in one of the already-unsafe assemblies.
+            (A) Same rules must apply to members of the structures.
+            (B) All of the structures MUST have the [StructLayout(LayoutKind.Sequential)], [NoReorder] attributes, as appropriate.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Secur32Dll.GetUserNameExW(JetBrains.Interop.WinApi.Constants.EXTENDED_NAME_FORMAT,System.Char*,System.UInt32*)">
+            <summary>
+            Retrieves the name of the user or other security principal associated with the calling thread. You can specify the format of the returned name.
+            If the thread is impersonating a client, GetUserNameEx returns the name of the client.
+            </summary>
+            <param name="NameFormat"></param>
+            <param name="lpNameBuffer"></param>
+            <param name="lpnSize"></param>
+            <returns>If the function succeeds, the return value is a nonzero value.</returns>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.Constants.CorH">
             <summary>
             Constants from file <c>Cor.h</c>.
@@ -37,6 +393,52 @@
         <member name="F:JetBrains.Interop.WinApi.CorSymSearchPolicyAttributes.AllowReferencePathAccess">
             <summary>
             Searches for the PDB in the place where the .exe file is.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.FrameControlState">
+            <summary>
+            Values for <see cref="M:JetBrains.Interop.WinApi.User32Dll.DrawFrameControl(System.Void*,JetBrains.Interop.WinApi.RECT*,System.UInt32,System.UInt32)"/>.
+            Incomplete.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlState.DFCS_BUTTONPUSH">
+            <summary>
+            Push button
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.FrameControlType">
+            <summary>
+            Values for <see cref="M:JetBrains.Interop.WinApi.User32Dll.DrawFrameControl(System.Void*,JetBrains.Interop.WinApi.RECT*,System.UInt32,System.UInt32)"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlType.DFC_BUTTON">
+            <summary>
+            Standard button
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlType.DFC_CAPTION">
+            <summary>
+            Title bar
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlType.DFC_MENU">
+            <summary>
+            Menu bar
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlType.DFC_POPUPMENU">
+            <summary>
+            Windows 98/Me, Windows 2000/XP: Popup menu item.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.FrameControlType.DFC_SCROLL">
+            <summary>
+            Scroll bar
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.HookType">
+            <summary>
+            Windows hook types for <see cref="M:JetBrains.Interop.WinApi.User32Dll.SetWindowsHookExW(System.Int32,JetBrains.Interop.WinApi.Functions.HOOKPROC,System.Void*,System.UInt32)"/>.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.Constants.ImagehlpH">
@@ -221,6 +623,36 @@
             The <see cref="!:PROPSPEC.propid"/> member is used and set to a property ID value.
             </summary>
         </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.RegionResult">
+            <summary>
+            The return value specifies the new clipping region's complexity; it can be one of the following values.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RegionResult.ERROR">
+            <summary>
+            An error occurred.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RegionResult.NULLREGION">
+            <summary>
+            Region is empty.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RegionResult.SIMPLEREGION">
+            <summary>
+            Region is a single rectangle.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RegionResult.COMPLEXREGION">
+            <summary>
+            Region is more than one rectangle.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.RegionResult.RGN_ERROR">
+            <summary>
+            An error occurred.
+            </summary>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.Declarations.Constants.ResourceTypes">
             <summary>
             The following are the predefined resource types.
@@ -288,6 +720,16 @@
         </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Constants.ResourceTypes.RT_VXD">
             <summary>VXD.</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.SPI.FE_FONTSMOOTHINGSTANDARD">
+            <summary>
+            constants for SPI_GETFONTSMOOTHINGTYPE and SPI_SETFONTSMOOTHINGTYPE:
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.SPI.FE_FONTSMOOTHINGCLEARTYPE">
+            <summary>
+            constants for SPI_GETFONTSMOOTHINGTYPE and SPI_SETFONTSMOOTHINGTYPE:
+            </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.Declarations.Constants.STATFLAG">
             <summary>
@@ -360,6 +802,51 @@
             The new seek pointer is an offset relative to the end of the stream. In this case, the dlibMove parameter is the new seek position relative to the end of the stream.
             </summary>
         </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.SRCCOPY">
+            <summary>dest = source</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.SRCPAINT">
+            <summary>dest = source OR dest</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.SRCAND">
+            <summary>dest = source AND dest</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.SRCINVERT">
+            <summary>dest = source XOR dest</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.SRCERASE">
+            <summary>dest = source AND (NOT dest)</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.NOTSRCCOPY">
+            <summary>dest = (NOT source)</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.NOTSRCERASE">
+            <summary>dest = (NOT src) AND (NOT dest)</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.MERGECOPY">
+            <summary>dest = (source AND pattern)</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.MERGEPAINT">
+            <summary>dest = (NOT source) OR dest</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.PATCOPY">
+            <summary>dest = pattern</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.PATPAINT">
+            <summary>dest = DPSnoo</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.PATINVERT">
+            <summary>dest = pattern XOR dest</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.DSTINVERT">
+            <summary>dest = (NOT dest)</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.BLACKNESS">
+            <summary>dest = BLACK</summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.TernaryRasterOperations.WHITENESS">
+            <summary>dest = WHITE</summary>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.Constants.WinTrustDataConstants">
             <summary>
             Constants around the <see cref="T:JetBrains.Interop.WinApi.WINTRUST_DATA"/> and its uses.
@@ -373,6 +860,183 @@
               authenticity of a file/object using the Microsoft Authenticode
               Policy Provider,
                       {00AAC56B-CD44-11d0-8CC2-00C04FC295EE}
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Constants.WmSizeFlags">
+            <summary>
+            Flags that go along with the WM_SIZE message in its wParam.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_RESTORED">
+            <summary>
+            The window has been resized, but neither the <see cref="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MINIMIZED"/> nor <see cref="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MAXIMIZED"/> value applies.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MINIMIZED">
+            <summary>
+            The window has been minimized.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MAXIMIZED">
+            <summary>
+            The window has been maximized.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MAXSHOW">
+            <summary>
+            Message is sent to all pop-up windows when some other window has been restored to its former size.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Constants.WmSizeFlags.SIZE_MAXHIDE">
+            <summary>
+            Message is sent to all pop-up windows when some other window is maximized.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.DwmApiDll">
+            <summary>
+            Dwmapi.dll functions.
+            Must be 64bit-safe.
+            </summary>
+            <remarks>
+            IMPORTANT! Rules for authoring the class (v1.1):
+            (1) All the function declarations MUST be 64-bit aware.
+            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration,
+               and you MUST ensure that each parameter has a proper size.
+            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version
+               (such a reason MUST be indicated in XmlDoc). <c>CharSet = CharSet.Unicode</c>.
+            (4) ExactSpelling MUST be TRUE. Add the "…W" suffix wherever needed.
+            (5) SetLastError SHOULD be considered individually for each function. Setting it to <c>True</c> allows to report the errors,
+               but slows down the execution of critical members.
+            (6) These properties MUST be explicitly set on DllImport attributes of EACH import:
+               CharSet, PreserveSig, SetLastError, ExactSpelling.
+            (7) CLR names MUST be used for types instead of C# ones, eg "Int32" not "int" and "Int64" not "long".
+               This greately improves the understanding of the parameter sizes.
+            (8) Sign of the types MUST be favored, eg "DWORD" is "UInt32" not "Int32".
+            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr.
+               This way we outline the unsafety of the native calls, and also make it more clear for the 64bit transition.
+               Eg "HANDLE" is "void*". If the rule forces you to mark some assembly as unsafe, it's an indication a managed utility
+               incapsulating the call and the handle should be provided in one of the already-unsafe assemblies.
+            (A) Same rules must apply to members of the structures.
+            (B) All of the structures MUST have the [StructLayout(LayoutKind.Sequential)], [NoReorder] attributes, as appropriate.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.DwmApiDll.DwmDefWindowProc(System.Void*,System.UInt32,System.IntPtr,System.IntPtr,System.IntPtr*)">
+            <summary>
+            Default window procedure for Desktop Window Manager (DWM) hit testing within the non-client area.
+            </summary>
+            <param name="hwnd">Handle to the window procedure that received the message.</param>
+            <param name="msg">Specifies the message.</param>
+            <param name="wParam">Specifies additional message information. The content of this parameter depends on the value of the msg parameter. </param>
+            <param name="lParam">Specifies additional message information. The content of this parameter depends on the value of the msg parameter. </param>
+            <param name="plResult">Pointer to an LRESULT value that, when this method returns, receives the result of the hit test.</param>
+            <returns>TRUE if DwmDefWindowProc handled the message; otherwise, FALSE. </returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.DwmApiDll.DwmExtendFrameIntoClientArea(System.Void*,JetBrains.Interop.WinApi.MARGINS*)">
+            <summary>
+            Extends the window frame behind the client area.
+            If Desktop Window Manager (DWM) composition is toggled, this function must be called again. Handle the WM_DWMCOMPOSITIONCHANGED message for composition change notification.
+            Negative margins are used to create the "sheet of glass" effect where the client area is rendered as a solid surface with no window border.
+            </summary>
+            <param name="hWnd">The handle to the window for which the frame is extended into the client area.</param>
+            <param name="pMarInset"><see cref="T:JetBrains.Interop.WinApi.MARGINS"/> that describes the margins to use when extending the frame into the client area.</param>
+            <returns>Returns S_OK if successful, or an error value otherwise.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.DwmApiDll.DwmIsCompositionEnabled(System.Int32*)">
+            <summary>
+            Obtains a value that indicates whether Desktop Window Manager (DWM) composition is enabled. Applications on machines running Windows 7 or earlier can listen for composition state changes by handling the WM_DWMCOMPOSITIONCHANGED notification.
+            </summary>
+            <param name="pfEnabled"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.DwmApiDll.Helpers.DwmIsCompositionEnabled">
+            <summary>
+            Obtains a value that indicates whether Desktop Window Manager (DWM) composition is enabled.
+            Makes the call safely by checking the WinNT version first.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.Functions.HOOKPROC">
+            <summary>
+            Hook delegate for the <see cref="M:JetBrains.Interop.WinApi.User32Dll.SetWindowsHookExW(System.Int32,JetBrains.Interop.WinApi.Functions.HOOKPROC,System.Void*,System.UInt32)"/> function.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.MARGINS">
+            <summary>
+            Manages DWM window glass.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.MARGINS.#ctor(System.Int32)">
+            <summary>
+            Sets all margins to the same value.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Interop.WinApi.MARGINS.WholeSurface">
+            <summary>
+            Sets the margins so that they cover the whole surface.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Interop.WinApi.MARGINS.Null">
+            <summary>
+            Sets the margins so that they cover none of the window inner surface.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.PAINTSTRUCT">
+            <summary>
+            The PAINTSTRUCT structure contains information for an application. This information can be used to paint the client area of a window owned by that application.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.RM_PROCESS_INFO">
+            <summary>
+            Describes an application that is to be registered with the Restart Manager.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.Process">
+            <summary>
+            Contains an RM_UNIQUE_PROCESS structure that uniquely identifies the application by its PID and the time the process began.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.strAppName">
+            <summary>
+            If the process is a service, this parameter returns the long name for the service. If the process is not a service, this parameter returns the user-friendly name for the application. If the process is a critical process, and the installer is run with elevated privileges, this parameter returns the name of the executable file of the critical process. If the process is a critical process, and the installer is run as a service, this parameter returns the long name of the critical process.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.strServiceShortName">
+            <summary>
+            If the process is a service, this is the short name for the service. This member is not used if the process is not a service.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.ApplicationType">
+            <summary>
+            Contains an RM_APP_TYPE enumeration value that specifies the type of application as RmUnknownApp, RmMainWindow, RmOtherWindow, RmService, RmExplorer or RmCritical.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.AppStatus">
+            <summary>
+            Contains a bit mask that describes the current status of the application. See the RM_APP_STATUS enumeration.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.TSSessionId">
+            <summary>
+            Contains the Terminal Services session ID of the process. If the terminal session of the process cannot be determined, the value of this member is set to RM_INVALID_SESSION (-1). This member is not used if the process is a service or a system critical process.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_PROCESS_INFO.bRestartable">
+            <summary>
+            TRUE if the application can be restarted by the Restart Manager; otherwise, FALSE. This member is always TRUE if the process is a service. This member is always FALSE if the process is a critical system process.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS">
+            <summary>
+            Uniquely identifies a process by its PID and the time the process began. An array of RM_UNIQUE_PROCESS structures can be passed to the RmRegisterResources function.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS.dwProcessId">
+            <summary>
+            The product identifier (PID).
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.RM_UNIQUE_PROCESS.ProcessStartTime">
+            <summary>
+            The creation time of the process. The time is provided as a FILETIME structure that is returned by the lpCreationTime parameter of the GetProcessTimes function.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.WintrustDll">
@@ -1332,7 +1996,7 @@
         </member>
         <member name="T:JetBrains.Interop.WinApi.Declarations.Constants.HookCode">
             <summary>
-            Hook codes for callback functions of <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowsHookEx(JetBrains.Interop.WinApi.HookType,JetBrains.Interop.WinApi.Win32Declarations.HookProc,System.IntPtr,System.Int32)"/>.
+            Hook codes for callback functions of <see cref="M:JetBrains.Interop.WinApi.User32Dll.SetWindowsHookExW(System.Int32,JetBrains.Interop.WinApi.Functions.HOOKPROC,System.Void*,System.UInt32)"/>.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Constants.HookCode.HC_ACTION">
@@ -1502,7 +2166,7 @@
         </member>
         <member name="T:JetBrains.Interop.WinApi.Declarations.Constants.PropSheetPageProcMsg">
             <summary>
-            <see cref="T:JetBrains.Interop.WinApi.Declarations.Functions.LPFNPSPCALLBACK"/> <c>msg</c> parameter.
+            <see cref="T:JetBrains.Interop.WinApi.Functions.LPFNPSPCALLBACK"/> <c>msg</c> parameter.
             Action flag. This parameter can be one of the following values.
             </summary>
         </member>
@@ -1590,7 +2254,7 @@
             Parts for <see cref="T:JetBrains.Interop.WinApi.UxThemeDll"/> functions like <see cref="M:JetBrains.Interop.WinApi.UxThemeDll.DrawThemeBackground(System.Void*,System.Void*,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT*,JetBrains.Interop.WinApi.RECT*)"/>.
             </summary>
         </member>
-        <member name="T:JetBrains.Interop.WinApi.Declarations.Functions.LPFNPSPCALLBACK">
+        <member name="T:JetBrains.Interop.WinApi.Functions.LPFNPSPCALLBACK">
             <summary>
             Function type for the <see cref="F:JetBrains.Interop.WinApi.Declarations.Structures.PROPSHEETPAGE.pfnCallback"/> field.
             </summary>
@@ -1635,24 +2299,58 @@
             <remarks>
             IMPORTANT! Rules for authoring the class (v1.1):
             (1) All the function declarations MUST be 64-bit aware.
-            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration, 
+            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration,
                and you MUST ensure that each parameter has a proper size.
-            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version 
+            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version
                (such a reason MUST be indicated in XmlDoc). <c>CharSet = CharSet.Unicode</c>.
             (4) ExactSpelling MUST be TRUE. Add the "…W" suffix wherever needed.
             (5) SetLastError SHOULD be considered individually for each function. Setting it to <c>True</c> allows to report the errors,
                but slows down the execution of critical members.
-            (6) These properties MUST be explicitly set on DllImport attributes of EACH import: 
+            (6) These properties MUST be explicitly set on DllImport attributes of EACH import:
                CharSet, PreserveSig, SetLastError, ExactSpelling.
             (7) CLR names MUST be used for types instead of C# ones, eg "Int32" not "int" and "Int64" not "long".
                This greately improves the understanding of the parameter sizes.
             (8) Sign of the types MUST be favored, eg "DWORD" is "UInt32" not "Int32".
-            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr. 
+            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr.
                This way we outline the unsafety of the native calls, and also make it more clear for the 64bit transition.
                Eg "HANDLE" is "void*". If the rule forces you to mark some assembly as unsafe, it's an indication a managed utility
                incapsulating the call and the handle should be provided in one of the already-unsafe assemblies.
             (A) Same rules must apply to members of the structures.
             (B) All of the structures MUST have the [StructLayout(LayoutKind.Sequential)], [NoReorder] attributes, as appropriate.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.ShlwapiDll.StrFormatByteSize64A(System.Int64,System.Byte*,System.UInt32)">
+            <summary>
+            Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
+            </summary>
+            <param name="qdw">Numeric value to be converted.</param>
+            <param name="pszBuf">Pointer to a buffer to hold the converted number. Note: this function is bound to call the ANSI version.</param>
+            <param name="cchBuf">Size of the buffer, in characters. Note: in our case, in bytes.</param>
+            <returns>Returns the address of the converted string, or <see cref="F:System.IntPtr.Zero"/> if the conversion fails.</returns>
+            <remarks>
+            The following table illustrates how this function converts a numeric value into a text string.
+            Numeric value -&gt; Text string
+            532 532 -&gt; bytes
+            1340 -&gt; 1.30KB
+            23506 -&gt; 22.9KB
+            2400016 -&gt; 2.29MB
+            2400000000 -&gt; 2.23GB
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.ShlwapiDll.Helpers.StrFormatByteSize(System.Int64)">
+            <summary>
+            Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
+            </summary>
+            <param name="nSize">Numeric value to be converted.</param>
+            <returns>Returns the size string.</returns>
+            <remarks>
+            The following table illustrates how this function converts a numeric value into a text string.
+            Numeric value -> Text string
+            532 532 -> bytes
+            1340 -> 1.30KB
+            23506 -> 22.9KB
+            2400016 -> 2.29MB
+            2400000000 -> 2.23GB
             </remarks>
         </member>
         <member name="T:JetBrains.Interop.WinApi.NtDllDll">
@@ -1683,7 +2381,7 @@
             (B) All of the structures MUST have the [StructLayout(LayoutKind.Sequential)], [NoReorder] attributes, as appropriate.
             </remarks>
         </member>
-        <member name="M:JetBrains.Interop.WinApi.NtDllDll.NtOpenSection(System.Void*@,System.UInt32,System.Void*)">
+        <member name="M:JetBrains.Interop.WinApi.NtDllDll.NtOpenSection(System.Void**,System.UInt32,System.Void*)">
             <summary>
             The NtOpenSection routine opens a handle for an existing section object.
             </summary>
@@ -1902,25 +2600,35 @@
             The BLENDFUNCTION structure controls blending by specifying the blending functions for source and destination bitmaps.
             </summary>
         </member>
+        <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.AC_SRC_OVER">
+            <summary>
+            When the BlendOp parameter is AC_SRC_OVER , the source bitmap is placed over the destination bitmap based on the alpha values of the source pixels. (<see cref="T:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION"/>)
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.AC_SRC_ALPHA">
+            <summary>
+            This flag is set when the bitmap has an Alpha channel (that is, per-pixel alpha). Note that the APIs use premultiplied alpha, which means that the red, green and blue channel values in the bitmap must be premultiplied with the alpha channel value. For example, if the alpha channel value is x, the red, green and blue channels must be multiplied by x and divided by 0xff prior to the call.
+            </summary>
+        </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.BlendOp">
             <summary>
-            Specifies the source blend operation. Currently, the only source and destination blend operation that has been defined is <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.AC_SRC_OVER"/>. For details, see the following Remarks section. 
+            Specifies the source blend operation. Currently, the only source and destination blend operation that has been defined is <see cref="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.AC_SRC_OVER"/>. For details, see the following Remarks section.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.BlendFlags">
             <summary>
-            Must be zero. 
+            Must be zero.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.SourceConstantAlpha">
             <summary>
-            Specifies an alpha transparency value to be used on the entire source bitmap. The SourceConstantAlpha value is combined with any per-pixel alpha values in the source bitmap. If you set SourceConstantAlpha to 0, it is assumed that your image is transparent. Set the SourceConstantAlpha value to 255 (opaque) when you only want to use per-pixel alpha values. 
+            Specifies an alpha transparency value to be used on the entire source bitmap. The SourceConstantAlpha value is combined with any per-pixel alpha values in the source bitmap. If you set SourceConstantAlpha to 0, it is assumed that your image is transparent. Set the SourceConstantAlpha value to 255 (opaque) when you only want to use per-pixel alpha values.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.AlphaFormat">
             <summary>
             This member controls the way the source and destination bitmaps are interpreted. AlphaFormat has the following value.
-            <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.AC_SRC_ALPHA"/> -&gt; This flag is set when the bitmap has an Alpha channel (that is, per-pixel alpha). Note that the APIs use premultiplied alpha, which means that the red, green and blue channel values in the bitmap must be premultiplied with the alpha channel value. For example, if the alpha channel value is x, the red, green and blue channels must be multiplied by x and divided by 0xff prior to the call. 
+            <see cref="F:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.AC_SRC_ALPHA"/> -&gt; This flag is set when the bitmap has an Alpha channel (that is, per-pixel alpha). Note that the APIs use premultiplied alpha, which means that the red, green and blue channel values in the bitmap must be premultiplied with the alpha channel value. For example, if the alpha channel value is x, the red, green and blue channels must be multiplied by x and divided by 0xff prior to the call.
             </summary>
         </member>
         <member name="M:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION.GetPerPixelBlender(System.Byte)">
@@ -2251,6 +2959,106 @@
             Unknown architecture.
             </summary>
         </member>
+        <member name="T:JetBrains.Interop.WinApi.StockLogicalObjects">
+            <summary>
+            The stock GDI objects for the <see cref="M:JetBrains.Interop.WinApi.Gdi32Dll.GetStockObject(System.Int32)"/> function.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.BLACK_BRUSH">
+            <summary>
+            Black brush.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DKGRAY_BRUSH">
+            <summary>
+            Dark gray brush.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DC_BRUSH">
+            <summary>
+            Windows 2000/XP: Solid color brush. The default color is white. The color can be changed by using the SetDCBrushColor function. For more information= , see the Remarks section.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.GRAY_BRUSH">
+            <summary>
+            Gray brush.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.HOLLOW_BRUSH">
+            <summary>
+            Hollow brush (equivalent to NULL_BRUSH).
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.LTGRAY_BRUSH">
+            <summary>
+            Light gray brush.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.NULL_BRUSH">
+            <summary>
+            Null brush (equivalent to HOLLOW_BRUSH).
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.WHITE_BRUSH">
+            <summary>
+            White brush.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.BLACK_PEN">
+            <summary>
+            Black pen.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DC_PEN">
+            <summary>
+            Windows 2000/XP: Solid pen color. The default color is white. The color can be changed by using the SetDCPenColor function. For more information= , see the Remarks section.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.WHITE_PEN">
+            <summary>
+            White pen.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.ANSI_FIXED_FONT">
+            <summary>
+            Windows fixed-pitch (monospace) system font.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.ANSI_VAR_FONT">
+            <summary>
+            Windows variable-pitch (proportional space) system font.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DEVICE_DEFAULT_FONT">
+            <summary>
+            Windows NT/2000/XP: Device-dependent font.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DEFAULT_GUI_FONT">
+            <summary>
+            Default font for user interface objects such as menus and dialog boxes. This is MS Sans Serif. Compare this with SYSTEM_FONT.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.OEM_FIXED_FONT">
+            <summary>
+            Original equipment manufacturer (OEM) dependent fixed-pitch (monospace) font.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.SYSTEM_FONT">
+            <summary>
+            System font. By default= , the system uses the system font to draw menus= , dialog box controls= , and text. Windows 95/98 and Windows NT: The system font is MS Sans Serif. Windows 2000/XP: The system font is Tahoma
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.SYSTEM_FIXED_FONT">
+            <summary>
+            Fixed-pitch (monospace) system font. This stock object is provided only for compatibility with 16-bit Windows versions earlier than 3.0.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Interop.WinApi.StockLogicalObjects.DEFAULT_PALETTE">
+            <summary>
+            Default palette. This palette consists of the static colors in the system palette.
+            </summary>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.SystemMetricsCodes">
             <summary>
             Codes for the <see cref="M:JetBrains.Interop.WinApi.User32Dll.GetSystemMetrics(System.Int32)"/> function.
@@ -2493,19 +3301,19 @@
             <remarks>
             IMPORTANT! Rules for authoring the class (v1.1):
             (1) All the function declarations MUST be 64-bit aware.
-            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration, 
+            (2) When copypasting from older declarations, you MUST check against the MSDN help or header declaration,
                and you MUST ensure that each parameter has a proper size.
-            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version 
+            (3) Call the Wide version of the functions (UCS-2-LE) unless there's a strong reason for calling the ANSI version
                (such a reason MUST be indicated in XmlDoc). <c>CharSet = CharSet.Unicode</c>.
             (4) ExactSpelling MUST be TRUE. Add the "…W" suffix wherever needed.
             (5) SetLastError SHOULD be considered individually for each function. Setting it to <c>True</c> allows to report the errors,
                but slows down the execution of critical members.
-            (6) These properties MUST be explicitly set on DllImport attributes of EACH import: 
+            (6) These properties MUST be explicitly set on DllImport attributes of EACH import:
                CharSet, PreserveSig, SetLastError, ExactSpelling.
             (7) CLR names MUST be used for types instead of C# ones, eg "Int32" not "int" and "Int64" not "long".
                This greately improves the understanding of the parameter sizes.
             (8) Sign of the types MUST be favored, eg "DWORD" is "UInt32" not "Int32".
-            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr. 
+            (9) Unsafe pointer types should be used for explicit and implicit pointers rather than IntPtr.
                This way we outline the unsafety of the native calls, and also make it more clear for the 64bit transition.
                Eg "HANDLE" is "void*". If the rule forces you to mark some assembly as unsafe, it's an indication a managed utility
                incapsulating the call and the handle should be provided in one of the already-unsafe assemblies.
@@ -2514,31 +3322,36 @@
             </remarks>
         </member>
         <member name="M:JetBrains.Interop.WinApi.OleAut32Dll.VariantClear(System.Void*)">
-             <summary>
+            <summary>
              Clears a variant.
-             </summary>
-             <param name="pvarg">Pointer to the <c>VARIANTARG</c> to clear.</param>
-             <returns>The return value obtained from the returned HRESULT is one of the following.</returns>
-             <remarks>
-             Use this function to clear variables of type VARIANTARG (or VARIANT) before the memory containing the VARIANTARG is freed (as when a local variable goes out of scope). 
-            
-             The function clears a VARIANTARG by setting the vt field to VT_EMPTY. The current contents of the VARIANTARG are released first. If the vtfield is VT_BSTR, the string is freed. If the vtfield is VT_DISPATCH, the object is released. If the vt field has the VT_ARRAY bit set, the array is freed. 
-            
-             If the variant to be cleared is a COM object that is passed by reference, the vtfield of the pvargparameter is VT_DISPATCH | VT_BYREF or VT_UNKNOWN | VT_BYREF. In this case, VariantClear does not release the object. Because the variant being cleared is a pointer to a reference to an object, VariantClear has no way to determine if it is necessary to release the object. It is therefore the responsibility of the caller to release the object or not, as appropriate. 
-            
-             In certain cases, it may be preferable to clear a variant in code without calling VariantClear. For example, you can change the type of a VT_I4 variant to another type without calling this function. Safearrays of BSTR will have SysFreeString called on each element not VariantClear. However, you must call VariantClear if a VT_type is received but cannot be handled. Safearrays of variant will also have VariantClear called on each member. Using VariantClear in these cases ensures that code will continue to work if Automation adds new variant types in the future. 
-            
-             Do not use VariantClear on unitialized variants; use VariantInit to initialize a new VARIANTARG or VARIANT. 
-            
-             Variants containing arrays with outstanding references cannot be cleared. Attempts to do so will return an HRESULT containing DISP_E_ARRAYISLOCKED. 
-             </remarks>
+            </summary>
+            <param name="pvarg">Pointer to the <c>VARIANTARG</c> to clear.</param>
+            <returns>The return value obtained from the returned HRESULT is one of the following.</returns>
+            <remarks>
+             Use this function to clear variables of type VARIANTARG (or VARIANT) before the memory containing the VARIANTARG is freed (as when a local variable goes out of scope).
+             The function clears a VARIANTARG by setting the vt field to VT_EMPTY. The current contents of the VARIANTARG are released first. If the vtfield is VT_BSTR, the string is freed. If the vtfield is VT_DISPATCH, the object is released. If the vt field has the VT_ARRAY bit set, the array is freed.
+             If the variant to be cleared is a COM object that is passed by reference, the vtfield of the pvargparameter is VT_DISPATCH | VT_BYREF or VT_UNKNOWN | VT_BYREF. In this case, VariantClear does not release the object. Because the variant being cleared is a pointer to a reference to an object, VariantClear has no way to determine if it is necessary to release the object. It is therefore the responsibility of the caller to release the object or not, as appropriate.
+             In certain cases, it may be preferable to clear a variant in code without calling VariantClear. For example, you can change the type of a VT_I4 variant to another type without calling this function. Safearrays of BSTR will have SysFreeString called on each element not VariantClear. However, you must call VariantClear if a VT_type is received but cannot be handled. Safearrays of variant will also have VariantClear called on each member. Using VariantClear in these cases ensures that code will continue to work if Automation adds new variant types in the future.
+             Do not use VariantClear on unitialized variants; use VariantInit to initialize a new VARIANTARG or VARIANT.
+             Variants containing arrays with outstanding references cannot be cleared. Attempts to do so will return an HRESULT containing DISP_E_ARRAYISLOCKED.
+            </remarks>
         </member>
         <member name="M:JetBrains.Interop.WinApi.OleAut32Dll.VariantInit(System.Void*)">
             <summary>
-            Initializes a variant. 
+            Initializes a variant.
             </summary>
             <param name="pvarg">Pointer to the VARIANTARG that will be initialized.</param>
             <remarks>The VariantInit function initializes the VARIANTARG by setting the vt field to VT_EMPTY. Unlike VariantClear, this function does not interpret the current contents of the VARIANTARG. Use VariantInit to initialize new local variables of type VARIANTARG (or VARIANT). </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.OleAut32Dll.VarR8FromStr(System.String,System.UInt32,System.UInt32,System.Double*)">
+            <summary>
+            Converts an OLECHAR string to a double value.
+            </summary>
+            <param name="strIn"></param>
+            <param name="lcid"></param>
+            <param name="dwFlags"></param>
+            <param name="pdblOut"></param>
+            <returns></returns>
         </member>
         <member name="M:JetBrains.Interop.WinApi.Shell32Dll.SHGetFileInfoW(System.String,System.UInt32,JetBrains.Interop.WinApi.SHFILEINFO*,System.UInt32,System.UInt32)">
             <summary>
@@ -2964,6 +3777,11 @@
             The interactive window station name, for use with <see cref="M:JetBrains.Interop.WinApi.User32Dll.OpenWindowStationW(System.String,System.Int32,System.UInt32)"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.Interop.WinApi.WinDef.INFINITE">
+            <summary>
+            Infinite timeout.
+            </summary>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.WinError">
              <summary>
              winerror.h --  error code definitions for the Win32 API functions.
@@ -3177,10 +3995,38 @@
             <param name="dwRop">[in] Specifies the raster operation to be performed. Raster operation codes define how the system combines colors in output operations that involve a brush, a source bitmap, and a destination bitmap. See BitBlt for a list of common raster operation codes (ROPs). Note that the CAPTUREBLT ROP generally cannot be used for printing device contexts. Use the <see cref="T:JetBrains.Interop.WinApi.Declarations.Constants.RasterOperations"/> enum.</param>
             <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. Windows NT/2000/XP: To get extended error information, call GetLastError. </returns>
         </member>
+        <member name="M:JetBrains.Interop.WinApi.Gdi32Dll.CreateRectRgn(System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            The CreateRectRgn function creates a rectangular region.
+            </summary>
+            <param name="nLeftRect">[in] Specifies the x-coordinate of the upper-left corner of the region in logical units. </param>
+            <param name="nTopRect">[in] Specifies the y-coordinate of the upper-left corner of the region in logical units. </param>
+            <param name="nRightRect">[in] Specifies the x-coordinate of the lower-right corner of the region in logical units.</param>
+            <param name="nBottomRect">[in] Specifies the y-coordinate of the lower-right corner of the region in logical units.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Gdi32Dll.CombineRgn(System.Void*,System.Void*,System.Void*,System.Int32)">
+            <summary>
+            The CombineRgn function combines two regions and stores the result in a third region. The two regions are combined according to the specified mode.
+            </summary>
+            <param name="hrgnDest">[in] Handle to a new region with dimensions defined by combining two other regions. (This region must exist before CombineRgn is called.) </param>
+            <param name="hrgnSrc1">[in] Handle to the first of two regions to be combined.</param>
+            <param name="hrgnSrc2">[in] Handle to the second of two regions to be combined.</param>
+            <param name="fnCombineMode">[in] Specifies a mode indicating how the two regions will be combined. This parameter can be one of the following values. </param>
+            <returns>The return value specifies the type of the resulting region. It can be one of the following values. </returns>
+            <remarks>The three regions need not be distinct. For example, the hrgnSrc1 parameter can equal the hrgnDest parameter. </remarks>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Gdi32Dll.SetDCBrushColor(System.Void*,System.UInt32)">
+            <summary>
+            SetDCBrushColor function sets the current device context (DC) brush color to the specified color value. If the device cannot represent the specified color value, the color is set to the nearest physical color.
+            </summary>
+            <param name="hdc">[in] Handle to the DC.</param>
+            <param name="colorref">[in] Specifies the new brush color.</param>
+            <returns>If the function succeeds, the return value specifies the previous DC brush color as a COLORREF value. If the function fails, the return value is CLR_INVALID.</returns>
+        </member>
         <member name="T:JetBrains.Interop.WinApi.HwndSpecial">
             <summary>
             Special HWND values.
-            Cast to an <see cref="T:System.IntPtr"/> or a <see cref="T:System.Void"/>* when using.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.KeyStateMasks">
@@ -3519,7 +4365,7 @@
             <returns>If the function succeeds, the return value is nonzero. 
             If the function fails, the return value is zero. To get extended error information, call the GetLastError function.</returns>
         </member>
-        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.SetDllDirectory(System.String)">
+        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.SetDllDirectoryW(System.String)">
             <summary>
             Adds a directory to the search path used to locate DLLs for the application.
             The <c>SetDllDirectory</c> function affects all subsequent calls to the <c>LoadLibrary</c> and <c>LoadLibraryEx</c> functions. 
@@ -3603,11 +4449,6 @@
             Schedules a fiber. The function must be called on a fiber.
             </summary>
             <param name="lpFiber">The address of the fiber to be scheduled.</param>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.SwitchToThread">
-            <summary>
-            
-            </summary>
         </member>
         <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.VirtualAlloc(System.Void*,System.IntPtr,System.UInt32,System.UInt32)">
             <summary>
@@ -3862,6 +4703,22 @@
             <param name="lpData">The resource data to be inserted into the file indicated by hUpdate. If the resource is one of the predefined types, the data must be valid and properly aligned. Note that this is the raw binary data to be stored in the file indicated by hUpdate, not the data provided by LoadIcon, LoadString, or other resource-specific load functions. All data containing strings or text must be in Unicode format. lpData must not point to ANSI data. If lpData is NULL and cbData is 0, the specified resource is deleted from the file indicated by hUpdate. Prior to Windows 7: If lpData is NULL and cbData is nonzero, the specified resource is NOT deleted and an exception is thrown.</param>
             <param name="cbData">The size, in bytes, of the resource data at lpData. </param>
             <returns>Returns TRUE if successful or FALSE otherwise. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.CompareStringW(System.UInt32,System.UInt32,System.Char*,System.Int32,System.Char*,System.Int32)">
+            <summary>
+            Compares two character strings, for a locale specified by identifier.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.CompareStringExW(System.String,System.UInt32,System.Char*,System.Int32,System.Char*,System.Int32,System.Void*,System.Void*,System.IntPtr)">
+            <summary>
+            Compares two Unicode (wide character) strings, for a locale specified by name.
+            </summary>
+            <since>Windows NT 6.0</since>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.Kernel32Dll.LCMapStringW(System.UInt32,System.UInt32,System.Char*,System.Int32,System.Char*,System.Int32)">
+            <summary>
+            For a locale specified by identifier, maps one input character string to another using a specified transformation, or generates a sort key for the input string.
+            </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.Kernel32Dll.Helpers">
             <summary>
@@ -5120,8 +5977,180 @@
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.GetAsyncKeyState(System.Int32)">
             <summary>
-            Determines whether a key is up or down at the time the function is called, and whether the key was pressed after a previous call to GetAsyncKeyState. 
+            Determines whether a key is up or down at the time the function is called, and whether the key was pressed after a previous call to GetAsyncKeyState.
             </summary>
+            <returns>If the function succeeds, the return value specifies whether the key was pressed since the last call to GetAsyncKeyState, and whether the key is currently up or down. If the most significant bit is set, the key is down, and if the least significant bit is set, the key was pressed after the previous call to GetAsyncKeyState. However, you should not rely on this last behavior; for more information, see the Remarks.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SetWindowRgn(System.Void*,System.Void*,System.Int32)">
+            <summary>
+            The SetWindowRgn function sets the window region of a window. The window region determines the area within the window where the system permits drawing. The system does not display any portion of a window that lies outside of the window region.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="hRgn"></param>
+            <param name="bRedraw"></param>
+            <returns>If the function succeeds, the return value is nonzero.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SetWindowPos(System.Void*,System.Void*,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)">
+            <summary>
+            Changes the size, position, and Z order of a child, pop-up, or top-level window. These windows are ordered according to their appearance on the screen. The topmost window receives the highest rank and is the first window in the Z order.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="hWndInsertAfter"></param>
+            <param name="X"></param>
+            <param name="Y"></param>
+            <param name="cx"></param>
+            <param name="cy"></param>
+            <param name="uFlags"></param>
+            <returns>If the function succeeds, the return value is nonzero.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.GetCapture">
+            <summary>
+            Retrieves a handle to the window (if any) that has captured the mouse. Only one window at a time can capture the mouse; this window receives mouse input whether or not the cursor is within its borders.
+            </summary>
+            <returns>The return value is a handle to the capture window associated with the current thread. If no window in the thread has captured the mouse, the return value is NULL.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SetCapture(System.Void*)">
+            <summary>
+              <para>Sets the mouse capture to the specified window belonging to the current thread.SetCapture captures mouse input either when the mouse is over the capturing window, or when the mouse button was pressed while the mouse was over the capturing window and the button is still down. Only one window at a time can capture the mouse.</para>
+              <para>If the mouse cursor is over a window created by another thread, the system will direct mouse input to the specified window only if a mouse button is down.</para>
+            </summary>
+            <param name="hWnd">A handle to the window in the current thread that is to capture the mouse. </param>
+            <returns>The return value is a handle to the window that had previously captured the mouse. If there is no such window, the return value is NULL. </returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.ReleaseCapture">
+            <summary>
+            Releases the mouse capture from a window in the current thread and restores normal mouse input processing. A window that has captured the mouse receives all mouse input, regardless of the position of the cursor, except when a mouse button is clicked while the cursor hot spot is in the window of another thread.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.MoveWindow(System.Void*,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+            <summary>
+            The MoveWindow function changes the position and dimensions of the specified window. For a top-level window, the position and dimensions are relative to the upper-left corner of the screen. For a child window, they are relative to the upper-left corner of the parent window's client area.
+            </summary>
+            <param name="hWnd">[in] Handle to the window. </param>
+            <param name="X">[in] Specifies the new position of the left side of the window. </param>
+            <param name="Y">[in] Specifies the new position of the top of the window. </param>
+            <param name="nWidth">[in] Specifies the new width of the window. </param>
+            <param name="nHeight">[in] Specifies the new height of the window. </param>
+            <param name="bRepaint">[in] Specifies whether the window is to be repainted. If this parameter is TRUE, the window receives a message. If the parameter is FALSE, no repainting of any kind occurs. This applies to the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent window uncovered as a result of moving a child window. </param>
+            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.BeginPaint(System.Void*,JetBrains.Interop.WinApi.PAINTSTRUCT*)">
+            <summary>
+            The BeginPaint function prepares the specified window for painting and fills a PAINTSTRUCT structure with information about the painting.
+            </summary>
+            <param name="hwnd"></param>
+            <param name="lpPaint">Pointer to the PAINTSTRUCT structure that will receive painting information.</param>
+            <returns>If the function succeeds, the return value is the handle to a display device context for the specified window.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.EndPaint(System.Void*,JetBrains.Interop.WinApi.PAINTSTRUCT*)">
+            <summary>
+            The EndPaint function marks the end of painting in the specified window. This function is required for each call to the BeginPaint function, but only after painting is complete.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpPaint">Pointer to a PAINTSTRUCT structure that contains the painting information retrieved by BeginPaint.</param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.ScrollWindowEx(System.Void*,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT*,JetBrains.Interop.WinApi.RECT*,System.Void*,JetBrains.Interop.WinApi.RECT*,System.UInt32)">
+            <summary>
+            The ScrollWindowEx function scrolls the contents of the specified window's client area.
+            </summary>
+            <param name="hWnd">[in] Handle to the window where the client area is to be scrolled. </param>
+            <param name="dx">[in] Specifies the amount, in device units, of horizontal scrolling. This parameter must be a negative value to scroll to the left.</param>
+            <param name="dy">[in] Specifies the amount, in device units, of vertical scrolling. This parameter must be a negative value to scroll up. </param>
+            <param name="prcScroll">[in] Pointer to a RECT structure that specifies the portion of the client area to be scrolled. If this parameter is NULL, the entire client area is scrolled.</param>
+            <param name="prcClip">[in] Pointer to a RECT structure that contains the coordinates of the clipping rectangle. Only device bits within the clipping rectangle are affected. Bits scrolled from the outside of the rectangle to the inside are painted; bits scrolled from the inside of the rectangle to the outside are not painted. This parameter may be NULL.</param>
+            <param name="hrgnUpdate">[in] Handle to the region that is modified to hold the region invalidated by scrolling. This parameter may be NULL.</param>
+            <param name="prcUpdate">[out] Pointer to a RECT structure that receives the boundaries of the rectangle invalidated by scrolling. This parameter may be NULL.</param>
+            <param name="flags">[in] Specifies flags that control scrolling. This parameter can be one of the following values. </param>
+            <returns>If the function succeeds, the return value is <see cref="F:JetBrains.Interop.WinApi.Constants.RegionResult.SIMPLEREGION"/> (rectangular invalidated region), <see cref="F:JetBrains.Interop.WinApi.Constants.RegionResult.COMPLEXREGION"/> (nonrectangular invalidated region; overlapping rectangles), or <see cref="F:JetBrains.Interop.WinApi.Constants.RegionResult.NULLREGION"/> (no invalidated region).
+            If the function fails, the return vaRegionResultcref="RegionResult.ERROR" /&gt;. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.GetCaretBlinkTime">
+            <summary>
+            Retrieves the time required to invert the caret's pixels. The user can set this value. 
+            </summary>
+            <returns></returns>
+            <seealso cref="F:JetBrains.Interop.WinApi.WinDef.INFINITE"/>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.AdjustWindowRectEx(JetBrains.Interop.WinApi.RECT*,System.UInt32,System.Int32,System.UInt32)">
+            <summary>
+            The AdjustWindowRectEx function calculates the required size of the window rectangle, based on the desired size of the client rectangle. The window rectangle can then be passed to the CreateWindowEx function to create a window whose client area is the desired size.
+            </summary>
+            <param name="lpRect">[in, out] Pointer to a RECT structure that contains the coordinates of the top-left and bottom-right corners of the desired client area. When the function returns, the structure contains the coordinates of the top-left and bottom-right corners of the window to accommodate the desired client area. </param>
+            <param name="dwStyle">[in] Specifies the window style of the window whose required size is to be calculated. Note that you cannot specify the WS_OVERLAPPED style. </param>
+            <param name="bMenu">[in] Specifies whether the window has a menu.</param>
+            <param name="dwExStyle">[in] Specifies the extended window style of the window whose required size is to be calculated. For more information, see CreateWindowEx.</param>
+            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call GetLastError. </returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.GetDC(System.Void*)">
+            <summary>
+            The GetDC function retrieves a handle to a device context (DC) for the client area of a specified window or for the entire screen. You can use the returned handle in subsequent GDI functions to draw in the DC. The device context is an opaque data structure, whose values are used internally by GDI.
+            The GetDCEx function is an extension to GetDC, which gives an application more control over how and whether clipping occurs in the client area.
+            </summary>
+            <param name="hWnd"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.ReleaseDC(System.Void*,System.Void*)">
+            <summary>
+            The ReleaseDC function releases a device context (DC), freeing it for use by other applications. The effect of the ReleaseDC function depends on the type of DC. It frees only common and window DCs. It has no effect on class or private DCs.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="hDC"></param>
+            <returns>The return value indicates whether the DC was released. If the DC was released, the return value is 1.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.DrawFrameControl(System.Void*,JetBrains.Interop.WinApi.RECT*,System.UInt32,System.UInt32)">
+            <summary>
+            The DrawFrameControl function draws a frame control of the specified type and style.
+            </summary>
+            <param name="hdc">[in] Handle to the device context of the window in which to draw the control.</param>
+            <param name="lprc">[in] Pointer to a RECT structure that contains the logical coordinates of the bounding rectangle for frame control.</param>
+            <param name="uType">[in] Specifies the type of frame control to draw. This parameter can be one of the following values. (<see cref="T:JetBrains.Interop.WinApi.Constants.FrameControlType"/>)</param>
+            <param name="uState">[in] Specifies the initial state of the frame control. If uType is DFC_BUTTON, uState can be one of the following values. (<see cref="T:JetBrains.Interop.WinApi.Constants.FrameControlState"/>)</param>
+            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. Windows NT/2000/XP: To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SetWindowsHookExW(System.Int32,JetBrains.Interop.WinApi.Functions.HOOKPROC,System.Void*,System.UInt32)">
+            <summary>
+            The SetWindowsHookEx function installs an application-defined hook procedure into a hook chain. You would install a hook procedure to monitor the system for certain types of events. These events are associated either with a specific thread or with all threads in the same desktop as the calling thread.
+            </summary>
+            <returns>If the function succeeds, the return value is the handle to the hook procedure.
+            If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SetPropW(System.Void*,System.String,System.Void*)">
+            <summary>
+            Adds a new entry or changes an existing entry in the property list of the specified window. The function adds a new entry to the list if the specified character string does not exist already in the list. The new entry contains the string and the handle. Otherwise, the function replaces the string's current handle with the specified handle.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpString"></param>
+            <param name="hData"></param>
+            <returns>If the data handle and string are added to the property list, the return value is nonzero.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.RemovePropW(System.Void*,System.String)">
+            <summary>
+            Removes an entry from the property list of the specified window. The specified character string identifies the entry to be removed.
+            </summary>
+            <param name="hWnd"></param>
+            <param name="lpString"></param>
+            <returns>The return value identifies the specified data. If the data cannot be found in the specified property list, the return value is NULL.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.SystemParametersInfoW(System.UInt32,System.UInt32,System.Void*,System.UInt32)">
+            <summary>
+            Retrieves or sets the value of one of the system-wide parameters. This function can also update the user profile while setting a parameter.
+            </summary>
+            <param name="uiAction"></param>
+            <param name="uiParam"></param>
+            <param name="pvParam"></param>
+            <param name="fWinIni"></param>
+            <returns>If the function succeeds, the return value is a nonzero value.</returns>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.FindWindowW(System.String,System.String)">
+            <summary>
+            Retrieves a handle to the top-level window whose class name and window name match the specified strings. This function does not search child windows. This function does not perform a case-sensitive search.
+            To search child windows, beginning with a specified child window, use the FindWindowEx function.
+            </summary>
+            <param name="lpClassName"></param>
+            <param name="lpWindowName"></param>
+            <returns>If the function succeeds, the return value is a handle to the window that has the specified class name and window name.</returns>
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.BringWindowToTop(System.IntPtr)">
             <summary>
@@ -5346,25 +6375,25 @@
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.SetWindowExStyle(System.Windows.Forms.IWin32Window,JetBrains.Interop.WinApi.WindowExStyles,System.Boolean)">
             <summary>
-            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.Win32Declarations"/>), depending on the <paramref name="set"/> value.
+            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.WindowStyles"/>), depending on the <paramref name="set"/> value.
             </summary>
             <returns>Whether the operation succeeded.</returns>
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.SetWindowExStyle(System.Void*,JetBrains.Interop.WinApi.WindowExStyles,System.Boolean)">
             <summary>
-            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.Win32Declarations"/>), depending on the <paramref name="set"/> value.
+            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.WindowStyles"/>), depending on the <paramref name="set"/> value.
             </summary>
             <returns>Whether the operation succeeded.</returns>
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.SetWindowStyle(System.Windows.Forms.IWin32Window,JetBrains.Interop.WinApi.WindowStyles,System.Boolean)">
             <summary>
-            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.Win32Declarations"/>), depending on the <paramref name="set"/> value.
+            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.WindowStyles"/>), depending on the <paramref name="set"/> value.
             </summary>
             <returns>Whether the operation succeeded.</returns>
         </member>
         <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.SetWindowStyle(System.Void*,JetBrains.Interop.WinApi.WindowStyles,System.Boolean)">
             <summary>
-            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.Win32Declarations"/>), depending on the <paramref name="set"/> value.
+            Adds or removes window style bits given by the <paramref name="style"/> parameter (see WS_… in <see cref="T:JetBrains.Interop.WinApi.WindowStyles"/>), depending on the <paramref name="set"/> value.
             </summary>
             <returns>Whether the operation succeeded.</returns>
         </member>
@@ -5396,6 +6425,11 @@
             <summary>
             Loads a Win32 string resource from a native DLL.
             Returns <c>Null</c> on errors.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.User32Dll.Helpers.LoadCursor(JetBrains.Interop.WinApi.StockCursors)">
+            <summary>
+            Loads the cursor by calling the <see cref="M:JetBrains.Interop.WinApi.User32Dll.LoadCursorW(System.Void*,System.Char*)"/> WinAPI function.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.User32Dll.Helpers.EnumWindowsProc">
@@ -5469,14 +6503,14 @@
             Draws the border and fill defined by the visual style for the specified control part.
             </summary>
         </member>
-        <member name="M:JetBrains.Interop.WinApi.UxThemeDll.IsAvailable">
-            <summary>
-            Checks whether the UxTheme DLL is available on this platform.
-            </summary>
-        </member>
         <member name="M:JetBrains.Interop.WinApi.UxThemeDll.OpenThemeData(System.Void*,System.String)">
             <summary>
             Opens the theme data for a window and its associated class.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Interop.WinApi.UxThemeDll.Helpers.IsAvailable">
+            <summary>
+            Checks whether the UxTheme DLL is available on this platform.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.RECT">
@@ -5503,7 +6537,7 @@
         </member>
         <member name="T:JetBrains.Interop.WinApi.ScrollWindowFlags">
             <summary>
-            Flags for the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.ScrollWindowEx(System.IntPtr,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.RECT@,System.IntPtr,System.IntPtr,JetBrains.Interop.WinApi.ScrollWindowFlags)"/>, <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.ScrollWindowEx(System.IntPtr,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.RECT@,System.IntPtr,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.ScrollWindowFlags)"/> functions.
+            Flags for the <c>ScrollWindowEx</c> functions.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.ScrollWindowFlags.SW_ERASE">
@@ -5528,7 +6562,7 @@
         </member>
         <member name="T:JetBrains.Interop.WinApi.SetWindowPosFlags">
             <summary>
-            Flags for the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowPos(System.IntPtr,System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,JetBrains.Interop.WinApi.SetWindowPosFlags)"/> fucntion.
+            Flags for the <see cref="M:JetBrains.Interop.WinApi.User32Dll.SetWindowPos(System.Void*,System.Void*,System.Int32,System.Int32,System.Int32,System.Int32,System.UInt32)"/> fucntion.
             </summary>
         </member>
         <member name="F:JetBrains.Interop.WinApi.SetWindowPosFlags.SWP_NOSIZE">
@@ -5818,709 +6852,6 @@
         <member name="F:JetBrains.Interop.WinApi.StockCursors.IDC_WAIT">
             <summary>
             Hourglass
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations">
-            <summary>
-            Common Win32 Interop declarations
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.AC_SRC_OVER">
-            <summary>
-            When the BlendOp parameter is AC_SRC_OVER , the source bitmap is placed over the destination bitmap based on the alpha values of the source pixels. (<see cref="T:JetBrains.Interop.WinApi.Declarations.Structures.BLENDFUNCTION"/>)
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.AC_SRC_ALPHA">
-            <summary>
-            This flag is set when the bitmap has an Alpha channel (that is, per-pixel alpha). Note that the APIs use premultiplied alpha, which means that the red, green and blue channel values in the bitmap must be premultiplied with the alpha channel value. For example, if the alpha channel value is x, the red, green and blue channels must be multiplied by x and divided by 0xff prior to the call.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.DrawText(System.IntPtr,System.String,System.Int32,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.DrawTextFormatFlags)">
-            <summary>
-            The DrawText function draws formatted text in the specified rectangle. It formats the text according to the specified method (expanding tabs, justifying characters, breaking lines, and so forth). 
-            </summary>
-            <returns>If the function succeeds, the return value is the height of the text in logical units. If DT_VCENTER or DT_BOTTOM is specified, the return value is the offset from lpRect->top to the bottom of the drawn text
-            If the function fails, the return value is zero. 
-            Windows NT/2000/XP: To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetUpdateRgn(System.IntPtr,System.IntPtr,System.Boolean)">
-            <summary>
-            The GetUpdateRgn function retrieves the update region of a window by copying it into the specified region. The coordinates of the update region are relative to the upper-left corner of the window (that is, they are client coordinates).
-            </summary>
-            <param name="hWnd">[in] Handle to the window with an update region that is to be retrieved.</param>
-            <param name="hRgn">[in] Handle to the region to receive the update region.</param>
-            <param name="bErase">[in] Specifies whether the window background should be erased and whether nonclient areas of child windows should be drawn. If this parameter is FALSE, no drawing is done.</param>
-            <returns>The return value indicates the complexity of the resulting region; it can be one of the following values.</returns>
-            <remarks>The BeginPaint function automatically validates the update region, so any call to GetUpdateRgn made immediately after the call to BeginPaint retrieves an empty update region.</remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetAncestor(System.IntPtr,JetBrains.Interop.WinApi.GetAncestorFlags)">
-            <summary>
-            The GetAncestor function retrieves the handle to the ancestor of the specified window. 
-            </summary>
-            <param name="hwnd">[in] Handle to the window whose ancestor is to be retrieved. If this parameter is the desktop window, the function returns <c>NULL</c>. </param>
-            <param name="flags">[in] Specifies the ancestor to be retrieved. This parameter can be one of the following values.</param>
-            <returns>The return value is the handle to the ancestor window.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetWindowRect(System.IntPtr)">
-            <summary>
-            Calls <c>WinAPI::GetWindowRect</c>.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.AdjustWindowRectEx(JetBrains.Interop.WinApi.RECT@,System.UInt32,System.Int32,System.UInt32)">
-            <summary>
-            The AdjustWindowRectEx function calculates the required size of the window rectangle, based on the desired size of the client rectangle. The window rectangle can then be passed to the CreateWindowEx function to create a window whose client area is the desired size. 
-            </summary>
-            <param name="lpRect">[in, out] Pointer to a RECT structure that contains the coordinates of the top-left and bottom-right corners of the desired client area. When the function returns, the structure contains the coordinates of the top-left and bottom-right corners of the window to accommodate the desired client area. </param>
-            <param name="dwStyle">[in] Specifies the window style of the window whose required size is to be calculated. Note that you cannot specify the WS_OVERLAPPED style. </param>
-            <param name="bMenu">[in] Specifies whether the window has a menu.</param>
-            <param name="dwExStyle">[in] Specifies the extended window style of the window whose required size is to be calculated. For more information, see CreateWindowEx.</param>
-            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call GetLastError. </returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.MoveWindow(System.IntPtr,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            The MoveWindow function changes the position and dimensions of the specified window. For a top-level window, the position and dimensions are relative to the upper-left corner of the screen. For a child window, they are relative to the upper-left corner of the parent window's client area. 
-            </summary>
-            <param name="hWnd">[in] Handle to the window. </param>
-            <param name="X">[in] Specifies the new position of the left side of the window. </param>
-            <param name="Y">[in] Specifies the new position of the top of the window. </param>
-            <param name="nWidth">[in] Specifies the new width of the window. </param>
-            <param name="nHeight">[in] Specifies the new height of the window. </param>
-            <param name="bRepaint">[in] Specifies whether the window is to be repainted. If this parameter is TRUE, the window receives a message. If the parameter is FALSE, no repainting of any kind occurs. This applies to the client area, the nonclient area (including the title bar and scroll bars), and any part of the parent window uncovered as a result of moving a child window. </param>
-            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetWindowText(System.IntPtr,System.Text.StringBuilder,System.Int32)">
-            <summary>
-            The GetWindowText function copies the text of the specified window's title bar (if it has one) into a buffer. If the specified window is a control, the text of the control is copied. However, GetWindowText cannot retrieve the text of a control in another application.
-            </summary>
-            <param name="hWnd">[in] Handle to the window or control containing the text. </param>
-            <param name="lpString">[out] Pointer to the buffer that will receive the text. If the string is as long or longer than the buffer, the string is truncated and terminated with a NULL character. </param>
-            <param name="nMaxCount">[in] Specifies the maximum number of characters to copy to the buffer, including the NULL character. If the text exceeds this limit, it is truncated. </param>
-            <returns>If the function succeeds, the return value is the length, in characters, of the copied string, not including the terminating NULL character. If the window has no title bar or text, if the title bar is empty, or if the window or control handle is invalid, the return value is zero. To get extended error information, call GetLastError. This function cannot retrieve the text of an edit control in another application.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetWindowTextLength(System.IntPtr)">
-            <summary>
-            The GetWindowTextLength function retrieves the length, in characters, of the specified window's title bar text (if the window has a title bar). If the specified window is a control, the function retrieves the length of the text within the control. However, GetWindowTextLength cannot retrieve the length of the text of an edit control in another application.
-            </summary>
-            <param name="hWnd">[in] Handle to the window or control.</param>
-            <returns>If the function succeeds, the return value is the length, in characters, of the text. Under certain conditions, this value may actually be greater than the length of the text. For more information, see the following Remarks section. If the window has no text, the return value is zero. To get extended error information, call GetLastError. </returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.EndTask(System.IntPtr,System.Int32,System.Int32)">
-            <summary>
-            The EndTask function is called to forcibly close a specified window. 
-            </summary>
-            <param name="hWnd">[in] Handle to the window to be closed. </param>
-            <param name="fShutDown">[in] Ignored. Must be <c>FALSE</c>. </param>
-            <param name="fForce">[in] A TRUE for this parameter will force the destruction of the window if an initial attempt fails to gently close the window using WM_CLOSE. With a FALSE for this parameter, only the close with WM_CLOSE is attempted.</param>
-            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is FALSE. To get extended error information, call GetLastError. </returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.ScrollWindowEx(System.IntPtr,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.RECT@,System.IntPtr,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.ScrollWindowFlags)">
-            <summary>
-            The ScrollWindowEx function scrolls the contents of the specified window's client area. 
-            </summary>
-            <param name="hWnd">[in] Handle to the window where the client area is to be scrolled. </param>
-            <param name="dx">[in] Specifies the amount, in device units, of horizontal scrolling. This parameter must be a negative value to scroll to the left.</param>
-            <param name="dy">[in] Specifies the amount, in device units, of vertical scrolling. This parameter must be a negative value to scroll up. </param>
-            <param name="prcScroll">[in] Pointer to a RECT structure that specifies the portion of the client area to be scrolled. If this parameter is NULL, the entire client area is scrolled.</param>
-            <param name="prcClip">[in] Pointer to a RECT structure that contains the coordinates of the clipping rectangle. Only device bits within the clipping rectangle are affected. Bits scrolled from the outside of the rectangle to the inside are painted; bits scrolled from the inside of the rectangle to the outside are not painted. This parameter may be NULL.</param>
-            <param name="hrgnUpdate">[in] Handle to the region that is modified to hold the region invalidated by scrolling. This parameter may be NULL.</param>
-            <param name="prcUpdate">[out] Pointer to a RECT structure that receives the boundaries of the rectangle invalidated by scrolling. This parameter may be NULL.</param>
-            <param name="flags">[in] Specifies flags that control scrolling. This parameter can be one of the following values. </param>
-            <returns>If the function succeeds, the return value is <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.SIMPLEREGION"/> (rectangular invalidated region), <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.COMPLEXREGION"/> (nonrectangular invalidated region; overlapping rectangles), or <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.NULLREGION"/> (no invalidated region). 
-            If the function fails, the return value is <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.ERROR"/>. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.ScrollWindowEx(System.IntPtr,System.Int32,System.Int32,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.RECT@,System.IntPtr,System.IntPtr,JetBrains.Interop.WinApi.ScrollWindowFlags)">
-            <summary>
-            The ScrollWindowEx function scrolls the contents of the specified window's client area. 
-            </summary>
-            <param name="hWnd">[in] Handle to the window where the client area is to be scrolled. </param>
-            <param name="dx">[in] Specifies the amount, in device units, of horizontal scrolling. This parameter must be a negative value to scroll to the left.</param>
-            <param name="dy">[in] Specifies the amount, in device units, of vertical scrolling. This parameter must be a negative value to scroll up. </param>
-            <param name="prcScroll">[in] Pointer to a RECT structure that specifies the portion of the client area to be scrolled. If this parameter is NULL, the entire client area is scrolled.</param>
-            <param name="prcClip">[in] Pointer to a RECT structure that contains the coordinates of the clipping rectangle. Only device bits within the clipping rectangle are affected. Bits scrolled from the outside of the rectangle to the inside are painted; bits scrolled from the inside of the rectangle to the outside are not painted. This parameter may be NULL.</param>
-            <param name="hrgnUpdate">[in] Handle to the region that is modified to hold the region invalidated by scrolling. This parameter may be NULL.</param>
-            <param name="prcUpdate">[out] Pointer to a RECT structure that receives the boundaries of the rectangle invalidated by scrolling. This parameter may be NULL.</param>
-            <param name="flags">[in] Specifies flags that control scrolling. This parameter can be one of the following values. </param>
-            <returns>If the function succeeds, the return value is <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.SIMPLEREGION"/> (rectangular invalidated region), <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.COMPLEXREGION"/> (nonrectangular invalidated region; overlapping rectangles), or <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.NULLREGION"/> (no invalidated region). 
-            If the function fails, the return value is <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.ERROR"/>. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.FindWindowEx(System.IntPtr,System.IntPtr,System.String,System.String)">
-            <summary>
-            The FindWindowEx function retrieves a handle to a window whose class name and window name match the specified strings. The function searches child windows, beginning with the one following the specified child window. This function does not perform a case-sensitive search.
-            If the lpszWindow parameter is not NULL, FindWindowEx calls the GetWindowText function to retrieve the window name for comparison. For a description of a potential problem that can arise, see the Remarks section of GetWindowText.
-            </summary>
-            <param name="hwndParent">[in] Handle to the parent window whose child windows are to be searched. If hwndParent is NULL, the function uses the desktop window as the parent window. The function searches among windows that are child windows of the desktop. Microsoft Windows 2000 and Windows XP: If hwndParent is HWND_MESSAGE, the function searches all message-only windows. </param>
-            <param name="hwndChildAfter">[in] Handle to a child window. The search begins with the next child window in the Z order. The child window must be a direct child window of hwndParent, not just a descendant window. If hwndChildAfter is NULL, the search begins with the first child window of hwndParent. Note that if both hwndParent and hwndChildAfter are NULL, the function searches all top-level and message-only windows. </param>
-            <param name="lpszClass">[in] Pointer to a null-terminated string that specifies the class name or a class atom created by a previous call to the RegisterClass or RegisterClassEx function. The atom must be placed in the low-order word of lpszClass; the high-order word must be zero.If lpszClass is a string, it specifies the window class name. The class name can be any name registered with RegisterClass or RegisterClassEx, or any of the predefined control-class names, or it can be MAKEINTATOM(0x800). In this latter case, 0x8000 is the atom for a menu class. For more information, see the Remarks section of this topic.</param>
-            <param name="lpszWindow">[in] Pointer to a null-terminated string that specifies the window name (the window's title). If this parameter is NULL, all window names match. </param>
-            <returns>If the function succeeds, the return value is a handle to the window that has the specified class and window names. If the function fails, the return value is NULL. To get extended error information, call GetLastError. </returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.CreateCompatibleDC(System.IntPtr)">
-            <summary>
-            The CreateCompatibleDC function creates a memory device context (DC) compatible with the specified device. 
-            </summary>
-            <param name="hdc">Handle to an existing DC. If this handle is NULL, the function creates a memory DC compatible with the application's current screen.</param>
-            <returns>If the function succeeds, the return value is the handle to a memory DC. If the function fails, the return value is NULL.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.CreateCompatibleBitmap(System.IntPtr,System.Int32,System.Int32)">
-            <summary>
-            The CreateCompatibleBitmap function creates a bitmap compatible with the device that is associated with the specified device context.
-            </summary>
-            <param name="hdc">handle to DC</param>
-            <param name="nWidth">width of bitmap, in pixels</param>
-            <param name="nHeight">height of bitmap, in pixels</param>
-            <returns>If the function succeeds, the return value is a handle to the compatible bitmap (DDB). If the function fails, the return value is NULL.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.DeleteDC(System.IntPtr)">
-            <summary>
-            The DeleteDC function deletes the specified device context (DC).
-            </summary>
-            <param name="hDC">handle to DC</param>
-            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.StrFormatByteSize64A(System.Int64,System.Byte[],System.UInt32)">
-            <summary>
-            Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
-            </summary>
-            <param name="nSize">Numeric value to be converted.</param>
-            <param name="pBuffer">Pointer to a buffer to hold the converted number. Note: this function is bound to call the ANSI version.</param>
-            <param name="nBufSize">Size of the buffer, in characters. Note: in our case, in bytes.</param>
-            <returns>Returns the address of the converted string, or <see cref="F:System.IntPtr.Zero"/> if the conversion fails.</returns>
-            <remarks>
-            The following table illustrates how this function converts a numeric value into a text string.
-            
-            Numeric value -&gt; Text string 
-            532 532 -&gt; bytes 
-            1340 -&gt; 1.30KB 
-            23506 -&gt; 22.9KB 
-            2400016 -&gt; 2.29MB 
-            2400000000 -&gt; 2.23GB 
-            </remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.StrFormatByteSize64A(System.Int64,System.Text.StringBuilder,System.UInt32)">
-            <summary>
-            Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
-            </summary>
-            <param name="nSize">Numeric value to be converted.</param>
-            <param name="pBuffer">Pointer to a buffer to hold the converted number. Note: this function is bound to call the ANSI version.</param>
-            <param name="nBufSize">Size of the buffer, in characters. Note: in our case, in bytes.</param>
-            <returns>Returns the address of the converted string, or <see cref="F:System.IntPtr.Zero"/> if the conversion fails.</returns>
-            <remarks>
-            The following table illustrates how this function converts a numeric value into a text string.
-            
-            Numeric value -&gt; Text string 
-            532 532 -&gt; bytes 
-            1340 -&gt; 1.30KB 
-            23506 -&gt; 22.9KB 
-            2400016 -&gt; 2.29MB 
-            2400000000 -&gt; 2.23GB 
-            </remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.StrFormatByteSize(System.Int64)">
-            <summary>
-            Converts a numeric value into a string that represents the number expressed as a size value in bytes, kilobytes, megabytes, or gigabytes, depending on the size.
-            </summary>
-            <param name="nSize">Numeric value to be converted.</param>
-            <returns>Returns the size string.</returns>
-            <remarks>
-            The following table illustrates how this function converts a numeric value into a text string.
-            
-            Numeric value -> Text string 
-            532 532 -> bytes 
-            1340 -> 1.30KB 
-            23506 -> 22.9KB 
-            2400016 -> 2.29MB 
-            2400000000 -> 2.23GB 
-            </remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowOrgEx(System.IntPtr,System.Int32,System.Int32,JetBrains.Interop.WinApi.POINTAPI@)">
-            <summary>
-            The SetWindowOrgEx function specifies which window point maps to the viewport origin (0,0).
-            </summary>
-            <param name="hdc">[in] Handle to the device context.</param>
-            <param name="X">[in] Specifies the x-coordinate, in logical units, of the new window origin.</param>
-            <param name="Y">[in] Specifies the y-coordinate, in logical units, of the new window origin.</param>
-            <param name="lpPoint">[out] Pointer to a POINT structure that receives the previous origin of the window, in logical units. If lpPoint is NULL, this parameter is not used.</param>
-            <returns>If the function succeeds, the return value is nonzero.
-            If the function fails, the return value is zero.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.ExtSelectClipRgn(System.IntPtr,System.IntPtr,JetBrains.Interop.WinApi.CombineRgnStyles)">
-            <summary>
-            The ExtSelectClipRgn function combines the specified region with the current clipping region using the specified mode.
-            </summary>
-            <param name="hdc">[in] Handle to the device context. </param>
-            <param name="hrgn">[in] Handle to the region to be selected. This handle can only be NULL when the RGN_COPY mode is specified.</param>
-            <param name="fnMode">[in] Specifies the operation to be performed. It must be one of the following values. <see cref="T:JetBrains.Interop.WinApi.CombineRgnStyles"/></param>
-            <returns>The return value specifies the new clipping region's complexity; it can be one of the following values. </returns>
-            <remarks>If an error occurs when this function is called, the previous clipping region for the specified device context is not affected. The ExtSelectClipRgn function assumes that the coordinates for the specified region are specified in device units. Only a copy of the region identified by the hrgn parameter is used. The region itself can be reused after this call or it can be deleted. </remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.CreateRectRgn(System.Int32,System.Int32,System.Int32,System.Int32)">
-            <summary>
-            The CreateRectRgn function creates a rectangular region. 
-            </summary>
-            <param name="nLeftRect">[in] Specifies the x-coordinate of the upper-left corner of the region in logical units. </param>
-            <param name="nTopRect">[in] Specifies the y-coordinate of the upper-left corner of the region in logical units. </param>
-            <param name="nRightRect">[in] Specifies the x-coordinate of the lower-right corner of the region in logical units.</param>
-            <param name="nBottomRect">[in] Specifies the y-coordinate of the lower-right corner of the region in logical units.</param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.CombineRgn(System.IntPtr,System.IntPtr,System.IntPtr,JetBrains.Interop.WinApi.CombineRgnStyles)">
-            <summary>
-            The CombineRgn function combines two regions and stores the result in a third region. The two regions are combined according to the specified mode. 
-            </summary>
-            <param name="hrgnDest">[in] Handle to a new region with dimensions defined by combining two other regions. (This region must exist before CombineRgn is called.) </param>
-            <param name="hrgnSrc1">[in] Handle to the first of two regions to be combined.</param>
-            <param name="hrgnSrc2">[in] Handle to the second of two regions to be combined.</param>
-            <param name="fnCombineMode">[in] Specifies a mode indicating how the two regions will be combined. This parameter can be one of the following values. </param>
-            <returns>The return value specifies the type of the resulting region. It can be one of the following values. </returns>
-            <remarks>The three regions need not be distinct. For example, the hrgnSrc1 parameter can equal the hrgnDest parameter. </remarks>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowsHookEx(JetBrains.Interop.WinApi.HookType,JetBrains.Interop.WinApi.Win32Declarations.HookProc,System.IntPtr,System.Int32)">
-            <summary>
-            The SetWindowsHookEx function installs an application-defined hook procedure into a hook chain. You would install a hook procedure to monitor the system for certain types of events. These events are associated either with a specific thread or with all threads in the same desktop as the calling thread. 
-            </summary>
-            <returns>If the function succeeds, the return value is the handle to the hook procedure. 
-            If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.LoadCursor(System.IntPtr,System.IntPtr)">
-            <summary>
-            The LoadCursor function loads the specified cursor resource from the executable (.EXE) file associated with an application instance.
-            </summary>
-            <param name="hInstance">[in] Handle to an instance of the module whose executable file contains the cursor to be loaded.</param>
-            <param name="cursor">[in] Pointer to a null-terminated string that contains the name of the cursor resource to be loaded. Alternatively, this parameter can consist of the resource identifier in the low-order word and zero in the high-order word. The MAKEINTRESOURCE macro can also be used to create this value. To use one of the predefined cursors, the application must set the hInstance parameter to NULL and the lpCursorName parameter to one the following values:</param>
-            <returns>If the function succeeds, the return value is the handle to the newly loaded cursor. If the function fails, the return value is NULL. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.LoadCursor(JetBrains.Interop.WinApi.StockCursors)">
-            <summary>
-            Loads the cursor by calling the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.LoadCursor(System.IntPtr,System.IntPtr)"/> WinAPI function.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.GetStockObject(JetBrains.Interop.WinApi.Win32Declarations.StockObject)">
-            <summary>
-            The GetStockObject function retrieves a handle to one of the stock pens, brushes, fonts, or palettes.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.DrawFrameControl(System.IntPtr,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.Win32Declarations.FrameControlType,JetBrains.Interop.WinApi.Win32Declarations.FrameControlState)">
-            <summary>
-            The DrawFrameControl function draws a frame control of the specified type and style.
-            </summary>
-            <param name="hdc">[in] Handle to the device context of the window in which to draw the control.</param>
-            <param name="bounds">[in] Pointer to a RECT structure that contains the logical coordinates of the bounding rectangle for frame control.</param>
-            <param name="frameControlType">[in] Specifies the type of frame control to draw. This parameter can be one of the following values.</param>
-            <param name="frameControlState">[in] Specifies the initial state of the frame control. If uType is DFC_BUTTON, uState can be one of the following values.</param>
-            <returns>If the function succeeds, the return value is nonzero. If the function fails, the return value is zero. Windows NT/2000/XP: To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.SetDCBrushColor(System.IntPtr,System.Int32)">
-            <summary>
-            SetDCBrushColor function sets the current device context (DC) brush color to the specified color value. If the device cannot represent the specified color value, the color is set to the nearest physical color.
-            </summary>
-            <param name="hdc">[in] Handle to the DC.</param>
-            <param name="colorref">[in] Specifies the new brush color.</param>
-            <returns>If the function succeeds, the return value specifies the previous DC brush color as a COLORREF value. If the function fails, the return value is CLR_INVALID.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.VarR8FromStr(System.String,System.Int32,System.Int32,System.Double@)">
-            <summary>
-            This function converts variant data types to double from OLECHAR.
-            Passing invalid (and under some circumstances NULL) pointers to this function causes an unexpected termination of the application.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuEx(System.IntPtr,JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags,System.Int32,System.Int32,System.IntPtr,System.IntPtr)">
-            <summary>
-            The TrackPopupMenuEx function displays a shortcut menu at the specified location and tracks the selection of items on the shortcut menu. The shortcut menu can appear anywhere on the screen.
-            </summary>
-            <param name="hmenu">[in] Handle to the shortcut menu to be displayed. This handle can be obtained by calling the CreatePopupMenu function to create a new shortcut menu or by calling the GetSubMenu function to retrieve a handle to a submenu associated with an existing menu item.</param>
-            <param name="fuFlags">[in] Specifies function options. Use one of the following flags to specify how the function positions the shortcut menu horizontally.</param>
-            <param name="x">[in] Horizontal location of the shortcut menu, in screen coordinates. </param>
-            <param name="y">[in] Vertical location of the shortcut menu, in screen coordinates. </param>
-            <param name="hwnd">[in] Handle to the window that owns the shortcut menu. This window receives all messages from the menu. The window does not receive a WM_COMMAND message from the menu until the function returns. If you specify TPM_NONOTIFY in the fuFlags parameter, the function does not send messages to the window identified by hwnd. However, you must still pass a window handle in hwnd. It can be any window handle from your application.</param>
-            <param name="lptpm_PassNullHere">[in] Pointer to a TPMPARAMS structure that specifies an area of the screen the menu should not overlap. This parameter can be NULL. </param>
-            <returns>If you specify TPM_RETURNCMD in the fuFlags parameter, the return value is the menu-item identifier of the item that the user selected. If the user cancels the menu without making a selection, or if an error occurs, then the return value is zero. If you do not specify TPM_RETURNCMD in the fuFlags parameter, the return value is nonzero if the function succeeds and zero if it fails. To get extended error information, call GetLastError.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.DwmExtendFrameIntoClientArea(System.IntPtr,JetBrains.Interop.WinApi.Win32Declarations.MARGINS)">
-            <summary>
-            Extends the window frame behind the client area.
-            If Desktop Window Manager (DWM) composition is toggled, this function must be called again. Handle the WM_DWMCOMPOSITIONCHANGED message for composition change notification. 
-            Negative margins are used to create the "sheet of glass" effect where the client area is rendered as a solid surface with no window border.
-            </summary>
-            <param name="hwnd">The handle to the window for which the frame is extended into the client area.</param>
-            <param name="margins"><see cref="T:JetBrains.Interop.WinApi.Win32Declarations.MARGINS"/> that describes the margins to use when extending the frame into the client area.</param>
-            <returns>Returns S_OK if successful, or an error value otherwise.</returns>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.DwmDefWindowProc(System.IntPtr,System.Int32,System.IntPtr,System.IntPtr,System.IntPtr@)">
-            <summary>
-            Default window procedure for Desktop Window Manager (DWM) hit testing within the non-client area.
-            </summary>
-            <param name="hwnd">Handle to the window procedure that received the message.</param>
-            <param name="msg">Specifies the message.</param>
-            <param name="wParam">Specifies additional message information. The content of this parameter depends on the value of the msg parameter. </param>
-            <param name="lParam">Specifies additional message information. The content of this parameter depends on the value of the msg parameter. </param>
-            <param name="plResult">Pointer to an LRESULT value that, when this method returns, receives the result of the hit test.</param>
-            <returns>TRUE if DwmDefWindowProc handled the message; otherwise, FALSE. </returns>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.RegionResult">
-            <summary>
-            The return value specifies the new clipping region's complexity; it can be one of the following values. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.ERROR">
-            <summary>
-            An error occurred.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.NULLREGION">
-            <summary>
-            Region is empty.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.SIMPLEREGION">
-            <summary>
-            Region is a single rectangle.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.COMPLEXREGION">
-            <summary>
-            Region is more than one rectangle.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.RegionResult.RGN_ERROR">
-            <summary>
-            An error occurred.
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.HookProc">
-            <summary>
-            Hook delegate for the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowsHookEx(JetBrains.Interop.WinApi.HookType,JetBrains.Interop.WinApi.Win32Declarations.HookProc,System.IntPtr,System.Int32)"/> function.
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.StatusBarStyles">
-            <summary>
-            Styles and flags for the status bar.
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.StatusBarBorders">
-            <summary>
-            Identifies the status bar borders for use with the messages like <see cref="F:JetBrains.Interop.WinApi.WindowsMessages.SB_GETBORDERS"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StatusBarBorders.Horizontal">
-            <summary>
-            The horizontal border between the parts and the edges of the window.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StatusBarBorders.Vertical">
-            <summary>
-            The vertical border between the parts and the edges of the window.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StatusBarBorders.Separator">
-            <summary>
-            The spacing between the adjacent status bar parts.
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.StockObject">
-            <summary>
-            The stock GDI objects for the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.GetStockObject(JetBrains.Interop.WinApi.Win32Declarations.StockObject)"/> function.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.BLACK_BRUSH">
-            <summary>
-            Black brush. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DKGRAY_BRUSH">
-            <summary>
-            Dark gray brush. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DC_BRUSH">
-            <summary>
-            Windows 2000/XP: Solid color brush. The default color is white. The color can be changed by using the SetDCBrushColor function. For more information= , see the Remarks section. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.GRAY_BRUSH">
-            <summary>
-            Gray brush. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.HOLLOW_BRUSH">
-            <summary>
-            Hollow brush (equivalent to NULL_BRUSH). 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.LTGRAY_BRUSH">
-            <summary>
-            Light gray brush. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.NULL_BRUSH">
-            <summary>
-            Null brush (equivalent to HOLLOW_BRUSH). 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.WHITE_BRUSH">
-            <summary>
-            White brush. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.BLACK_PEN">
-            <summary>
-            Black pen. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DC_PEN">
-            <summary>
-            Windows 2000/XP: Solid pen color. The default color is white. The color can be changed by using the SetDCPenColor function. For more information= , see the Remarks section. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.WHITE_PEN">
-            <summary>
-            White pen. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.ANSI_FIXED_FONT">
-            <summary>
-            Windows fixed-pitch (monospace) system font. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.ANSI_VAR_FONT">
-            <summary>
-            Windows variable-pitch (proportional space) system font. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DEVICE_DEFAULT_FONT">
-            <summary>
-            Windows NT/2000/XP: Device-dependent font. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DEFAULT_GUI_FONT">
-            <summary>
-            Default font for user interface objects such as menus and dialog boxes. This is MS Sans Serif. Compare this with SYSTEM_FONT. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.OEM_FIXED_FONT">
-            <summary>
-            Original equipment manufacturer (OEM) dependent fixed-pitch (monospace) font. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.SYSTEM_FONT">
-            <summary>
-            System font. By default= , the system uses the system font to draw menus= , dialog box controls= , and text. Windows 95/98 and Windows NT: The system font is MS Sans Serif. Windows 2000/XP: The system font is Tahoma
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.SYSTEM_FIXED_FONT">
-            <summary>
-            Fixed-pitch (monospace) system font. This stock object is provided only for compatibility with 16-bit Windows versions earlier than 3.0.  
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.StockObject.DEFAULT_PALETTE">
-            <summary>
-            Default palette. This palette consists of the static colors in the system palette. 
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType">
-            <summary>
-            Values for <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.DrawFrameControl(System.IntPtr,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.Win32Declarations.FrameControlType,JetBrains.Interop.WinApi.Win32Declarations.FrameControlState)"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType.DFC_BUTTON">
-            <summary>
-            Standard button 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType.DFC_CAPTION">
-            <summary>
-            Title bar 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType.DFC_MENU">
-            <summary>
-            Menu bar 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType.DFC_POPUPMENU">
-            <summary>
-            Windows 98/Me, Windows 2000/XP: Popup menu item. 
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlType.DFC_SCROLL">
-            <summary>
-            Scroll bar 
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.FrameControlState">
-            <summary>
-            Values for <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.DrawFrameControl(System.IntPtr,JetBrains.Interop.WinApi.RECT@,JetBrains.Interop.WinApi.Win32Declarations.FrameControlType,JetBrains.Interop.WinApi.Win32Declarations.FrameControlState)"/>.
-            Incomplete.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.FrameControlState.DFCS_BUTTONPUSH">
-            <summary>
-            Push button
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags">
-            <summary>
-            Flags for the <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuEx(System.IntPtr,JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags,System.Int32,System.Int32,System.IntPtr,System.IntPtr)"/> function.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_CENTERALIGN">
-            <summary>
-            If this flag is set, the function centers the shortcut menu horizontally relative to the coordinate specified by the x parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_LEFTALIGN">
-            <summary>
-            If this flag is set, the function positions the shortcut menu so that its left side is aligned with the coordinate specified by the x parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_RIGHTALIGN">
-            <summary>
-            Positions the shortcut menu so that its right side is aligned with the coordinate specified by the x parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_BOTTOMALIGN">
-            <summary>
-            If this flag is set, the function positions the shortcut menu so that its bottom side is aligned with the coordinate specified by the y parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_TOPALIGN">
-            <summary>
-            If this flag is set, the function positions the shortcut menu so that its top side is aligned with the coordinate specified by the y parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_VCENTERALIGN">
-            <summary>
-            If this flag is set, the function centers the shortcut menu vertically relative to the coordinate specified by the y parameter.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_NONOTIFY">
-            <summary>
-            If this flag is set, the function does not send notification messages when the user clicks on a menu item.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_RETURNCMD">
-            <summary>
-            If this flag is set, the function returns the menu item identifier of the user's selection in the return value.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_LEFTBUTTON">
-            <summary>
-            If this flag is set, the user can select menu items with only the left mouse button.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_RIGHTBUTTON">
-            <summary>
-            If this flag is set, the user can select menu items with both the left and right mouse buttons.   /// </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_HORNEGANIMATION">
-            <summary>
-            Animates the menu from right to left.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_HORPOSANIMATION">
-            <summary>
-            Animates the menu from left to right.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_NOANIMATION">
-            <summary>
-            Displays menu without animation.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_VERNEGANIMATION">
-            <summary>
-            Animates the menu from bottom to top.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_VERPOSANIMATION">
-            <summary>
-            Animates the menu from top to bottom.
-             For any animation to occur, the SystemParametersInfo function must set SPI_SETMENUANIMATION. Also, all the TPM_*ANIMATION flags, except TPM_NOANIMATION, are ignored if menu fade animation is on, See the SPI_GETMENUFADE flag in SystemParametersInfo.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_HORIZONTAL">
-            <summary>
-            If the menu cannot be shown at the specified location without overlapping the excluded rectangle, the system tries to accommodate the requested horizontal alignment before the requested vertical alignment.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.TrackPopupMenuExFlags.TPM_VERTICAL">
-            <summary>
-            If the menu cannot be shown at the specified location without overlapping the excluded rectangle, the system tries to accommodate the requested vertical alignment before the requested horizontal alignment. 
-            The excluded rectangle is a portion of the screen that the menu should not overlap; it is specified by lptpm. 
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags">
-            <summary>
-            Flags that go along with the WM_SIZE message in its wParam.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_RESTORED">
-            <summary>
-            The window has been resized, but neither the <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MINIMIZED"/> nor <see cref="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MAXIMIZED"/> value applies.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MINIMIZED">
-            <summary>
-            The window has been minimized.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MAXIMIZED">
-            <summary>
-            The window has been maximized.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MAXSHOW">
-            <summary>
-            Message is sent to all pop-up windows when some other window has been restored to its former size.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Interop.WinApi.Win32Declarations.WmSizeFlags.SIZE_MAXHIDE">
-            <summary>
-            Message is sent to all pop-up windows when some other window is maximized.
-            </summary>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.Win32Declarations.MARGINS">
-            <summary>
-            Returned by the GetThemeMargins function to define the margins of windows that have visual styles applied.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.MARGINS.#ctor">
-            <summary>
-            Sets no margin.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.Win32Declarations.MARGINS.#ctor(System.Int32)">
-            <summary>
-            Sets all margins to the same value.
-            </summary>
-        </member>
-        <member name="P:JetBrains.Interop.WinApi.Win32Declarations.MARGINS.WholeSurface">
-            <summary>
-            Sets the margins so that they cover the whole surface.
-            </summary>
-        </member>
-        <member name="P:JetBrains.Interop.WinApi.Win32Declarations.MARGINS.Null">
-            <summary>
-            Sets the margins so that they cover none of the window inner surface.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.POINTAPI.#ctor(System.IntPtr)">
-            <summary>
-            Creates a new point, unpacking its signed coordinates from an LPARAM, using the <see cref="M:JetBrains.Interop.WinApi.Macros.GET_X_LPARAM(System.IntPtr)"/> and <see cref="M:JetBrains.Interop.WinApi.Macros.GET_Y_LPARAM(System.IntPtr)"/> functions.
-            </summary>
-        </member>
-        <member name="M:JetBrains.Interop.WinApi.POINTAPI.ToString">
-            <summary>
-            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
-            </summary>
-            
-            <returns>
-            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
-            </returns>
-            <filterpriority>2</filterpriority>
-        </member>
-        <member name="T:JetBrains.Interop.WinApi.HookType">
-            <summary>
-            Windows hook types for <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.SetWindowsHookEx(JetBrains.Interop.WinApi.HookType,JetBrains.Interop.WinApi.Win32Declarations.HookProc,System.IntPtr,System.Int32)"/>.
             </summary>
         </member>
         <member name="T:JetBrains.Interop.WinApi.WindowsMessages">

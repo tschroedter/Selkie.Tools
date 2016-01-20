@@ -82,7 +82,7 @@
             <code>Action lambda = null; lambda = () => { lambda(); };</code>
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Daemon.CSharp.Stages.Analysis.ExpressionBodyProblemAnalyzer.IsNiceEnoughExpressionBody(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpExpression)">
+        <member name="M:JetBrains.ReSharper.Daemon.CSharp.Stages.Analysis.ExpressionBodySuggestionProblemAnalyzer.IsNiceEnoughExpressionBody(JetBrains.ReSharper.Psi.CSharp.Tree.ICSharpExpression)">
             <summary>This is something between code style and heuristic.</summary>
         </member>
         <member name="M:JetBrains.ReSharper.Daemon.CSharp.Stages.Analysis.ArrayCreationProblemAnalyzer.CheckArrayInitializer(JetBrains.ReSharper.Feature.Services.Daemon.IDaemonProcess,JetBrains.ReSharper.Feature.Services.Daemon.IHighlightingConsumer,JetBrains.ReSharper.Psi.CSharp.Tree.IArrayInitializer,System.Nullable{System.UInt64}[],JetBrains.ReSharper.Psi.IType)">

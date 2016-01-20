@@ -473,17 +473,17 @@
               <code>themediconmanager.GetIcon&lt;RegExpThemedIcons.SingleLine&gt;()        // Icon image for rendering</code>
             </example>
         </member>
-        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler.Do">
+        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler`2.Do">
             <summary>
             Invoked from action, so threading model already validate
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler.Undo">
+        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler`2.Undo">
             <summary>
             Invoked from VS, use IThreading
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler.Redo">
+        <member name="M:JetBrains.ReSharper.Features.RegExp.ContextActions.InjectRegularExpressionHandler`2.Redo">
             <summary>
             Invoked from VS, use IThreading
             </summary>

@@ -15,11 +15,11 @@
             For extracting a package from various artifact containers.
             </summary>
         </member>
-        <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.AddTargetsFileToIncludeAssembilesInProject">
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.AddTargetsFileToIncludeAssembliesInProject">
             <summary>
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.AddTargetsFileToIncludeAssembilesInProject.RenderTargetsFile_TargetFrameworkVersionNumberProperty(JetBrains.Application.BuildScript.Solution.SubplatformName,Microsoft.Build.Construction.ProjectRootElement,JetBrains.Util.ILogger)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.AddTargetsFileToIncludeAssembliesInProject.RenderTargetsFile_TargetFrameworkVersionNumberProperty(JetBrains.Application.BuildScript.Solution.SubplatformName,Microsoft.Build.Construction.ProjectRootElement,JetBrains.Util.ILogger)">
             <summary>
             Gets the target framework version as a number on which linear comparisons could be run.
             </summary>
@@ -48,13 +48,9 @@
             <param name="nuggets"></param>
             <returns></returns>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.CompileStandardSubplatformProjectsTasks.CompileSubplatforms(JetBrains.DataFlow.Lifetime,JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.BuildScript.Compile.CompileSubplatformsInput[],JetBrains.Application.BuildScript.ProductBinariesDirArtifact,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.SkipLocalCompilationArtifact},JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.SubstituteProjectReferencesWithAssemblyReferences.DeployForCompileHelper,JetBrains.Util.ILogger,System.Collections.Generic.List{JetBrains.Application.BuildScript.Compile.CompiledSubplatformFile}@,JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.CompileStandardSubplatformProjectsTasks.CompileSubplatforms(JetBrains.DataFlow.Lifetime,JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.BuildScript.Compile.CodeSigning.IAuthenticodeSigningService,JetBrains.Application.BuildScript.Compile.CompileSubplatformsInput[],JetBrains.Application.BuildScript.ProductBinariesDirArtifact,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.SkipLocalCompilationArtifact},JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.SubstituteProjectReferencesWithAssemblyReferences.DeployForCompileHelper,JetBrains.Util.ILogger,JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize,JetBrains.Application.BuildScript.Compile.Validation.ValidateCleanCompilation[],JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.IncrementalBuild},JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.ProfileNameArtifact},System.Collections.Generic.ICollection{JetBrains.Application.BuildScript.Compile.SubplatformProjectExemptFromManagedAssemblies},System.Collections.Generic.List{JetBrains.Application.BuildScript.Compile.CompiledSubplatformFile}@)">
             <summary>
             </summary>
-            <param name="lifetime"></param>
-            <param name="allassSrc"></param>
-            <param name="inputs">Everyone who wants to run before.</param>
-            <param name="logger"></param>
         </member>
         <member name="F:JetBrains.Application.SinceClr4.BuildScript.Compile.CompileStandardSubplatformProjectsTasks.MsbuildFileJet.Metadatas.TargetFrameworkVersion">
             <summary>
@@ -94,10 +90,91 @@
             Handles <see cref="T:JetBrains.Application.BuildScript.Compile.EmbedPackageInSubplatformArtifact"/> tasks.
             </summary>
         </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.EmitsApplicationPackageForNuget.CreateJetSpec(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.BuildScript.PackageSpecification.JetPackageSpecificationArtifact[],JetBrains.Util.ILogger)">
+            <summary>
+            JetSpec (JetPackageMetadata) part of the app package info. Used to be in <see cref="T:JetBrains.Application.BuildScript.Application.IApplicationPackage"/>, but were taken out because it's rarely needed and takes extra time to read when we need jus the pkgs.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.EmitsPackagePartCatalog">
+            <summary>
+            Produces the part catalog which is to be embedded into the generated subplatform package as a component.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.EmitsPackagePartCatalog.EmbedCatalogInPackage(System.Collections.Generic.ICollection{JetBrains.Application.BuildScript.Compile.PackagePartCatalogArtifact})">
+            <summary>
+            Packages the catalog as the primitive pre-shell object which could be understood by all possible consumers.
+            </summary>
+            <param name="catalogs"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.EmitsSubplatformPackages">
+            <summary>
+            Specifically handles creation of subplatform packages.
+            </summary>
+        </member>
+        <member name="T:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler">
+            <summary> 
+            Provides a task scheduler that ensures a maximum concurrency level while 
+            running on top of the ThreadPool. 
+            </summary> 
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._currentThreadIsProcessingItems">
+            <summary>Whether the current thread is processing work items.</summary> 
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._tasks">
+            <summary>The list of tasks to be executed.</summary> 
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._maxDegreeOfParallelism">
+            <summary>The maximum concurrency level allowed by this scheduler.</summary> 
+        </member>
+        <member name="F:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler._delegatesQueuedOrRunning">
+            <summary>Whether the scheduler is currently processing work items.</summary> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.#ctor(System.Int32)">
+            <summary> 
+            Initializes an instance of the LimitedConcurrencyLevelTaskScheduler class with the 
+            specified degree of parallelism. 
+            </summary> 
+            <param name="maxDegreeOfParallelism">The maximum degree of parallelism provided by this scheduler.</param> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.QueueTask(System.Threading.Tasks.Task)">
+            <summary>Queues a task to the scheduler.</summary> 
+            <param name="task">The task to be queued.</param> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.NotifyThreadPoolOfPendingWork">
+            <summary> 
+            Informs the ThreadPool that there's work to be executed for this scheduler. 
+            </summary> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.TryExecuteTaskInline(System.Threading.Tasks.Task,System.Boolean)">
+            <summary>Attempts to execute the specified task on the current thread.</summary> 
+            <param name="task">The task to be executed.</param> 
+            <param name="taskWasPreviouslyQueued"></param> 
+            <returns>Whether the task could be executed on the current thread.</returns> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.TryDequeue(System.Threading.Tasks.Task)">
+            <summary>Attempts to remove a previously scheduled task from the scheduler.</summary> 
+            <param name="task">The task to be removed.</param> 
+            <returns>Whether the task could be found and removed.</returns> 
+        </member>
+        <member name="M:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.GetScheduledTasks">
+            <summary>Gets an enumerable of the tasks currently scheduled on this scheduler.</summary> 
+            <returns>An enumerable of the tasks currently scheduled.</returns> 
+        </member>
+        <member name="P:System.Threading.Tasks.Schedulers.LimitedConcurrencyLevelTaskScheduler.MaximumConcurrencyLevel">
+            <summary>Gets the maximum concurrency level supported by this scheduler.</summary> 
+        </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.NestedBuildRunnerOnSources">
             <summary>
             Runs a nested build which works off sources.
             Sets up parameters for the nested stage run correctly.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Compile.Validation.ValidatePackageReferences.ReportInvalidVersionSpec(JetBrains.Application.SinceClr4.BuildScript.PackageReferenceArtifact,JetBrains.Util.ILogger)">
+            <summary>
+            A valid version spec references just one version, unambiguously.
+            Reports violations to the logger.
+            Returns whether the spec were valid.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.EntryPoints.CompileStageArtifactBase">
@@ -270,9 +347,20 @@
             <see cref="T:JetBrains.Application.BuildScript.Install.ExtractPackagesToBinDir"/> impl.
             </summary>
         </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Install.ExtractPackagesToBinDirTasks.PreExtractPackagesOnPrepareWorkingCopy(JetBrains.Application.BuildScript.ProductBinariesDirArtifact,JetBrains.Application.SinceClr4.BuildScript.RetrievedPackageReferenceArtifact[],JetBrains.Util.ILogger)">
+            <summary>
+            Wire an enumation of this step to the PWC, to get the contents of the BIN dir earlier.
+            Note that this won't get the LevelDB and other stuff we're not taking as references so far, but anyway it's a big help e.g. when version of Annotations changes.
+            </summary>
+        </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.Install.GenerateLicensesDocTasks">
             <summary>
             <see cref="M:JetBrains.Application.SinceClr4.BuildScript.Install.GenerateLicensesDocTasks.GenerateLicensesDoc(JetBrains.Application.BuildScript.ProductBinariesDirArtifact,JetBrains.Application.SinceClr4.BuildScript.InputPackage[],JetBrains.Util.ILogger)"/> impl.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.Install.LocalMakePackedInstallerTasks.InstallPackedInstaller(JetBrains.Application.BuildScript.ProductBinariesDirArtifact,JetBrains.Application.BuildScript.Install.InstallerExePackedWithEmbeddedPackages,JetBrains.Util.ILogger)">
+            <summary>
+            Create a packed installer and copy it to the Bin folder.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.Install.LocalSavePackagesToBinDirTasks">
@@ -288,6 +376,16 @@
             <seealso cref="T:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetPackageEx"/>
             <seealso cref="T:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers"/>
             <seealso cref="T:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks"/>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.GetPackageFileName(JetBrains.Application.SinceClr4.BuildScript.IHaveNugetPackageFileItem)">
+            <summary>
+            Gets the local name of the package file with the given ID and version.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.GetPackageFileName(NuGet.IPackageName)">
+            <summary>
+            Gets the local name of the package file with the given ID and version.
+            </summary>
         </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.GetSubplatformReferencedPackageVersionSpec(JetBrains.Application.BuildScript.Solution.Subplatform,JetBrains.Application.BuildScript.BuildVersionSuffix)">
             <summary>
@@ -314,9 +412,15 @@
             Folder in which Nuget looks for tools.
             </summary>
         </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.Const.Folder.PackagesBacklogFolder">
+            <summary>
+            Gets relative path from the <see cref="F:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.Const.Folder.PackagesFolder"/> to the to the folder in which expanded packages not currently referenced are hidden from accidental use in project references for potential reuse when we switch a branch and need them again.
+            The name of the folder does not match the regex on Package ID (<c>\w</c>), so it shan't interfere with normal packages.
+            </summary>
+        </member>
         <member name="F:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.Const.Folder.PackagesFolder">
             <summary>
-            Gets relative path to the standard local packages repository folder under the product home dir.
+            Gets relative path from the home dir to the standard local packages repository folder under the product home dir.
             </summary>
         </member>
         <member name="F:JetBrains.Application.SinceClr4.BuildScript.NugetBuildConvention.Const.Folder.PlatformPackageFilesFolder">
@@ -329,6 +433,35 @@
             Input artifact for defining <see cref="T:JetBrains.Application.SinceClr4.BuildScript.NugetConfigFile"/> with outer-world parameters for a build runner, as a path to the disk file.
             </summary>
         </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.AssemblyItemInPackage">
+            <summary>
+            Denotes an assembly item which has been retrieved from a Nuget package.
+            Defers loading the actual assembly file content bytes until they're requested.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.LocalPackagesMeta.OpenInFolder(JetBrains.DataFlow.Lifetime,JetBrains.Util.FileSystemPath)">
+            <summary>
+            Opens the meta stored in the folder (usually, the solution's Packages folder) for the duration of the lifetime.
+            Deserializes when opening, serializes upon termination of the lifetime, holds the lock to the file the whole duration.
+            </summary>
+            <param name="lifetime">When to serialize back and close file.</param>
+            <param name="dirPackages">Usually, the solution Packages folder.</param>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.LocalPackagesMeta.PackageRecord.ExpandedFilesTimestamp">
+            <summary>
+            Validates the files expanded from out of the package. Their size is checked against the package contents, and their stamp must all match this one.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.LocalPackagesMeta.PackageRecord.PackageFileSize">
+            <summary>
+            Validates the copy of .nupkg stored in the expanded folder.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.LocalPackagesMeta.PackageRecord.PackageFileTimestamp">
+            <summary>
+            Validates the copy of .nupkg stored in the expanded folder.
+            </summary>
+        </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.Autofix.SubplatformReferencesValidator.ValidateUseOfSubplaform(JetBrains.Application.BuildScript.Solution.SubplatformName,JetBrains.Application.BuildScript.Solution.SubplatformName,System.String)">
             <summary>
             Checks if certain <paramref name="who" /> can use stuff from <paramref name="what" />.
@@ -339,6 +472,16 @@
             <summary>
             Index all known project files by their rel path from home dir.
             NOTE that not all projects are available in sources, some might be binary.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.Compile.CompileNativeSolutionsInput">
+            <summary>
+              Allows to link your execution before compiling native solutions.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.LocalSavePackagesToShadowPackagesDirTasks">
+            <summary>
+            <see cref="T:JetBrains.Application.BuildScript.PreCompile.LocalSavePackagesToShadowPackagesDir"/> impl.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.IChooseCommonTargetsForProjectKind">
@@ -397,7 +540,7 @@
             Emits a file with custom assembly attributes for inclusion into each project.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.BinAndObj(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Util.ILogger)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.BinAndObj(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.ProductBinariesDirRelativeHintArtifact},JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.IntermediateOutputFolderPerProfileArtifact},JetBrains.Util.ILogger)">
             <summary>
             Path to build output and intermediate dirs. Included “before”.
             </summary>
@@ -408,9 +551,9 @@
             Some settings apply both in VS and in build, and some in build only.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.MsbuildWarnings(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.CppOptimize(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize)">
             <summary>
-            Suppresses some of the MSBuild warnings which we inevitably see in our solution due to having a mix of frameworks and architectures.
+            For C++ projects, turns optimization on/off depending on the <see cref="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize"/> setting.
             </summary>
         </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.DefaultDefineConstants">
@@ -434,14 +577,19 @@
             NOTE: copying refs to output folder is not needed because we're packing them from sources anyway, and since we're laying out project outputs by their subplatform/project folders, copying everything into each folder takes much time/diskspace, and should be avoided.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.EnableXmlDocGeneration(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Util.ILogger)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.EnableXmlDocGeneration(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.IntermediateOutputFolderPerProfileArtifact},JetBrains.Util.ILogger)">
             <summary>
             Enables XmlDoc generation for all our projects.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.GeneralSettings(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize,JetBrains.Util.ILogger)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.GeneralSettings(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.Compile.ForceTargetFrameworkVersion},JetBrains.Util.ILogger)">
             <summary>
             General settings for C#/VBNet projects. Included “before”.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.MsbuildWarnings(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources)">
+            <summary>
+            Suppresses some of the MSBuild warnings which we inevitably see in our solution due to having a mix of frameworks and architectures.
             </summary>
         </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.ManagedProjectsDevKit.StrongNameSign(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Util.ILogger)">
@@ -469,6 +617,19 @@
             <summary>
             Whether call stacks should be annotated when calling standard object methods. If there's a graph of standard objects identifyable only by names (eg IProperty, ICollection, ISignal, etc), a callstack of their interaction does not give out the names of the entities, unless this option is turned on. Has a perf impact.
             Default is ON. OFF for production builds.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeChecked">
+            <summary>
+            Whether this build will produce checked artifacts for end users.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeSuppressUnityBuild">
+            <summary>
+            Whether CPP builds are not allowed to be run as Unity builds (where applicable and supported).
+            This should be OFF by default for general population (thus allowing the builds to run as Unity), with turning ON for those who want to compile CPP the non-Unity way.
+            Note that certain builds (e.g. CPP-CLI) might have additional considerations, like turning off Unity builds when optimization is turned ON.
+            Default is False.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeOptimize">
@@ -517,6 +678,11 @@
             Default is True. False for production builds.
             </summary>
         </member>
+        <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.DevKit.Modes.IsModeUnchecked">
+            <summary>
+            Whether this build will produce unchecked artifacts for end users.
+            </summary>
+        </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.PreCompile.ManagedProjectsStuffing.EmitsPerProjectGeneratedTargets">
             <summary>
             For each project taking part in AllAssemblies, emits the generated Whatever.Project.Name.csproj.Generated.Targets file.
@@ -528,11 +694,6 @@
             <summary>
             A package result of the build which should go to deployment.
             This includes subplatform-compiled packages and Nuget references of subplatforms (those which are not development-only references).
-            </summary>
-        </member>
-        <member name="T:JetBrains.Application.SinceClr4.BuildScript.BuildApp.Tasks.NestedLocalEmitBuildSystem.LocalEmitBuildSystemCore">
-            <summary>
-            What should be called from the nested build runner.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.NugetConfigFile">
@@ -641,6 +802,11 @@
             Chain: <see cref="T:JetBrains.Application.SinceClr4.BuildScript.PackageReferenceArtifact"/> … <see cref="T:JetBrains.Application.SinceClr4.BuildScript.RetrievedPackageReferenceArtifact"/> … <see cref="T:JetBrains.Application.SinceClr4.BuildScript.LocalRestoredPackageReferenceArtifact"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.LocalRestoredPackageReferenceArtifact.RestoredLocation">
+            <summary>
+            Relative to the Product Home Dir.
+            </summary>
+        </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.Helpers.BuildRunnerRequestEx">
             <summary>
             A part of the extensions to <see cref="T:JetBrains.Build.Running.BuildRunnerRequest"/> which requires references to NetFX4.
@@ -678,7 +844,7 @@
             Gets the package by ID. A missing package is an error.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetPackageEx.FindPackageAndItsReferences``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetPackageEx.FindPackageAndItsReferences``1(System.Collections.Generic.IEnumerable{``0},System.String,JetBrains.Util.OnError)">
             <summary>
             Gets the package by ID, plus all its references, transitively. A missing reference is an error.
             </summary>
@@ -688,7 +854,7 @@
             Gets the packages by ID. A missing package is an error.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetPackageEx.FindPackagesCore``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String},System.Boolean)">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetPackageEx.FindPackagesCore``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{System.String},System.Boolean,System.Predicate{System.String},JetBrains.Util.OnError)">
             <summary>
             Gets the package by ID, plus all its references, transitively. A missing reference is an error.
             </summary>
@@ -838,7 +1004,7 @@
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.Solution.SubplatformsInAllInputPackages">
             <summary>
             Collects subplatforms from all of the input packages, without applying the <see cref="T:JetBrains.Application.BuildScript.Solution.AllAssembliesFilter"/> to them.
-            Similar to <see cref="T:JetBrains.Application.BuildScript.Solution.AllAssembliesOnPackages"/> and <see cref="T:JetBrains.Application.SinceClr4.BuildScript.Solution.AllAssembliesOnPackagesEx"/>, but those two obey the <see cref="T:JetBrains.Application.BuildScript.Solution.AllAssembliesFilter"/> and might not include smoe of the subplatforms-originating input packages. Those two should be used by features which should obey the filter (like, running tests, packnig installers, etc), while this object is for retrieving content from an expected input package, like clean launchers from Platform Core.
+            Similar to <see cref="T:JetBrains.Application.BuildScript.Solution.AllAssembliesOnPackages"/> and <see cref="T:JetBrains.Application.SinceClr4.BuildScript.Solution.AllAssembliesOnPackagesEx"/>, but those two obey the <see cref="T:JetBrains.Application.BuildScript.Solution.AllAssembliesFilter"/> and might not include smoe of the subplatforms-originating input packages. Those two should be used by features which should obey the filter (like, running tests, packing installers, etc), while this object is for retrieving content from an expected input package, like clean launchers from Platform Core.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.SubplatformBinariesPackage">
@@ -892,6 +1058,26 @@
             <summary>
             Immediate successors in zones graph which are derived type (not IReguire)
             </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.Application.Install.LocalInstallStandaloneLaunchers.EmitInstallTimeLauncherHosts(JetBrains.Application.BuildScript.Install.Launcher.StandaloneLauncherHostArtifact[],JetBrains.Application.BuildScript.SerializedHostComponentItemArtifact[],JetBrains.Application.BuildScript.Install.Launcher.CleanLauncherArtifact[],JetBrains.Application.BuildScript.Install.Launcher.LauncherInstaller.NativeResourceForLauncher[],JetBrains.Util.ILogger,JetBrains.Application.BuildScript.Compile.CodeSigning.IAuthenticodeSigningService,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.Install.LocalInstallRootSuffix},System.Collections.Generic.IList{JetBrains.Application.BuildScript.Install.Launcher.StuffedLauncherArtifact}@,System.Collections.Generic.IList{JetBrains.Application.BuildScript.Install.Launcher.StandaloneLauncherHostOsIntegration}@)">
+            <summary>
+            Emits the install-time launcher hosts (as opposed to the compile-time in-package launchers which are done on the source stage).
+            Publishes info for their OS integration.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.Application.Install.LocalInstallStandaloneLaunchers.RetrieveCompileTimeLauncherHostOsIntegrations(JetBrains.DataFlow.Lifetime,JetBrains.Application.SinceClr4.BuildScript.Solution.AllAssembliesOnPackagesEx,JetBrains.Util.ILogger)">
+            <summary>
+            Compile-time in-package hosts have been produced at the source stage and will be just extracted from their packages, but now their OS integration has to be processed.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.Application.Install.LocalInstallStandaloneLaunchers.MakeLnkAndFileAssocForHost_ChooseLauncher(JetBrains.Application.BuildScript.Install.Launcher.StandaloneLauncherHostOsIntegration,JetBrains.Util.ILogger)">
+            <summary>
+            Register to the host of the right bitness.
+            Prefer the native launcher of the system-best CPU (because it shows splash quickly and checks for all requirements and loads CLR nicely and so on), then MSIL if not found.
+            </summary>
+            <param name="hosti"></param>
+            <param name="logger"></param>
+            <returns>NULL on failure.</returns>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.Application.Build.Nunit.InvokeNunitSwitchingBuildHelper">
             <summary>
@@ -1340,25 +1526,6 @@
             Nuget-aware version, tries to read the config file in the product home dir, if can be detected (won't fail if not).
             </summary>
         </member>
-        <member name="F:JetBrains.Application.SinceClr4.Application.Build.App.IsolatedBuild.IsolatedBuildContext.AssemblyItemsFromBootstrapperBuild">
-            <summary>
-            Should always be defined.
-            Represents the assemblies of the bootstrapped build system which is initially available in an already-compiled binary form.
-            Runs the isolated appdomain to drive the source-based build tasks.
-            As soon as <see cref="T:JetBrains.Application.SinceClr4.BuildScript.DeployablePackage"/> gets available, the separate appdomains should be run over it instead so that freshly-compiled build tasks could also be executed.
-            Type: <see cref="M:JetBrains.Build.Serialization.StructuredStorageSerialization.WriteObjectValue(System.Object,JetBrains.Util.Storage.StructuredStorage.IStructuredStorage,JetBrains.Util.OnError)"/> of <see cref="T:JetBrains.Application.SinceClr4.Application.Build.App.IsolatedBuild.IsolatedBuildContext.ProductBinariesAndAssemblyReferences"/> object.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Application.SinceClr4.Application.Build.App.IsolatedBuild.IsolatedBuildContext.CollectedEntryPoints">
-            <summary>
-            After build storage is loaded in the separate appdomain, this is filled with the list of discovered entry points.
-            </summary>
-        </member>
-        <member name="F:JetBrains.Application.SinceClr4.Application.Build.App.IsolatedBuild.IsolatedBuildContext.RealizedAssemblyItemUnification">
-            <summary>
-            An <see cref="T:JetBrains.Util.Storage.StructuredStorage.IStructuredStorage"/> with <see cref="F:JetBrains.Application.SinceClr4.Application.Build.App.IsolatedBuild.IsolatedBuildContext.RealizedAssemblyItemUnification"/> for this stage.
-            </summary>
-        </member>
         <member name="T:JetBrains.Application.SinceClr4.Application.Host.TeamCity.ITeamCityZone">
             <summary>
             For running a TeamCity Host.
@@ -1431,6 +1598,26 @@
             <param name="λOnConflict">Custom handling of file conflicts. Logs an onerror by default.</param>
             <returns></returns>
         </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractFilesFromPackagesStreamedParallel``1(System.Collections.Generic.ICollection{``0},System.Action{JetBrains.Util.Storage.SimpleFileItem},System.Action{JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict})">
+            <summary>
+              <para>Extracts files from several packages using <see cref="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetContentFileItems(JetBrains.Application.SinceClr4.BuildScript.IHaveNugetPackageFileItem,System.Func{JetBrains.Build.Helpers.Nuget.NugetPartPaths,System.Boolean},JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod)"/>, merges and processes conflicts.</para>
+              <para>Has a free-threaded parallel callback that allows to process the files streamed, which allows to avoid keeping full file bodies of all in memory longer than needed.</para>
+              <para>Note that if multiple packed files target the same path then it is undefined which one will win over because of the streamed in-parallel processing.</para>
+            </summary>
+            <param name="packages"></param>
+            <param name="λNextFile">Called for each file to be extracted, free-threaded, in parallel.</param>
+            <param name="λOnConflict">Custom handling of file conflicts. Logs an onerror by default.</param>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractFilesFromPackagesStreamedSequential``1(System.Collections.Generic.ICollection{``0},System.Action{JetBrains.Util.Storage.SimpleFileItem},System.Action{JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict})">
+            <summary>
+              <para>Extracts files from several packages using <see cref="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetContentFileItems(JetBrains.Application.SinceClr4.BuildScript.IHaveNugetPackageFileItem,System.Func{JetBrains.Build.Helpers.Nuget.NugetPartPaths,System.Boolean},JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod)"/>, merges and processes conflicts.</para>
+              <para>Has a worker-thread-bound sequential callback that allows to process the files streamed, which allows to avoid keeping full file bodies of all in memory longer than needed.</para>
+              <para>Note that if multiple packed files target the same path then it is undefined which one will win over because of the streamed in-parallel processing.</para>
+            </summary>
+            <param name="pkgs">Packages to extract.</param>
+            <param name="λNextFile">Next file handler. Only one such callback will be running at once; all are called on the same thread in sequence. All this happens in parallel with the extraction process itself.</param>
+            <param name="λOnConflict">Conflict handler.</param>
+        </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ForEachPackageJetMetadata``1(System.Collections.Generic.IEnumerable{``0},JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod,System.Action{``0,JetBrains.Build.Serialization.SerializedValuesResolver},JetBrains.Util.OnError,JetBrains.Build.Serialization.IBindTypeByName)">
             <summary>
             Calls <see cref="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadata(JetBrains.Application.SinceClr4.BuildScript.IHaveNugetPackageFileItem,JetBrains.DataFlow.Lifetime,JetBrains.Util.OnError,JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod,JetBrains.Build.Serialization.IBindTypeByName)"/> on each package in turn. Optimizes creating the resolver in the loop.
@@ -1490,6 +1677,11 @@
             If the package follows the DotFiles folder convention, cuts this folder name. Otherwise, takes what Nuget thinks to be the effective path of the file.
             </summary>
         </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetPackageManifestFast(JetBrains.Util.Storage.SimpleFileItem)">
+            <summary>
+            Using Nuget's own package for getting a manifest results in copying the full package stream and then copying the metadata a few times. Try skipping all that.
+            </summary>
+        </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.HasJetMetadata(JetBrains.Application.SinceClr4.BuildScript.IHaveNugetPackageFileItem,JetBrains.Util.OnError,JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod)">
             <summary>
             Gets whether the package has JetMetadata stream inside.
@@ -1535,9 +1727,25 @@
             The file which would be chosen for the output.
             </summary>
         </member>
-        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.Path">
+        <member name="P:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.Path">
             <summary>
             When merging files from several packages, the relative path which several files are targeting.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.FileInPackage.File">
+            <summary>
+            File, if known. As it will be holding all the file bytes for the whole operation duration, might be NULL and only certain file props might be set.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.FileInPackage.FileSize">
+            <summary>
+            Must be set even if the file is not set.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.FileInPackage.Path">
+            <summary>
+            <see cref="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.ExtractedFileConflict.FileInPackage.File"/>.<see cref="P:JetBrains.Util.Storage.SimpleFileItem.RelativePath"/>
+            Must be set even if the file is not set.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.GetJetMetadataMethod">
@@ -1555,6 +1763,16 @@
             Advanced, for extensions which are waved packages but might not have the explicitly-compiled-in jet-metadata stream: if the package references a Wave package, try generating relevant metadata on-the-fly.
             </summary>
         </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.PackageAssemblyItems.AssemblyItems">
+            <summary>
+            The assembly items of the package.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers.PackageAssemblyItems.PartCatalog">
+            <summary>
+            Optional. The package might have a pre-calculated part catalog for its assemblies.
+            </summary>
+        </member>
         <member name="T:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks">
             <summary>
             Major build tasks producing our Nuget packages.
@@ -1564,14 +1782,40 @@
             <seealso cref="T:JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.NugetBuildHelpers"/>
             <seealso cref="T:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks"/>
         </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.AddBundleReference(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.PackageDefaultPrereleaseMetadata})">
+            <summary>
+            Identifies subplatform packages as belonging to a certain bundle.
+            </summary>
+        </member>
         <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.CreateBundlePackage(JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.PackageDefaultPrereleaseMetadata})">
             <summary>
             Create bundle package.
             </summary>
         </member>
-        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.AddBundleReference(JetBrains.Application.BuildScript.Solution.AllAssembliesOnSources,JetBrains.Application.Components.Optional{JetBrains.Application.BuildScript.PackageDefaultPrereleaseMetadata})">
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.LocalRestoreReferencedNugetPackages(JetBrains.DataFlow.Lifetime,JetBrains.Application.SinceClr4.BuildScript.RetrievedPackageReferenceArtifact[],JetBrains.Application.BuildScript.ProductHomeDirArtifact,JetBrains.Util.ILogger)">
             <summary>
-            Identifies subplatform packages as belonging to a certain bundle.
+              <para>Does the Local Restore of Nuget packages — having an artifact with the package body, ensures its contents ends up extracted under the $(HomeDir)/Packages folder.</para>
+              <para>As opposed to the standard Nuget procedure:</para>
+              <para>• Ensures the folder contains no more packages than the retrieved list, to prevent projects from using non-whitelisted pkgs by accident. Operates on the Backlog folder to quickly retrieve such packages whenif we switch context.</para>
+              <para>• Ensures the expanded content still matches the original packages (the file set and their content, by timestamp of the last time we wrote them).</para>
+              <para>• Fixes exceptions in Nuget which probably resulted from some race (NP-1199).</para>
+              <para>• Operates on the already-retrieved package body, as an artifact object.</para>
+              <para>• Uses a slightly optimized procedure for accessing the artifact body (not so important).</para>
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.LocalRestoreReferencedNugetPackages_CleanupBacklog(JetBrains.Util.FileSystemPath,JetBrains.Util.ILogger)">
+            <summary>
+            Does not let the backlog folder grow infinitely.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.LocalRestoreReferencedNugetPackages_MoveExtraPackagesToBacklog(JetBrains.Util.FileSystemPath,JetBrains.Util.FileSystemPath,System.Collections.Generic.JetHashSet{System.String},JetBrains.Util.ILogger)">
+            <summary>
+            Backlogs unused packages, so that there were no accidental references into them from around the solution.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Application.SinceClr4.BuildScript.NugetPackageTasks.ValidateExpandedPackage(JetBrains.Util.FileSystemPath,JetBrains.Application.SinceClr4.BuildScript.NugetPackageFileItem,JetBrains.Application.SinceClr4.BuildScript.NuGetHelpers.LocalPackagesMeta,JetBrains.Util.ILogger)">
+            <summary>
+            For a package already expanded on disk, validates that it likely corresponds to the pkg we got, that it were written by our authorized process, and that its file set is intact.
             </summary>
         </member>
         <member name="T:JetBrains.Application.SinceClr4.Extensions.OptionsPages.ExtensionManagerOptionsView">

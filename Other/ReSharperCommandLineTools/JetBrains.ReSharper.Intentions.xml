@@ -27,9 +27,6 @@
             <param name="textControl">Current text control</param>
             <returns>Pre-calculated data, that will be used in <see cref="M:JetBrains.ReSharper.Intentions.Bulbs.IBulbItemsProvider.CollectActions(JetBrains.ReSharper.Intentions.Bulbs.IntentionsBulbItems,JetBrains.ReSharper.Intentions.Bulbs.BulbItems.BulbCache,JetBrains.TextControl.ITextControl,JetBrains.DataFlow.Lifetime,JetBrains.ReSharper.Psi.IPsiSourceFile,System.Object)"/> method call</returns>
         </member>
-        <member name="M:JetBrains.ReSharper.Intentions.Bulbs.IntentionsBulbItems.AddItems(System.Collections.Generic.IEnumerable{JetBrains.UI.BulbMenu.BulbMenuItem})">
-            <summary>Adds items to the menu</summary>
-        </member>
         <member name="M:JetBrains.ReSharper.Intentions.Bulbs.IntentionsBulbItems.AddItemsNoRepost(System.Collections.Generic.IEnumerable{JetBrains.UI.BulbMenu.BulbMenuItem})">
             <summary>
             Use the method if and only if <see cref="!:item"/> is already present in the menu. I.e. unit test items from gutter menu.

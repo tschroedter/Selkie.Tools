@@ -650,6 +650,11 @@
              Composite keyboard shortcuts, eg “Ctrl+K,F”, should be executed twice, once for each of the components.
              </summary><param name="shortcut">The keyboard shortcut to execute. May be a part of a composite shortcut.</param><param name="bIncludeHostActions">In a standalone configuration, has no meaning. In an embedded configurations, includes the host actions in the search list together with own actions managed by the action-manager.</param><returns>Whether the action has been executed.</returns>
         </member>
+        <member name="T:JetBrains.UI.Build.App.BuildAppDispatchActivateLogOnBuild">
+            <summary>
+            When a build starts running, activates various UI for it (e.g. opens build log view) or generates teamcity logs.
+            </summary>
+        </member>
         <member name="T:JetBrains.UI.Build.App.BuildAppDispatchTurnSimpleBuildRequestIntoFull">
             <summary>
             Serves simple build requests on app dispatch by wrapping them with a fully-defined request.
@@ -689,6 +694,14 @@
             </summary>
         </member>
         <member name="M:JetBrains.UI.Build.App.SimpleBuildRequest.CreateBinaryStage``1">
+            <summary>
+            Creates simple request for running a local binary-stage build.
+            Locally, this requires running the source-stage to compile and pack the Nuget packages first.
+            So the main objective is set to the predefined <see cref="T:JetBrains.Application.BuildScript.EntryPoints.EntryLocalRunBinaryStage"/>, and the binary stage objective is passed as the <see cref="T:JetBrains.Application.BuildScript.BinaryStageObjectiveArtifact"/> artifact.
+            </summary>
+            <typeparam name="TBinaryStageObjective">Objective for the second, binary stage.</typeparam>
+        </member>
+        <member name="M:JetBrains.UI.Build.App.SimpleBuildRequest.CreateBinaryStage``1(System.Object[])">
             <summary>
             Creates simple request for running a local binary-stage build.
             Locally, this requires running the source-stage to compile and pack the Nuget packages first.
@@ -805,6 +818,83 @@
             The typed value, live.
             </summary>
         </member>
+        <member name="T:JetBrains.UI.Build.App.LocalSettings.SyncInputArtifactStringsFromLocalSettings">
+            <summary>
+            Syncs the <see cref="T:JetBrains.UI.Build.App.InputArtifactStringTable"/> arts with external sources.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.ToolWindowManagement.ToolWindowDescriptor">
+            <summary>
+            Base type for tool window descriptors
+            </summary>
+        </member>
+        <member name="M:JetBrains.TreeModels.ITreeModelNode.Reinitialize">
+            <remarks>
+            Performance optimization.
+            Original approach based on subscriptions to Model.Filter was way too slow.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.TreeModels.TreeModel.Update">
+            <summary>
+            Executes update forcibly on the tree model
+            </summary>
+        </member>
+        <member name="M:JetBrains.TreeModels.TreeModel.BeginUpdate">
+            <summary>
+            Increments internal counter, which prevents updates if greater then zero
+            </summary>
+        </member>
+        <member name="M:JetBrains.TreeModels.TreeModel.EndUpdate">
+            <summary>
+            Decrements internal counter, which prevents updates if greater then zero. 
+            When counter reaches zero and update is needed, it is executed
+            </summary>
+        </member>
+        <member name="M:JetBrains.TreeModels.TreeModel.GetNodeContainer(JetBrains.TreeModels.TreeModelNode)">
+            <summary>
+            Gets node which is container of the specified node
+            </summary>
+            <param name="node">Child node</param>
+            <returns>Instance of <see cref="T:JetBrains.TreeModels.TreeModelNode"/> which contains specified node</returns>
+            <remarks>This is not the same as getting Parent in the multi-model scenario. In simple models it just returns Parent.</remarks>
+        </member>
+        <member name="M:JetBrains.TreeModels.TreeModel.GetNodes(System.Object)">
+            <summary>
+            Gets collection of nodes associated with the specified dataValue
+            </summary>
+            <param name="dataValue">Data value</param>
+            <returns>Collection of associated nodes</returns>
+        </member>
+        <member name="P:JetBrains.TreeModels.TreeModel.Roots">
+            <summary>
+            Gets read-only collection of model roots
+            </summary>
+        </member>
+        <member name="P:JetBrains.TreeModels.TreeModel.RootsUnsorted">
+            <summary>
+            Gets unsorted read-only collection of model roots
+            </summary>
+        </member>
+        <member name="P:JetBrains.TreeModels.TreeModel.InUpdate">
+            <summary>
+            Gets value indicating if update is currently running
+            </summary>
+        </member>
+        <member name="P:JetBrains.TreeModels.TreeModel.Comparer">
+            <summary>
+            Gets or sets comparer for model nodes, which is used to setup order in the model
+            </summary>
+        </member>
+        <member name="E:JetBrains.TreeModels.TreeModel.Updating">
+            <summary>
+            Raised when update is about to happen
+            </summary>
+        </member>
+        <member name="E:JetBrains.TreeModels.TreeModel.Updated">
+            <summary>
+            Raised when update has been finished
+            </summary>
+        </member>
         <member name="T:JetBrains.UI.Application.Env.HideSplashScreen">
             <summary>
             After the main window is ready, hides the splash screen.
@@ -823,7 +913,7 @@
         <member name="M:JetBrains.UI.Application.Env.Launcher.ConsoleMain">
             <summary>
             The console entry point for calling from the native part.
-            Expects to have the full set of components written in resources, including the list of the application packages.
+            Expects to have the partial set of components written in resources, like host name and environment zone, while the set of the application packages is collected ad-hoc based on what's found in the application folder.
             </summary>
             <returns>The exit code for the process.</returns>
         </member>
@@ -844,11 +934,21 @@
             Refer to this if you need to get the <see cref="T:JetBrains.Build.Serialization.AssemblyQualifiedTypeMemberName"/> for the <see cref="M:JetBrains.UI.Application.Env.Launcher.ConsoleMainScattered"/> method of this launcher.
             </summary>
         </member>
+        <member name="F:JetBrains.UI.Application.Env.Launcher.MainMethod">
+            <summary>
+            Refer to this if you need to get the <see cref="T:JetBrains.Build.Serialization.AssemblyQualifiedTypeMemberName"/> for the <see cref="M:JetBrains.UI.Application.Env.Launcher.Main"/> method of this launcher.
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.Application.Env.Launcher.MainMethodScattered">
+            <summary>
+            Refer to this if you need to get the <see cref="T:JetBrains.Build.Serialization.AssemblyQualifiedTypeMemberName"/> for the <see cref="M:JetBrains.UI.Application.Env.Launcher.Main"/> method of this launcher.
+            </summary>
+        </member>
         <member name="M:JetBrains.UI.Application.Env.Launcher.Main">
             <summary>
             The GUI entry point for calling from the native part.
             Inits the simple GUI host, without the tabwell-required services.
-            Expects to have the full set of components written in resources, including the list of the application packages.
+            Expects to have the partial set of components written in resources, like host name and environment zone, while the set of the application packages is collected ad-hoc based on what's found in the application folder.
             </summary>
             <returns>The exit code for the process.</returns>
         </member>
@@ -856,7 +956,7 @@
             <summary>
             The GUI entry point for calling from the native part.
             Inits the simple GUI host, without the tabwell-required services.
-            Expects to have the partial set of components written in resources, like host name and product branding, while the set of the application packages is collected ad-hoc based on what's found in the application folder.
+            Expects to have the partial set of components written in resources, like host name and environment zone, while the set of the application packages is collected ad-hoc based on what's found in the application folder.
             </summary>
             <returns>The exit code for the process.</returns>
         </member>
@@ -866,16 +966,6 @@
             Mounts to an attempt to declare a host.
             </summary>
             <returns></returns>
-        </member>
-        <member name="F:JetBrains.UI.Application.Env.Launcher.MainMethod">
-            <summary>
-            Refer to this if you need to get the <see cref="T:JetBrains.Build.Serialization.AssemblyQualifiedTypeMemberName"/> for the <see cref="M:JetBrains.UI.Application.Env.Launcher.Main"/> method of this launcher.
-            </summary>
-        </member>
-        <member name="F:JetBrains.UI.Application.Env.Launcher.MainMethodScattered">
-            <summary>
-            Refer to this if you need to get the <see cref="T:JetBrains.Build.Serialization.AssemblyQualifiedTypeMemberName"/> for the <see cref="M:JetBrains.UI.Application.Env.Launcher.MainScattered"/> method of this launcher.
-            </summary>
         </member>
         <member name="T:JetBrains.UI.Application.Env.NativeComponentManagerProxyHostMixin">
             <summary>
@@ -913,11 +1003,6 @@
         <member name="F:JetBrains.UI.Build.App.LocalInstallAutomation.IsProductBinariesDirExplicitlySpecified">
             <summary>
             Means PBDA is specified as a final value, so the relative hint has no effect.
-            </summary>
-        </member>
-        <member name="T:JetBrains.UI.ToolWindowManagement.ToolWindowDescriptor">
-            <summary>
-            Base type for tool window descriptors
             </summary>
         </member>
         <member name="T:JetBrains.UI.ControlShowcase.ControlShowcaseView">
@@ -1066,6 +1151,16 @@
             Set to true if the command has been executed and there is no need for others to respond.
             </param>
         </member>
+        <member name="T:JetBrains.UI.Build.ProfileExplorerView">
+            <summary>
+            ProfileExplorerView
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.Build.ProfileExplorerView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:JetBrains.UI.CommandSinkBinding">
             <summary>
             A CommandBinding subclass that will attach its
@@ -1107,7 +1202,7 @@
             <param name="lifetimeRecording"></param>
             <param name="title"></param>
         </member>
-        <member name="M:JetBrains.UI.Build.App.BuildLog.ShowManunalLog(JetBrains.DataFlow.Lifetime,System.String)">
+        <member name="M:JetBrains.UI.Build.App.BuildLog.ShowManualLog(JetBrains.DataFlow.Lifetime,System.String,System.Boolean)">
             <summary>
             Shows the log tool window without attaching to any log source. Returns the collection which should be populated with log records by the caller.
             </summary>
@@ -1364,9 +1459,157 @@
             TODO: load icon with smth else but WIC actually, somewhen
             </summary>
         </member>
+        <member name="T:JetBrains.UI.PopupWindowManager.PopupWindowContext">
+            <summary>
+            The default implementation of the <see cref="T:JetBrains.UI.PopupWindowManager.IPopupWindowContext"/> interface.
+            Represents an empty window context and a base class for meaningful window contexts.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.PopupWindowManager.IPopupWindowContext">
+            <summary>
+            Represents the owning context for a popup window.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.CreateLayouter(JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Gets the default position provider for the view. 
+            Usually gets position provider which provides position bound to the current selection or insertion point of the view.
+            </summary>
+            <param name="lifetime">Lifetime for the layouter.</param>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireAnyOtherAction">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.AnyOtherAction"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireDeactivated">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Deactivated"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireScroll">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Scroll"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireSelectionChanged">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.SelectionChanged"/> event.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.AnyOtherAction">
+            <summary>
+            Fires when some action occurs in the context owner.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Deactivated">
+            <summary>
+            Fires when the context owner is deactivated.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.EscapePressed">
+            <summary>
+            Fires when the ESCAPE key is pressed in the owning context. Works as a stack of handlers instead of a multicast event, that is, always notifies only the most-recently-added event in the stack, and then removes it from the stack.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Scroll">
+            <summary>
+            Fires when the context owner is scrolled.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.SelectionChanged">
+            <summary>
+            Fires when selection changes in the context owner.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.#ctor(JetBrains.DataFlow.Lifetime,JetBrains.ActionManagement.IActionManager)">
+            <summary>
+            A protected constructor for use from the inheritors.
+            To get a default window context, use <see cref="T:System.Empty"/> instead.
+            </summary>
+            <param name="lifetime">Limiting lifetime.</param>
+            <param name="actionManager">Action manager, required for handling of the ESC action.</param>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.GetEmpty(JetBrains.DataFlow.Lifetime,JetBrains.UI.PopupWindowManager.MainWindowPopupWindowContext)">
+            <summary>
+            Gets the default popup window context.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.GetEmptySource(JetBrains.UI.PopupWindowManager.MainWindowPopupWindowContext)">
+            <summary>
+            Gets the default popup window context.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.CreateLayouter(JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Creates the default layouter that positiones its entities in the center of the DEVENV window.
+            </summary>
+            <param name="lifetime"></param>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireAnyOtherAction">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.AnyOtherAction"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireDeactivated">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.Deactivated"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireScroll">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.Scroll"/> event.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireSelectionChanged">
+            <summary>
+            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.SelectionChanged"/> event.
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.EscapePressed">
+            <summary>
+            Fires when the ESCAPE key is pressed in the owning context. Works as a stack of handlers instead of a multicast event, that is, always notifies only the most-recently-added event in the stack, and then removes it from the stack.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.Components.Theming.ThemingResourceKey">
+            <summary>
+            You can get the <see cref="T:JetBrains.UI.Theming.ITheming"/> instance from <see cref="T:JetBrains.UI.Wpf.IPlatformResourceDictionary"/> (which is universally available in WPF UI) with this resource key. All instances of this class are equal to each other.
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.Components.Theming.ThemingResourceKey.Key">
+            <summary>
+            An example key instance. All instances of this key are equal to each other.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.ActionsRevised.IActionWithFallback">
+            <summary>
+            The interface allows Priority Command Target handler to control VS command overriding.
+            1) VS's command overridden by an an action with update requirements is executing. The interface gives an ability to process VS QueryStatus synchronously, 
+            and make a decision whether to override the VS command or to let it to be executed.
+            2) R#'s command that overrides VS command is executing. The interface gives an ability to fall back to VS command and not to execute R#'s action.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.ActionsRevised.IRefactoringAction">
+            <summary>
+            A marker interface that allows VsOleCommandTargetHandler to process overridding VS commands.
+            </summary>
+        </member>
         <member name="T:JetBrains.UI.ActionSystem.Text.TextControlActions">
             <summary>
             TODO: review, try to make a common model of VS typing handling and text control impl actions.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.SrcView.ContextNotifications.ContextNotificationControl">
+            <summary>
+            Interaction logic for BackgroundNotificationControl.xaml
+            </summary>
+            <summary>
+            ContextNotificationControl
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.SrcView.ContextNotifications.ContextNotificationControl.InitializeComponent">
+            <summary>
+            InitializeComponent
             </summary>
         </member>
         <member name="M:JetBrains.UI.ActionSystem.ActionBar.ActionsAsyncAvailability.Prepare(JetBrains.DataFlow.Lifetime)">
@@ -1537,6 +1780,219 @@
             Gets or sets selected index
             </summary>
         </member>
+        <member name="T:JetBrains.CommonControls.RichTextTipPainter">
+            <summary>
+            Tip painter which paints tips with simple multiline formatted text.
+            Reflows the text if the width does not fit.
+            </summary>
+        </member>
+        <member name="T:JetBrains.CommonControls.IWindowlessControl">
+            <summary>
+            An interface for the objects that implement a part of the control.
+            </summary>
+        </member>
+        <member name="T:JetBrains.CommonControls.IConstrainableControl">
+            <summary>
+            An interface that extends the standard control functionality by allowing it to negotiate for its size and focus on activation.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.IConstrainableControl.GetDesiredSize(JetBrains.UI.IGraphicsContainer,System.Drawing.Size)">
+            <summary>
+            Performs the bottom-up layouting stage, when the control calculates its desired size using the given constraints.
+            Should give generally the same results as <see cref="T:JetBrains.CommonControls.IConstrainableControl"/>, but could employ the <paramref name="gc"/> device context for the sake of optimization.
+            </summary>
+            <param name="gc">The device context to measure against.</param>
+            <param name="limit">The maximum available space (that could affect the shape of the control, or strip down unnecessary calculations over the invisible items).
+            May be a <see cref="T:System.Drawing.Size"/> with width and height equal to <see cref="F:System.Int32.MaxValue"/>, which means that the size is not limited.</param>
+            <returns>The desired size, must be no larger than <paramref name="limit"/>.</returns>
+        </member>
+        <member name="M:JetBrains.CommonControls.IConstrainableControl.SetLayout(JetBrains.UI.LayoutResult)">
+            <summary>
+            Tells the control the details about the new layout applied to it by the controlling entity in conjunction with some <see cref="T:JetBrains.UI.IPopupLayouter"/>.
+            Typically, the control need not apply the given size and location because that should be done by the controlling entity.
+            The control may change its presentation in response to the layouting details, for example, whether it's attached to the top or the bottom of the anchoring rect.
+            </summary>
+            <param name="layout">The layouting details.</param>
+        </member>
+        <member name="P:JetBrains.CommonControls.IConstrainableControl.AutoActivate">
+            <summary>
+            Gets or sets whether the control should be activated initially when it's shown.
+            The typical implementation for a form is to return a negative of this value from the <see cref="P:System.Windows.Forms.Form.ShowWithoutActivation"/> override.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.IConstrainableControl.WantsResize">
+            <summary>
+            Fires when the control would like to be reasked of its desired size.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.IWindowlessControl.Paint(System.Drawing.Graphics)">
+            <summary>
+            Renders the context of the windowless control. The rendering bounds are given by the most recent call to the <see cref="M:JetBrains.CommonControls.IWindowlessControl.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)"/> method.
+            </summary>
+            <param name="g">The device context.</param>
+        </member>
+        <member name="M:JetBrains.CommonControls.IWindowlessControl.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)">
+            <summary>
+            Performs the top-down layouting stage, when the control lais out its parts within the given bounds.
+            </summary>
+            <param name="gc">The device context to measure against.</param>
+            <param name="bounds">The new bounds. From now on, this value should be returned from the <see cref="P:JetBrains.CommonControls.IWindowlessControl.Bounds"/> property.</param>
+        </member>
+        <member name="P:JetBrains.CommonControls.IWindowlessControl.Bounds">
+            <summary>
+            The windowless control bounds in the parent coordinates. The implementor should just store and return the value set by the owner.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.IWindowlessControl.GottenDirty">
+            <summary>
+            The control has gotten dirty and should be repainted.
+            </summary>
+        </member>
+        <member name="T:JetBrains.CommonControls.IHaveRenderParams">
+            <summary>
+            The property for control views, especially <see cref="T:JetBrains.CommonControls.IWindowlessControl"/>-based, which use render params for setting up their render.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.IHaveRenderParams.RenderParams">
+            <summary>
+            <para>Gets or sets the rendering aspect.</para>
+            <para>Must not be <c>Null</c>.</para>
+            <para>A live property, so that the control could fire the layout recalculation events on its change.</para>
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myBounds">
+            <summary>
+            Bounds, as assigned by the parent.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myDesiredBlockSize">
+            <summary>
+            The desired size of the <see cref="F:JetBrains.CommonControls.RichTextTipPainter.myRichTextBlock"/>, in absence of any external constraints.
+            Lazily-calculated, <c>Null</c> when invalid.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlock">
+            <summary>
+            Reflowed content, lazily-created.
+            Use the <see cref="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)"/> method.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlockUpToDate">
+            <summary>
+            Whether the <see cref="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlock"/> is valid. Use <see cref="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myRenderParams">
+            <summary>
+            Rendering aspect.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myRichTextBlock">
+            <summary>
+            Content.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myWidthConstraint">
+            <summary>
+            The current width constraint.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myWantsResize">
+            <summary>
+            Fires when the control would like to be reasked of its desired size.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichText)">
+            <summary>
+            Creates the painter over a rich text.
+            If the text contains line breaks, it's split into several <see cref="P:JetBrains.CommonControls.RichTextTipPainter.RichTextBlock"/> lines.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichTextBlock,JetBrains.UI.RenderParams)">
+            <summary>
+            Creates the painter over a rich text block.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichTextBlock)">
+            <summary>
+            Creates the painter over a rich text block.
+            </summary>
+        </member>
+        <member name="F:JetBrains.CommonControls.RichTextTipPainter.BorderSize">
+            <summary>
+            Size of the padding around the text.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)">
+            <summary>
+            Gets the reflowed rich text block.
+            Lazily reflows the original block if needed.
+            </summary>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.GetDesiredSize(JetBrains.UI.IGraphicsContainer,System.Drawing.Size)">
+            <summary>
+            Performs the bottom-up layouting stage, when the control calculates its desired size using the given constraints.
+            Should give generally the same results as <see cref="T:JetBrains.CommonControls.IConstrainableControl"/>, but could employ the <paramref name="gc"/> device context for the sake of optimization.
+            </summary>
+            <param name="gc">The device context to measure against.</param>
+            <param name="limit">The maximum available space (that could affect the shape of the control, or strip down unnecessary calculations over the invisible items).
+            May be a <see cref="T:System.Drawing.Size"/> with width and height equal to <see cref="F:System.Int32.MaxValue"/>, which means that the size is not limited.</param>
+            <returns>The desired size, must be no larger than <paramref name="limit"/>.</returns>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.Paint(System.Drawing.Graphics)">
+            <summary>
+            Renders the context of the windowless control. The rendering bounds are given by the 
+            </summary>
+            <param name="g"></param>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)">
+            <summary>
+            Performs the top-down layouting stage, when the control lais out its parts within the given bounds.
+            </summary>
+            <param name="gc">The device context to measure against.</param>
+            <param name="bounds">The available space.</param>
+        </member>
+        <member name="M:JetBrains.CommonControls.RichTextTipPainter.SetLayout(JetBrains.UI.LayoutResult)">
+            <summary>
+            Tells the control the details about the new layout applied to it by the controlling entity in conjunction with some <see cref="T:JetBrains.UI.IPopupLayouter"/>.
+            Typically, the control need not apply the given size and location because that should be done by the controlling entity.
+            The control may change its presentation in response to the layouting details, for example, whether it's attached to the top or the bottom of the anchoring rect.
+            </summary>
+            <param name="layout">The layouting details.</param>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.RichTextBlock">
+            <summary>
+            Gets or sets the content.
+            Must not be <c>Null</c>.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.RenderParams">
+            <summary>
+            Gets or sets the rendering aspect.
+            Must not be <c>Null</c>.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.AutoActivate">
+            <summary>
+            Gets or sets whether the control should be activated initially when it's shown.
+            The typical implementation for a form is to return a negative of this value from the <see cref="P:System.Windows.Forms.Form.ShowWithoutActivation"/> override.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.Bounds">
+            <summary>
+            The windowless control bounds in the parent coordinates. The implementor should just store and return the value set by the owner.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.GottenDirty">
+            <summary>
+            The control has gotten dirty and should be repainted.
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.RichTextTipPainter.WantsResize">
+            <summary>
+            Fires when the control would like to be reasked of its desired size.
+            </summary>
+        </member>
         <member name="E:JetBrains.UI.Controls.SearchTextBox.Search">
             <summary>
             Event to handle explicit user request to search
@@ -1553,11 +2009,30 @@
             Gets whether <see cref="T:JetBrains.UI.Controls.SearchTextBox"/> has any text
             </summary>
         </member>
+        <member name="P:JetBrains.UI.Controls.SearchTextBox.Delay">
+            <summary>
+            Gets or sets milliseconds before Search event will be triggered
+            </summary>
+        </member>
         <member name="P:JetBrains.UI.Controls.SearchTextBox.ListenOn">
             <summary>
             Gets or sets control where text input will be listen 
             and intercept automatically in case of it is not handled
             </summary>
+        </member>
+        <member name="T:JetBrains.CommonControls.ToolStripEx">
+            <summary>
+            This class adds click-through behaviour to ToolStrip
+            </summary>
+        </member>
+        <member name="P:JetBrains.CommonControls.ToolStripEx.ClickThrough">
+            <summary>
+            Gets or sets whether the ToolStripEx honors item clicks when its containing form does
+            not have input focus.
+            </summary>
+            <remarks>
+            Default value is false, which is the same behavior provided by the base ToolStrip class.
+            </remarks>
         </member>
         <member name="T:JetBrains.UI.TreeGrid.FiltersCollection">
             <summary>
@@ -1586,6 +2061,600 @@
             NOTE: set of filters cannot be changed because we cannot notify client (=tree) of the filter change to make it re-calculate.
             Use the <see cref="T:JetBrains.UI.TreeGrid.FiltersCollection"/> class on your view model if you want to change the set of filters dynamically.
             </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Automation.TreeGridRowAutomationPeer">
+            <summary>
+            Exposes <see cref="T:JetBrains.UI.TreeGrid.TreeGridRow"/> types to UI Automation
+            to manupulate <see cref="T:JetBrains.UI.TreeGrid.TreeGridRow"/> for testing purpose.
+            Actually, due to UI virtualization, <see cref="T:JetBrains.UI.TreeGrid.TreeGridRow"/> containers 
+            might be inaccasable, so the peer uses an internal <see cref="T:JetBrains.UI.TreeGrid.TreeGridNode"/> to make possible interation with rows.
+            Supports ExpandCollapse, SelectionItem and ScrollItem control patterns
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Automation.TreeGridViewAutomationPeer">
+            <summary>
+            Exposes <see cref="T:JetBrains.UI.TreeGrid.TreeGridView"/> types to UI Automation
+            to manupulate <see cref="T:JetBrains.UI.TreeGrid.TreeGridView"/> for testing purpose.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IChildrenProvider.FetchCount(System.Object)">
+            <summary>
+            Gets current count of children for the given node
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IChildrenProvider.FetchChildren(System.Object,System.Int32,System.Int32)">
+            <summary>
+            Gets children of the given node from the given index to index + count (or actual number of children)
+            </summary>
+            <param name="node">Node (or null in case of root)</param>
+            <param name="index">Index of the first item</param>
+            <param name="count">Number of children to get or Int32.MaxValue to get all children</param>
+            <returns></returns>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IChildrenProvider.HasChildren(System.Object)">
+            <summary>
+            Gets wheather the given node has children
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IChildrenProvider.IndexOf(System.Object,System.Object)">
+            <summary>
+            Gets index of child in parent's children colleciton, 
+            or -1 in case of the child is not found in the parent's collection
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IChildrenProvider.GetChangeProvider(System.Object)">
+            <summary>
+            Gets INotifyCollectionChanged which rorresponds to children collection of the given node
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.BindingChildrenProvider">
+            <summary>
+            Represents implementation to provide children via binding
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.ChildrenProvider`1">
+            <summary>
+            Represents implementation to provide children via callback
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.SelfreferenceChildrenProvider">
+            <summary>
+            Represents fallback implementation to detect children automatically.
+            The provider detects 'children property' if type has a property 
+            of IEnumerable or Array with the same type or close one.
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.DragDrop.DragDropPopup.DragItemProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for DragItem.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.DragDrop.DragDropPopup.DragItem">
+            <summary>
+            Gets or sets drag item
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Filters.CachedFilterDescriptor">
+            <summary>
+            Caches acceptability of items and optionally propagetes firm 'true' acceptability 
+            through hierarchy to avoid futher additional traversing
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.IFilterDescriptor">
+            <summary>
+            <see cref="T:JetBrains.UI.TreeGrid.TreeGridView"/> item filtration extensibility point
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.IFilterDescriptor.IsAccepted(System.Object)">
+            <summary>
+            Returns a value indicating if the given item is accepted and should be shown to user
+            </summary>
+            <param name="item">Data item</param>
+            <returns>
+            true - node is accepted itself and should be shown to user
+            null - node is not accepted itself, however one of its children might be
+            false - node is not accepted and shouldn't be shown to user, although one of its children might be
+            </returns>
+            <remarks>
+            In case you are implementing per item filtering without knowleadge about children items you should return true if item accepted itself and null otherwise.
+            In case you have knowledge about sub items, it would be more optimal to return true and false as final results.
+            </remarks>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.CachedFilterDescriptor.#ctor(JetBrains.UI.TreeGrid.Revised.IFilterDescriptor,System.Func{System.Object,System.Object})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="filterDescriptor"></param>
+            <param name="getParent"></param>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Filters.DelegateFilterDescriptor`1">
+            <summary>
+            Represent filtration using <see cref="T:System.Func`2"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.DelegateFilterDescriptor`1.#ctor(System.Func{`0,System.Nullable{System.Boolean}})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="function">It should return false to hide element, true to show, null to define that occurences still can be amoung its children</param>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.DelegateFilterDescriptor`1.IsAccepted(System.Object)">
+            <summary>
+            Should return true if item is filtered and should be hidden
+            </summary>
+            <param name="item">Data item</param>
+            <returns></returns>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Filters.PredicateFilterDescriptor`1">
+            <summary>
+            Represent filtration using <see cref="!:Predicate&lt;T&gt;"/>
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.PredicateFilterDescriptor`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.PredicateFilterDescriptor`1.#ctor(System.Predicate{`0},System.Boolean)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="predicate">It should return false to hide element</param>
+            <param name="finalValue">Determines whether the predicate false-value is consiredering as final value for filtering. If finalValue false, IsAccepted will return null in case of false predicate value</param>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Filters.PredicateFilterDescriptor`1.IsAccepted(System.Object)">
+            <summary>
+            Should return true if item is filtered and should be hidden
+            </summary>
+            <param name="item">Data item</param>
+            <returns></returns>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.Filters.PredicateFilterDescriptor`1.Predicate">
+            <summary>
+            Gets the predicate. It should return true to hide element
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Helpers.WeakEventListener`1">
+            <summary>
+            A common weak event listener which can be used for different kinds of events.
+            </summary>
+            <typeparam name="TEventArgs">The EventArgs type for the event.</typeparam>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Helpers.WeakEventListener`1.#ctor(System.EventHandler{`0})">
+            <summary>
+            Initializes a new instance of the WeakEventListener class.
+            </summary>
+            <param name="handler">The handler for the event.</param>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.Helpers.WeakEventListener`1.System#Windows#IWeakEventListener#ReceiveWeakEvent(System.Type,System.Object,System.EventArgs)">
+            <summary>
+            Receives events from the centralized event manager.
+            </summary>
+            <param name="managerType">The type of the WeakEventManager calling this method.</param>
+            <param name="sender">Object that originated the event.</param>
+            <param name="e">Event data.</param>
+            <returns>
+            true if the listener handled the event. It is considered an error by the WeakEventManager handling in WPF to register a listener for an event that the listener does not handle. Regardless, the method should return false if it receives an event that it does not recognize or handle.
+            </returns>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.DefaultParentProvider">
+            <summary>
+            Default implementation via straightforward traversal, 
+            appropriate only for 'trees' of few nodes and should be avoided in other cases
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.ItemsProjectionIterator">
+            <summary>
+            Helps to iterate items of tree as if they are flattened
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Primitives.ExpanderTrianglePresentation">
+            <summary>
+            Represents high-performance control to visualize state of expansion of an TreeGrid item
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.Primitives.SortDirectionPresentation">
+            <summary>
+            Represents high-performance control to visualize sorting direction of an TreeGrid column
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.SortDescriptors.SortDescription">
+            <summary>
+            Represents general usage implementation <see cref="T:JetBrains.UI.TreeGrid.Revised.ISortDescription"/>
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.TreeGridColumn">
+            <summary>
+            Represents a column in <see cref="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.TreeGridView"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.ResizableProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Resizable.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.IsSortColumnProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Level.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.IsDragOverProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for IsDragOver.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.Resizable">
+            <summary>
+            Defines whether it can be resized or it should be fixed. 
+            It should be used as trigger in a corresponding Style / ControlTemplate
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.IsSortColumn">
+            <summary>
+            Gets whether this column is used to sort
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumn.IsDragOver">
+            <summary>
+            Gets whether drop is ready to be performed on the column to insert other one after this
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.TreeGridColumnResizeEventArgs">
+            <summary>
+            Event arguments for TreeGrid column resizing
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridColumnResizeEventArgs.#ctor(System.Double)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="offset">Absolute offset in pixels from drag start point horizontally</param>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnResizeEventArgs.Offset">
+            <summary>
+            Gets absolute offset in pixels from drag start point horizontally
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition">
+            <summary>
+            User definition of column
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.HasExpanderProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for HasExpander.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.HeaderProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for Header.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellTemplateProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellTemplate.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.IsEditableProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for IsEditable.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellEditingTemplateProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellEditingTemplate.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellEditingTemplateSelectorProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellTemplateSelector. 
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellTemplateSelectorProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellTemplateSelector. 
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellMemberPathProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellMemberPath.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellStyleProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellStyle. 
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellStyleSelectorProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for CellStyleSelector.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.SortMemberPathProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SortMemberPath. 
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.Name">
+            Gets or sets column's name
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.WidthChanged">
+            <summary>
+            Occurs when column's width changed
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.Width">
+            <summary>
+            Gets or sets initial width of the column
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.MinWidthChanged">
+            <summary>
+            Occurs when column's minwidth changed
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.MinWidth">
+            <summary>
+            Gets or sets minimal width of the column
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.MaxWidthChanged">
+            <summary>
+            Occurs when column's maxwidth changed
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.MaxWidth">
+            <summary>
+            Gets or sets maximum width of the column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.Resizable">
+            <summary>
+            Gets or sets whether the column is allowed to be re-sized by user
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.HasExpander">
+            <summary>
+            Gets or sets whether this column contains expander
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.HasExpanderChanged">
+            <summary>
+            Occurs when HasExpander property has been changed
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.Header">
+            <summary>
+            Gets or sets header of column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellTemplate">
+            <summary>
+            Gets or sets data template to fill cells of this column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.IsEditable">
+            <summary>
+            Gets or sets whether cells can be edited
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellEditingTemplate">
+            <summary>
+            Gets or sets template for inplace editors
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellEditingTemplateSelector">
+            <summary>
+            Gets or sets a custom logic how to select data template for cells corresponding to the column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellTemplateSelector">
+            <summary>
+            Gets or sets a custom logic how to select data template for cells corresponding to the column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellMemberPath">
+            <summary>
+            Gets or sets path to the member of data model which will be presented in cells
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellMemberGetter">
+            <summary>
+            Gets or sets function to retrieve a member of data model which will be presented in cells
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellStyle">
+            <summary>
+            Gets or sets style for cells corresponding to the column
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.CellStyleSelector">
+            <summary>
+            Gets or sets a selector to choose style applying to corresponding cells
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.ActualWidth">
+            <summary>
+            Gets actual current width of columns since last update of column sizes has been performed
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition.Sortable">
+            <summary>
+            Gets or sets whether it is soratble column (i.e. user can click to sort by column)
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinitionCollection.UpdateColumnDesiredWidths(System.Double[],System.Boolean)">
+            <summary>
+            Updates desired width via growing of TreeGridColumnDefinition.DesiredWidth values
+            </summary>
+            <param name="desiredWidths">Desired widths in current viewport</param>
+            <param name="growOnly">Specify true in case of column widths should grow only</param>
+            <returns>True if one of desired withs has been changed</returns>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridView.ColumnDefinitionsProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for ColumnDefinitions.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridView.SortColumnProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SortColumn.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridView.SortDirectionProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SortDirection.  This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="F:JetBrains.UI.TreeGrid.Revised.TreeGridView.SelectedItemProperty">
+            <summary>
+            Using a DependencyProperty as the backing store for SelectedItem.  
+            This enables animation, styling, binding, etc...
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.UsingAccessBrackets">
+            <summary>
+            Using brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.CatchBrackets(System.Action)">
+            <summary>
+            Catch exceptions, use access brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.CatchBrackets``1(System.Func{``0})">
+            <summary>
+            Catch exceptions, use access brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.ExpandAll(System.Nullable{System.Int32})">
+            <summary>
+            Expand all nodes
+            </summary>
+            <param name="maxLevels">How deep we can expand or null (MaxLevelsExpansion will be used)</param>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.ExpandAll(System.Object,System.Nullable{System.Int32})">
+            <summary>
+            Expand all nodes starting with the given node
+            </summary>
+            <param name="item">Node to start expansion process</param>
+            <param name="maxLevels">How deep we can expand or null (MaxLevelsExpansion will be used)</param>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridView.Print">
+            <summary>
+            Print current structure (for debug perpose)
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.AllowAutomaticArrangement">
+            <summary>
+            Gets or sets whether the control should sort and filter items. 
+            It should be switched off in case of arrangement is performed by view models or no arrangement is performed at all
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.MaxLevelsExpansion">
+            <summary>
+            Gets or sets how many levels will be expanded by default 
+            with method ExpandAll and when user press '*'
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.AllowAutoExpandSingleChild">
+            <summary>
+            Gets or sets whether tree should automatically expand nodes with single child
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.ShowColumnHeaders">
+            <summary>
+            Defines whether column headers should be shown. 
+            Note, that if all column definitions have no header set, it is hidden 
+            automatically no matter what value the propery has
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridView.SortColumnChanged">
+            <summary>
+            Occurs when SortColumn value changes
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.SortColumn">
+            <summary>
+            Gets or sets <see cref="T:JetBrains.UI.TreeGrid.Revised.TreeGridColumnDefinition"/> which is using to sort items. 
+            Note, it has no effect if SortDescription set up
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.SortDirection">
+            <summary>
+            Gets or sets sort direction
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridView.SelectedItemChanged">
+            <summary>
+            Occurs when SelectedItem changes
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.SelectedItem">
+            <summary>
+            Gets or sets selected item of <see cref="T:JetBrains.UI.TreeGrid.TreeGridView1"/>
+            </summary>
+        </member>
+        <member name="E:JetBrains.UI.TreeGrid.Revised.TreeGridView.SelectedItemsChanged">
+            <summary>
+            Occurs when collection of selected items modified \
+            or replaced with another collection (in that case Reset will be fired)
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.FocusabilityProvider">
+            <summary>
+            Gets or sets a function to define focusability of nodes
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.SelectabilityProvider">
+            <summary>
+            Gets or sets a function to define selectability of nodes
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.TreeGrid.Revised.TreeGridView.AccessBrackets">
+            <summary>
+            Gets or sets brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridViewport.UsingAccessBrackets">
+            <summary>
+            Using brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridViewport.CatchBrackets(System.Action)">
+            <summary>
+            Catch exceptions, use access brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridViewport.CatchBrackets``1(System.Func{``0})">
+            <summary>
+            Catch exceptions, use access brackets to warp model access
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.TreeGrid.Revised.TreeGridViewport.MakeVisible(System.Windows.Media.Visual,System.Windows.Rect)">
+            <summary>
+            Forces content to scroll until the coordinate space of a <see cref="T:System.Windows.Media.Visual"/> object is visible. 
+            </summary>
+            <returns>
+            A <see cref="T:System.Windows.Rect"/> that is visible.
+            </returns>
+            <param name="visual">A <see cref="T:System.Windows.Media.Visual"/> that becomes visible.</param>
+            <param name="rectangle">A bounding rectangle that identifies the coordinate space to make visible.</param>
         </member>
         <member name="T:JetBrains.UI.TreeGrid.Virtualization.Tests.IItemsProvider`1">
             <summary>
@@ -2120,7 +3189,7 @@
         </member>
         <member name="T:JetBrains.UI.Feedback.Pages.BugReportControl">
             <summary>
-            Interaction logic for BugReportControl.xaml
+              Interaction logic for BugReportControl.xaml
             </summary>
             <summary>
             BugReportControl
@@ -2133,7 +3202,7 @@
         </member>
         <member name="T:JetBrains.UI.Feedback.Pages.FeedbackReportControl">
             <summary>
-            Interaction logic for FeedbackReportControl.xaml
+              Interaction logic for FeedbackReportControl.xaml
             </summary>
             <summary>
             FeedbackReportControl
@@ -2308,6 +3377,32 @@
             </summary>
         </member>
         <member name="M:JetBrains.UI.License2.LicenseInformationWindow.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.License2.LicenseKeys.UserContactsControl">
+            <summary>
+            Interaction logic for UserContactsControl.xaml
+            </summary>
+            <summary>
+            UserContactsControl
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.License2.LicenseKeys.UserContactsControl.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.License2.LicenseKeys.UserContactsWindow">
+            <summary>
+            Interaction logic for UserContactsWindow.xaml
+            </summary>
+            <summary>
+            UserContactsWindow
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.License2.LicenseKeys.UserContactsWindow.InitializeComponent">
             <summary>
             InitializeComponent
             </summary>
@@ -2635,14 +3730,58 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="T:JetBrains.UI.Application.NullMainWindow">
+        <member name="T:JetBrains.UI.LastKnownGoodAnchoringRect">
             <summary>
-            The base fallback implementation of the main window interface. Overridden with the real window in all interactive environments.
+            An anchor that allows only valid values from another anchor.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.AnchoringRect">
+            <summary>
+            The basic implementation of the <see cref="T:JetBrains.UI.IAnchoringRect"/> interface.
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.IAnchoringRect">
+            <summary>
+            Represents a dynamic anchoring rectangle against this some controls could be laid out.
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.IAnchoringRect.Rectangle">
+            <summary>
+            Gets the current value of the anchoring rectangle.
+            Note that, depending on the context, it could be either in client, screen, or any other coordinates.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.AnchoringRect.ToString">
+            <summary>
+            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </summary>
+            
+            <returns>
+            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
+            </returns>
+            <filterpriority>2</filterpriority>
+        </member>
+        <member name="P:JetBrains.UI.AnchoringRect.Rectangle">
+            <summary>
+            Gets or sets the current value of the anchoring rectangle.
+            Note that, depending on the context, it could be either in client, screen, or any other coordinates.
+            The setter fires the “changed” event.
             </summary>
         </member>
         <member name="T:JetBrains.UI.Application.IMainWindow">
             <summary>
             Represents the main window of the application.
+            </summary>
+        </member>
+        <member name="P:JetBrains.UI.StdApplicationUI.IWpfMainWindow.MainWindow">
+            <summary>
+            Gets the main window of the application as a WPF <see cref="T:System.Windows.Window"/> object.
+            </summary>
+            <remarks>In the current standalone application implementation, it is always non-NULL and set to the same instance. However, to prepare clients for possible multi-main-window environments, it's a live property.</remarks>
+        </member>
+        <member name="T:JetBrains.UI.Application.NullMainWindow">
+            <summary>
+            The base fallback implementation of the main window interface. Overridden with the real window in all interactive environments.
             </summary>
         </member>
         <member name="F:JetBrains.UI.Updates.Actions.TestUpdatesXsltDialog.components">
@@ -2740,7 +3879,7 @@
         <member name="F:JetBrains.UI.Updates.UpdateInfo.ProductFullName">
             <summary>
             <para>Full name of the product installed by this update, which includes the product name plus any marketing version. This should not include the company name.</para>
-            <para><see cref="P:JetBrains.Application.IApplicationDescriptor.ProductFullName"/> for JetBrains products.</para>
+            <para><see cref="!:IApplicationDescriptor.ProductFullName"/> for JetBrains products.</para>
             <para><see cref="F:JetBrains.UI.Updates.UpdateInfo.ProductName"/> will be used if not specified.</para>
             <para>Optional.</para>
             </summary>
@@ -3262,7 +4401,7 @@
         <member name="P:JetBrains.UI.Updates.UpdatesManagerCategories.ShellProductCategory">
             <summary>
             <para>Gets the default <see cref="T:JetBrains.UI.Updates.UpdatesManager"/> <see cref="T:JetBrains.UI.Updates.UpdatesCategory"/> for the product currently running the Shell.</para>
-            <para>May be missing if there are no updates for the product (<see cref="P:JetBrains.Application.IApplicationDescriptor.UpdatesFilterUri"/> == <c>Null</c>).</para>
+            <para>May be missing if there are no updates for the product (<see cref="!:IApplicationDescriptor.UpdatesFilterUri"/> == <c>Null</c>).</para>
             </summary>
         </member>
         <member name="T:JetBrains.UI.Updates.UpdatesPage">
@@ -3310,7 +4449,7 @@
         <member name="P:JetBrains.UI.Updates.UpdatesShellProductCategoryOwner.Category">
             <summary>
             Gets the updates category this object maintains.
-            May be missing if there are no updates for the product (<see cref="P:JetBrains.Application.IApplicationDescriptor.UpdatesFilterUri"/> == <c>Null</c>).
+            May be missing if there are no updates for the product (<see cref="!:IApplicationDescriptor.UpdatesFilterUri"/> == <c>Null</c>).
             </summary>
         </member>
         <member name="T:JetBrains.UI.Wpf.Controls.StringCollectionEdit.Impl.Buttons.ButtonView">
@@ -3380,40 +4519,6 @@
             Visually reflects the state backended by <see cref="T:JetBrains.UI.PopupMenu.Impl.JetPopupMenuDoc"/>.
             Implements the control that is displayed by the <see cref="!:JetPopupMenu.Show()"/> method.
             Do not create directly, use <see cref="T:JetBrains.UI.PopupMenu.JetPopupMenu"/> frontend instead.
-            </summary>
-        </member>
-        <member name="T:JetBrains.CommonControls.IConstrainableControl">
-            <summary>
-            An interface that extends the standard control functionality by allowing it to negotiate for its size and focus on activation.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.IConstrainableControl.GetDesiredSize(JetBrains.UI.IGraphicsContainer,System.Drawing.Size)">
-            <summary>
-            Performs the bottom-up layouting stage, when the control calculates its desired size using the given constraints.
-            Should give generally the same results as <see cref="T:JetBrains.CommonControls.IConstrainableControl"/>, but could employ the <paramref name="gc"/> device context for the sake of optimization.
-            </summary>
-            <param name="gc">The device context to measure against.</param>
-            <param name="limit">The maximum available space (that could affect the shape of the control, or strip down unnecessary calculations over the invisible items).
-            May be a <see cref="T:System.Drawing.Size"/> with width and height equal to <see cref="F:System.Int32.MaxValue"/>, which means that the size is not limited.</param>
-            <returns>The desired size, must be no larger than <paramref name="limit"/>.</returns>
-        </member>
-        <member name="M:JetBrains.CommonControls.IConstrainableControl.SetLayout(JetBrains.UI.LayoutResult)">
-            <summary>
-            Tells the control the details about the new layout applied to it by the controlling entity in conjunction with some <see cref="T:JetBrains.UI.IPopupLayouter"/>.
-            Typically, the control need not apply the given size and location because that should be done by the controlling entity.
-            The control may change its presentation in response to the layouting details, for example, whether it's attached to the top or the bottom of the anchoring rect.
-            </summary>
-            <param name="layout">The layouting details.</param>
-        </member>
-        <member name="P:JetBrains.CommonControls.IConstrainableControl.AutoActivate">
-            <summary>
-            Gets or sets whether the control should be activated initially when it's shown.
-            The typical implementation for a form is to return a negative of this value from the <see cref="P:System.Windows.Forms.Form.ShowWithoutActivation"/> override.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.IConstrainableControl.WantsResize">
-            <summary>
-            Fires when the control would like to be reasked of its desired size.
             </summary>
         </member>
         <member name="F:JetBrains.UI.PopupMenu.Impl.JetPopupMenuView.myOptionEnableMovingArrows">
@@ -3780,6 +4885,11 @@
         <member name="P:JetBrains.UI.Diagramming.DiagramGraphBase.Nodes">
             <summary>
             group nodes not included here
+            </summary>
+        </member>
+        <member name="T:JetBrains.UI.Application.BroadcastUtil">
+            <summary>
+            Using UTF16 little-endian
             </summary>
         </member>
         <member name="T:JetBrains.UI.Options.OptionPagesDiagnostics">
@@ -5815,6 +6925,150 @@
               <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MenuItemCheck&gt;()        // Icon image for rendering</code>
             </example>
         </member>
+        <member name="T:JetBrains.UI.Resources.CommonThemedIcons.MessageCritical">
+             <summary>
+              <para>
+                <para>Autogenerated identifier class for the MessageCritical Themed Icon.</para>
+                <para>Identifier classes should be used in attributes, XAML, or generic parameters. Where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected, use the identifier object in the <see cref="F:JetBrains.UI.Resources.CommonThemedIcons.MessageCritical.Id"/> field of the identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageCritical}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageCritical))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageCritical.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageCritical&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="F:JetBrains.UI.Resources.CommonThemedIcons.MessageCritical.Id">
+             <summary>
+              <para>
+                <para>Autogenerated identifier object for the MessageCritical Themed Icon.</para>
+                <para>Identifier objects should be used where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected. In attributes, XAML, or generic parameters use the containing <see cref="T:JetBrains.UI.Resources.CommonThemedIcons.MessageCritical"/> identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageCritical}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageCritical))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageCritical.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageCritical&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="T:JetBrains.UI.Resources.CommonThemedIcons.MessageInfo">
+             <summary>
+              <para>
+                <para>Autogenerated identifier class for the MessageInfo Themed Icon.</para>
+                <para>Identifier classes should be used in attributes, XAML, or generic parameters. Where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected, use the identifier object in the <see cref="F:JetBrains.UI.Resources.CommonThemedIcons.MessageInfo.Id"/> field of the identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageInfo}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageInfo))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageInfo.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageInfo&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="F:JetBrains.UI.Resources.CommonThemedIcons.MessageInfo.Id">
+             <summary>
+              <para>
+                <para>Autogenerated identifier object for the MessageInfo Themed Icon.</para>
+                <para>Identifier objects should be used where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected. In attributes, XAML, or generic parameters use the containing <see cref="T:JetBrains.UI.Resources.CommonThemedIcons.MessageInfo"/> identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageInfo}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageInfo))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageInfo.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageInfo&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="T:JetBrains.UI.Resources.CommonThemedIcons.MessageWarning">
+             <summary>
+              <para>
+                <para>Autogenerated identifier class for the MessageWarning Themed Icon.</para>
+                <para>Identifier classes should be used in attributes, XAML, or generic parameters. Where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected, use the identifier object in the <see cref="F:JetBrains.UI.Resources.CommonThemedIcons.MessageWarning.Id"/> field of the identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageWarning}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageWarning))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageWarning.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageWarning&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="F:JetBrains.UI.Resources.CommonThemedIcons.MessageWarning.Id">
+             <summary>
+              <para>
+                <para>Autogenerated identifier object for the MessageWarning Themed Icon.</para>
+                <para>Identifier objects should be used where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected. In attributes, XAML, or generic parameters use the containing <see cref="T:JetBrains.UI.Resources.CommonThemedIcons.MessageWarning"/> identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+MessageWarning}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.MessageWarning))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.MessageWarning.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.MessageWarning&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
         <member name="T:JetBrains.UI.Resources.CommonThemedIcons.Paste16x16">
              <summary>
               <para>
@@ -6197,6 +7451,102 @@
             </example>
             <example>
               <code>themediconmanager.GetIcon&lt;CommonThemedIcons.Remove&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="T:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerLeft">
+             <summary>
+              <para>
+                <para>Autogenerated identifier class for the ResizeCornerLeft Themed Icon.</para>
+                <para>Identifier classes should be used in attributes, XAML, or generic parameters. Where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected, use the identifier object in the <see cref="F:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerLeft.Id"/> field of the identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+ResizeCornerLeft}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.ResizeCornerLeft))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.ResizeCornerLeft.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.ResizeCornerLeft&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="F:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerLeft.Id">
+             <summary>
+              <para>
+                <para>Autogenerated identifier object for the ResizeCornerLeft Themed Icon.</para>
+                <para>Identifier objects should be used where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected. In attributes, XAML, or generic parameters use the containing <see cref="T:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerLeft"/> identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+ResizeCornerLeft}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.ResizeCornerLeft))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.ResizeCornerLeft.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.ResizeCornerLeft&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="T:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerRight">
+             <summary>
+              <para>
+                <para>Autogenerated identifier class for the ResizeCornerRight Themed Icon.</para>
+                <para>Identifier classes should be used in attributes, XAML, or generic parameters. Where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected, use the identifier object in the <see cref="F:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerRight.Id"/> field of the identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+ResizeCornerRight}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.ResizeCornerRight))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.ResizeCornerRight.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.ResizeCornerRight&gt;()        // Icon image for rendering</code>
+            </example>
+        </member>
+        <member name="F:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerRight.Id">
+             <summary>
+              <para>
+                <para>Autogenerated identifier object for the ResizeCornerRight Themed Icon.</para>
+                <para>Identifier objects should be used where an <see cref="T:JetBrains.UI.Icons.IconId"/> value is expected. In attributes, XAML, or generic parameters use the containing <see cref="T:JetBrains.UI.Resources.CommonThemedIcons.ResizeCornerRight"/> identifier class.</para>
+              </para>
+            </summary>
+            <remarks>
+              <para>For details on Themed Icons and their use, see Remarks on <see cref="T:JetBrains.UI.Resources.CommonThemedIcons"/> class.</para>
+            </remarks>
+            <seealso cref="T:JetBrains.UI.Resources.CommonThemedIcons"/>
+            <example>
+              <code>&lt;Image Source="{icons:ThemedIcon myres:CommonThemedIcons+ResizeCornerRight}" /&gt;        &lt;!-- XAML --&gt;</code>
+            </example>
+            <example>
+              <code>[Item(Name="Sample", Icon=typeof(CommonThemedIcons.ResizeCornerRight))]        // C# Type attribute</code>
+            </example>
+            <example>
+              <code>IconId iconid = CommonThemedIcons.ResizeCornerRight.Id;        // IconId identifier object</code>
+            </example>
+            <example>
+              <code>themediconmanager.GetIcon&lt;CommonThemedIcons.ResizeCornerRight&gt;()        // Icon image for rendering</code>
             </example>
         </member>
         <member name="T:JetBrains.UI.Resources.CommonThemedIcons.Right">
@@ -8417,185 +9767,6 @@
             Value of the progress, in the [0…1] range.
             </summary>
         </member>
-        <member name="T:JetBrains.CommonControls.RichTextTipPainter">
-            <summary>
-            Tip painter which paints tips with simple multiline formatted text.
-            Reflows the text if the width does not fit.
-            </summary>
-        </member>
-        <member name="T:JetBrains.CommonControls.IWindowlessControl">
-            <summary>
-            An interface for the objects that implement a part of the control.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.IWindowlessControl.Paint(System.Drawing.Graphics)">
-            <summary>
-            Renders the context of the windowless control. The rendering bounds are given by the most recent call to the <see cref="M:JetBrains.CommonControls.IWindowlessControl.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)"/> method.
-            </summary>
-            <param name="g">The device context.</param>
-        </member>
-        <member name="M:JetBrains.CommonControls.IWindowlessControl.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)">
-            <summary>
-            Performs the top-down layouting stage, when the control lais out its parts within the given bounds.
-            </summary>
-            <param name="gc">The device context to measure against.</param>
-            <param name="bounds">The new bounds. From now on, this value should be returned from the <see cref="P:JetBrains.CommonControls.IWindowlessControl.Bounds"/> property.</param>
-        </member>
-        <member name="P:JetBrains.CommonControls.IWindowlessControl.Bounds">
-            <summary>
-            The windowless control bounds in the parent coordinates. The implementor should just store and return the value set by the owner.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.IWindowlessControl.GottenDirty">
-            <summary>
-            The control has gotten dirty and should be repainted.
-            </summary>
-        </member>
-        <member name="T:JetBrains.CommonControls.IHaveRenderParams">
-            <summary>
-            The property for control views, especially <see cref="T:JetBrains.CommonControls.IWindowlessControl"/>-based, which use render params for setting up their render.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.IHaveRenderParams.RenderParams">
-            <summary>
-            <para>Gets or sets the rendering aspect.</para>
-            <para>Must not be <c>Null</c>.</para>
-            <para>A live property, so that the control could fire the layout recalculation events on its change.</para>
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myBounds">
-            <summary>
-            Bounds, as assigned by the parent.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myDesiredBlockSize">
-            <summary>
-            The desired size of the <see cref="F:JetBrains.CommonControls.RichTextTipPainter.myRichTextBlock"/>, in absence of any external constraints.
-            Lazily-calculated, <c>Null</c> when invalid.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlock">
-            <summary>
-            Reflowed content, lazily-created.
-            Use the <see cref="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)"/> method.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlockUpToDate">
-            <summary>
-            Whether the <see cref="F:JetBrains.CommonControls.RichTextTipPainter.myReflowedRichTextBlock"/> is valid. Use <see cref="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myRenderParams">
-            <summary>
-            Rendering aspect.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myRichTextBlock">
-            <summary>
-            Content.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myWidthConstraint">
-            <summary>
-            The current width constraint.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.myWantsResize">
-            <summary>
-            Fires when the control would like to be reasked of its desired size.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichText)">
-            <summary>
-            Creates the painter over a rich text.
-            If the text contains line breaks, it's split into several <see cref="P:JetBrains.CommonControls.RichTextTipPainter.RichTextBlock"/> lines.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichTextBlock,JetBrains.UI.RenderParams)">
-            <summary>
-            Creates the painter over a rich text block.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.#ctor(JetBrains.UI.RichText.RichTextBlock)">
-            <summary>
-            Creates the painter over a rich text block.
-            </summary>
-        </member>
-        <member name="F:JetBrains.CommonControls.RichTextTipPainter.BorderSize">
-            <summary>
-            Size of the padding around the text.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.GetReflowedRichTextBlock(System.Drawing.Graphics)">
-            <summary>
-            Gets the reflowed rich text block.
-            Lazily reflows the original block if needed.
-            </summary>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.GetDesiredSize(JetBrains.UI.IGraphicsContainer,System.Drawing.Size)">
-            <summary>
-            Performs the bottom-up layouting stage, when the control calculates its desired size using the given constraints.
-            Should give generally the same results as <see cref="T:JetBrains.CommonControls.IConstrainableControl"/>, but could employ the <paramref name="gc"/> device context for the sake of optimization.
-            </summary>
-            <param name="gc">The device context to measure against.</param>
-            <param name="limit">The maximum available space (that could affect the shape of the control, or strip down unnecessary calculations over the invisible items).
-            May be a <see cref="T:System.Drawing.Size"/> with width and height equal to <see cref="F:System.Int32.MaxValue"/>, which means that the size is not limited.</param>
-            <returns>The desired size, must be no larger than <paramref name="limit"/>.</returns>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.Paint(System.Drawing.Graphics)">
-            <summary>
-            Renders the context of the windowless control. The rendering bounds are given by the 
-            </summary>
-            <param name="g"></param>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.SetBounds(JetBrains.UI.IGraphicsContainer,System.Drawing.Rectangle)">
-            <summary>
-            Performs the top-down layouting stage, when the control lais out its parts within the given bounds.
-            </summary>
-            <param name="gc">The device context to measure against.</param>
-            <param name="bounds">The available space.</param>
-        </member>
-        <member name="M:JetBrains.CommonControls.RichTextTipPainter.SetLayout(JetBrains.UI.LayoutResult)">
-            <summary>
-            Tells the control the details about the new layout applied to it by the controlling entity in conjunction with some <see cref="T:JetBrains.UI.IPopupLayouter"/>.
-            Typically, the control need not apply the given size and location because that should be done by the controlling entity.
-            The control may change its presentation in response to the layouting details, for example, whether it's attached to the top or the bottom of the anchoring rect.
-            </summary>
-            <param name="layout">The layouting details.</param>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.RichTextBlock">
-            <summary>
-            Gets or sets the content.
-            Must not be <c>Null</c>.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.RenderParams">
-            <summary>
-            Gets or sets the rendering aspect.
-            Must not be <c>Null</c>.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.AutoActivate">
-            <summary>
-            Gets or sets whether the control should be activated initially when it's shown.
-            The typical implementation for a form is to return a negative of this value from the <see cref="P:System.Windows.Forms.Form.ShowWithoutActivation"/> override.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.Bounds">
-            <summary>
-            The windowless control bounds in the parent coordinates. The implementor should just store and return the value set by the owner.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.GottenDirty">
-            <summary>
-            The control has gotten dirty and should be repainted.
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.RichTextTipPainter.WantsResize">
-            <summary>
-            Fires when the control would like to be reasked of its desired size.
-            </summary>
-        </member>
         <member name="T:JetBrains.UI.Tooltips.ITooltipProvider">
             <summary>
             Any HWND-based WinForms <see cref="T:System.Windows.Forms.Control"/> (or <see cref="T:System.Windows.Forms.NativeWindow"/>) that implements this interface will be queried for the tooltip info and, should the retval be non-<c>Null</c>, the tooltip will be displayed for this window.
@@ -9059,55 +10230,55 @@
             </summary>
             <remarks>Note, that default implementation of HasChildren retrieves children and checks count</remarks>
         </member>
-        <member name="T:JetBrains.TreeModels.TreeModel">
+        <member name="T:JetBrains.TreeModels.TreeModelBase">
             <summary>
             Provides base for all tree models
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.Update">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.Update">
             <summary>
             Executes update forcibly on the tree model
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.UpdateCookie">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.UpdateCookie">
             <summary>
             Gets update cookie for "using" clause
             </summary>
             <returns>Instance of <see cref="T:System.IDisposable"/> object</returns>
             <remarks>Updates are not executed while cookie is held. When cookie is disposed all updates are run.</remarks>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.BeginUpdate">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.BeginUpdate">
             <summary>
             Increments internal counter, which prevents updates if greater then zero
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.EndUpdate">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.EndUpdate">
             <summary>
             Decrements internal counter, which prevents updates if greater then zero. 
             When counter reaches zero and update is needed, it is executed
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.NeedUpdate">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.NeedUpdate">
             <summary>
             Requests update. Update is executed immediately if not suspended by update counter, otherwise request for pending update is formed
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.OnUpdating">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.OnUpdating">
             <summary>
-            Raises <see cref="E:JetBrains.TreeModels.TreeModel.Updating"/> event
+            Raises <see cref="E:JetBrains.TreeModels.TreeModelBase.Updating"/> event
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.OnUpdated">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.OnUpdated">
             <summary>
-            Raises <see cref="E:JetBrains.TreeModels.TreeModel.Updated"/> event
+            Raises <see cref="E:JetBrains.TreeModels.TreeModelBase.Updated"/> event
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.PerformUpdate">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.PerformUpdate">
             <summary>
             When implemented by derived type, performs actions required to update model
             </summary>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.CreateNode(JetBrains.TreeModels.TreeModelNode,System.Object)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.CreateNode(JetBrains.TreeModels.TreeModelNode,System.Object)">
             <summary>
             When implemented in the derived type, creates model node for the specified value in the specified parent node
             </summary>
@@ -9115,7 +10286,7 @@
             <param name="value">Data value</param>
             <returns>New instance of <see cref="T:JetBrains.TreeModels.TreeModelNode"/></returns>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.Insert(JetBrains.TreeModels.TreeModelNode,System.Object)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.Insert(JetBrains.TreeModels.TreeModelNode,System.Object)">
             <summary>
             Creates and inserts new node for dataValue into the model
             </summary>
@@ -9123,19 +10294,19 @@
             <param name="dataValue">Data value</param>
             <returns>New instance of <see cref="T:JetBrains.TreeModels.TreeModelNode"/></returns>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.Remove(JetBrains.TreeModels.TreeModelNode)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.Remove(JetBrains.TreeModels.TreeModelNode)">
             <summary>
             Removes node from the model
             </summary>
             <param name="modelNode">Node to remove</param>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.Remove(System.Object)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.Remove(System.Object)">
             <summary>
             Removes all nodes associated with specified dataValue from the model
             </summary>
             <param name="dataValue">Data value</param>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.GetNodeContainer(JetBrains.TreeModels.TreeModelNode)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.GetNodeContainer(JetBrains.TreeModels.TreeModelNode)">
             <summary>
             Gets node which is container of the specified node
             </summary>
@@ -9143,49 +10314,49 @@
             <returns>Instance of <see cref="T:JetBrains.TreeModels.TreeModelNode"/> which contains specified node</returns>
             <remarks>This is not the same as getting Parent in the multi-model scenario. In simple models it just returns Parent.</remarks>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.GetNodes(System.Object)">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.GetNodes(System.Object)">
             <summary>
             Gets collection of nodes associated with the specified dataValue
             </summary>
             <param name="dataValue">Data value</param>
             <returns>Collection of associated nodes</returns>
         </member>
-        <member name="M:JetBrains.TreeModels.TreeModel.Clear">
+        <member name="M:JetBrains.TreeModels.TreeModelBase.Clear">
             <summary>
             Clears the model, essentialy making it empty
             </summary>
         </member>
-        <member name="P:JetBrains.TreeModels.TreeModel.Roots">
+        <member name="P:JetBrains.TreeModels.TreeModelBase.Roots">
             <summary>
             Gets read-only collection of model roots
             </summary>
         </member>
-        <member name="P:JetBrains.TreeModels.TreeModel.RootsUnsorted">
+        <member name="P:JetBrains.TreeModels.TreeModelBase.RootsUnsorted">
             <summary>
             Gets unsorted read-only collection of model roots
             </summary>
         </member>
-        <member name="P:JetBrains.TreeModels.TreeModel.InUpdate">
+        <member name="P:JetBrains.TreeModels.TreeModelBase.InUpdate">
             <summary>
             Gets value indicating if update is currently running
             </summary>
         </member>
-        <member name="P:JetBrains.TreeModels.TreeModel.Comparer">
+        <member name="P:JetBrains.TreeModels.TreeModelBase.Comparer">
             <summary>
             Gets or sets comparer for model nodes, which is used to setup order in the model
             </summary>
         </member>
-        <member name="E:JetBrains.TreeModels.TreeModel.Updating">
+        <member name="E:JetBrains.TreeModels.TreeModelBase.Updating">
             <summary>
             Raised when update is about to happen
             </summary>
         </member>
-        <member name="E:JetBrains.TreeModels.TreeModel.Updated">
+        <member name="E:JetBrains.TreeModels.TreeModelBase.Updated">
             <summary>
             Raised when update has been finished
             </summary>
         </member>
-        <member name="T:JetBrains.TreeModels.TreeModel.TreeModelUpdateCookie">
+        <member name="T:JetBrains.TreeModels.TreeModelBase.TreeModelUpdateCookie">
             <summary>
             Helps managing updates on the model via "using" clause
             </summary>
@@ -9268,6 +10439,16 @@
             </summary>
         </member>
         <member name="P:JetBrains.TreeModels.TreeModelGrouping`1.Groups">
+            <summary>
+            Gets collection of <see cref="T:JetBrains.TreeModels.ITreeGroupProvider`1"/> instances
+            </summary>
+        </member>
+        <member name="P:JetBrains.TreeModels.LiveTreeModelGrouping`1.Name">
+            <summary>
+            Gets name of the grouping style
+            </summary>
+        </member>
+        <member name="P:JetBrains.TreeModels.LiveTreeModelGrouping`1.Providers">
             <summary>
             Gets collection of <see cref="T:JetBrains.TreeModels.ITreeGroupProvider`1"/> instances
             </summary>
@@ -9542,6 +10723,11 @@
             Extensions for <see cref="T:JetBrains.ActionManagement.IActionManager"/>.
             </summary>
         </member>
+        <member name="M:JetBrains.ActionManagement.ActionManagerEx.ExecuteActionAsync``1(JetBrains.ActionManagement.IActionManager,JetBrains.DataFlow.Lifetime)">
+            <summary>
+            Does all the threading on itself, execs the action, yields when the action exeecution is completed.
+            </summary>
+        </member>
         <member name="T:JetBrains.ActionManagement.ActionPresentation">
             <summary>
             Visual presentation of an Action
@@ -9587,6 +10773,11 @@
             Action is not supported by product and can not be executed using product handlers.
             </summary>
         </member>
+        <member name="P:JetBrains.UI.ActionsRevised.Loader.IActionDefWithId.CustomVisualStudioId">
+            <summary>
+            Allows to manually override the integer ID part for the VS command.
+            </summary>
+        </member>
         <member name="M:JetBrains.UI.ActionsRevised.ActionAttribute.#ctor(System.String,System.String)">
             <summary>
             Action ID should match the action handler type name, for discoverability.
@@ -9607,7 +10798,7 @@
             Action execution is intercepted in priority command target.
             Execution is delegated to VS when IsAvailable returns Unsupported status.
             </summary>
-            <param name="vsOverriddenAction"></param>
+            <param name="VsOverriddenAction"></param>
         </member>
         <member name="M:JetBrains.UI.ActionsRevised.Shortcuts.IActionShortcuts.AddShortcut(JetBrains.ActionManagement.ShortcutScheme,JetBrains.UI.ActionsRevised.Loader.IActionDefWithId,JetBrains.ActionManagement.ShortcutScope,JetBrains.ActionManagement.ActionShortcut)">
             <summary>
@@ -9623,26 +10814,12 @@
             Returns list of shortcuts bound to specified action in selected scheme
             </summary>
         </member>
-        <member name="T:JetBrains.CommonControls.ToolStripEx">
-            <summary>
-            This class adds click-through behaviour to ToolStrip
-            </summary>
-        </member>
-        <member name="P:JetBrains.CommonControls.ToolStripEx.ClickThrough">
-            <summary>
-            Gets or sets whether the ToolStripEx honors item clicks when its containing form does
-            not have input focus.
-            </summary>
-            <remarks>
-            Default value is false, which is the same behavior provided by the base ToolStrip class.
-            </remarks>
-        </member>
         <member name="M:JetBrains.UI.ActionSystem.ActionBar.IActionBarManager.CreateActionBar(JetBrains.DataFlow.Lifetime,JetBrains.UI.ActionsRevised.Loader.IActionGroupDef,System.Boolean,System.Func{System.Collections.Generic.IEnumerable{JetBrains.Application.DataContext.IDataRule}})">
             <summary>
             Creates an action bar.
             </summary>
             <param name="lifetime">The action bar lifetime.</param>
-            <param name="defe"></param>
+            <param name="def"></param>
             <param name="autoUpdate"></param>
             <param name="FGetDataRules">Helps with creating a Data Context each time the actions on the bar have to be updated or executed. System-wide data providers (and data rules) are mixed in when <see cref="M:JetBrains.UI.ActionSystem.ActionBar.IActionBar.CreateDataContext(JetBrains.DataFlow.Lifetime)">Data Context is created</see>. If you're creating an action bar for a local control, you can use <see cref="P:JetBrains.ActionManagement.IActionManager.DataContexts"/> :: <see cref="M:JetBrains.Application.DataContext.FindDataRules.FindDataRulesInControl(JetBrains.UI.CrossFramework.EitherControl)"/> as an implementation for this functor. Return <c>Null</c> if the control is not available at the moment.</param>
             <returns></returns>
@@ -10067,17 +11244,6 @@
             Extracts dependencies placed on child items within a query by looking for uses of <see cref="T:System.Linq.Expressions.ParameterExpression"/>.
             </summary>
         </member>
-        <member name="T:JetBrains.UI.BindableLinq.Dependencies.Instances.ElementActioner`1">
-            <summary>
-            Performs actions on the elements of a collection when they are added or removed. 
-            Ensures the action is always performed at least once. 
-            </summary>
-            <remarks>
-            This object uses a direct event reference rather than weak references on purpose. 
-            The lifetime of the object should be coupled to the owning class. 
-            </remarks>
-            <typeparam name="TElement">The type of the element.</typeparam>
-        </member>
         <member name="T:JetBrains.UI.BindableLinq.Dependencies.PathNavigation.IPathNavigator">
             <summary>
             An interface implemented by classes which can traverse a property path.
@@ -10111,20 +11277,6 @@
             <summary>
             A factory for the construction of property monitors by detecting information about the object.
             </summary>
-        </member>
-        <member name="T:JetBrains.UI.BindableLinq.Dependencies.PathNavigation.PropertyReaderFactory">
-            <summary>
-            Provides the ability to read the value of a property from a given object without using reflection.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.BindableLinq.Dependencies.PathNavigation.PropertyReaderFactory.Create``1(System.Type,System.String)">
-            <summary>
-            Creates a reader that reads a specific type of property from a given object type by creating a delegate to access it.
-            </summary>
-            <typeparam name="TCast">The type to cast the returning property to.</typeparam>
-            <param name="objectType">The type of the object containing the property.</param>
-            <param name="propertyName">The name of the property that will be read.</param>
-            <returns>A strongly typed property reader that will read the property value without reflection.</returns>
         </member>
         <member name="T:JetBrains.UI.BindableLinq.Dependencies.PathNavigation.TokenFactories.ITokenFactory">
             <summary>
@@ -11442,118 +12594,6 @@
             <summary>
             Gets or sets the HTML contents of the page displayed in the System.Windows.Forms.WebBrowser control.
             Wraps the base implementation to catch the setter silly exceptions.
-            </summary>
-        </member>
-        <member name="T:JetBrains.UI.PopupWindowManager.PopupWindowContext">
-            <summary>
-            The default implementation of the <see cref="T:JetBrains.UI.PopupWindowManager.IPopupWindowContext"/> interface.
-            Represents an empty window context and a base class for meaningful window contexts.
-            </summary>
-        </member>
-        <member name="T:JetBrains.UI.PopupWindowManager.IPopupWindowContext">
-            <summary>
-            Represents the owning context for a popup window.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.CreateLayouter(JetBrains.DataFlow.Lifetime)">
-            <summary>
-            Gets the default position provider for the view. 
-            Usually gets position provider which provides position bound to the current selection or insertion point of the view.
-            </summary>
-            <param name="lifetime">Lifetime for the layouter.</param>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireAnyOtherAction">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.AnyOtherAction"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireDeactivated">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Deactivated"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireScroll">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Scroll"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.IPopupWindowContext.FireSelectionChanged">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.SelectionChanged"/> event.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.AnyOtherAction">
-            <summary>
-            Fires when some action occurs in the context owner.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Deactivated">
-            <summary>
-            Fires when the context owner is deactivated.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.EscapePressed">
-            <summary>
-            Fires when the ESCAPE key is pressed in the owning context. Works as a stack of handlers instead of a multicast event, that is, always notifies only the most-recently-added event in the stack, and then removes it from the stack.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.Scroll">
-            <summary>
-            Fires when the context owner is scrolled.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.IPopupWindowContext.SelectionChanged">
-            <summary>
-            Fires when selection changes in the context owner.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.#ctor(JetBrains.DataFlow.Lifetime,JetBrains.ActionManagement.IActionManager)">
-            <summary>
-            A protected constructor for use from the inheritors.
-            To get a default window context, use <see cref="T:System.Empty"/> instead.
-            </summary>
-            <param name="lifetime">Limiting lifetime.</param>
-            <param name="actionManager">Action manager, required for handling of the ESC action.</param>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.GetEmpty(JetBrains.DataFlow.Lifetime,JetBrains.UI.PopupWindowManager.MainWindowPopupWindowContext)">
-            <summary>
-            Gets the default popup window context.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.GetEmptySource(JetBrains.UI.PopupWindowManager.MainWindowPopupWindowContext)">
-            <summary>
-            Gets the default popup window context.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.CreateLayouter(JetBrains.DataFlow.Lifetime)">
-            <summary>
-            Creates the default layouter that positiones its entities in the center of the DEVENV window.
-            </summary>
-            <param name="lifetime"></param>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireAnyOtherAction">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.AnyOtherAction"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireDeactivated">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.Deactivated"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireScroll">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.Scroll"/> event.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.PopupWindowManager.PopupWindowContext.FireSelectionChanged">
-            <summary>
-            Fires the <see cref="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.SelectionChanged"/> event.
-            </summary>
-        </member>
-        <member name="E:JetBrains.UI.PopupWindowManager.PopupWindowContext.EscapePressed">
-            <summary>
-            Fires when the ESCAPE key is pressed in the owning context. Works as a stack of handlers instead of a multicast event, that is, always notifies only the most-recently-added event in the stack, and then removes it from the stack.
             </summary>
         </member>
         <member name="M:JetBrains.UI.CommonControls.Controls.Browser.MshtmlBrowserControl2.CreateWebBrowserSiteBase">
@@ -13303,7 +14343,7 @@
         <member name="F:JetBrains.UI.PopupMenu.Impl.JetPopupMenuMainpartView.myDirtyItems">
             <summary>
             Collects the indices of dirty items that have to be repainted on the next paint iteration.
-            The usual <see cref="M:JetBrains.Interop.WinApi.Win32Declarations.GetUpdateRgn(System.IntPtr,System.IntPtr,System.Boolean)"/> mechanisms do not take scrolling into account correctly.
+            The usual <c>GetUpdateRgn</c> mechanisms do not take scrolling into account correctly.
             </summary>
         </member>
         <member name="F:JetBrains.UI.PopupMenu.Impl.JetPopupMenuMainpartView.myDropShadowEnabled">
@@ -13529,8 +14569,8 @@
         </member>
         <member name="M:JetBrains.UI.PopupMenu.Impl.JetPopupMenuMainpartView.ScrollMenu(System.Int32)">
             <summary>
-            Scrolls the menu vertically by the amount given by the <paramref name="dy"/> value, in pixels.
-            <paramref name="dy"/> being positive, the content slides down. Otherwise, it slides up.
+            Scrolls the menu vertically by the amount given by the <paramref name="dy" /> value, in pixels.
+            <paramref name="dy" /> being positive, the content slides down. Otherwise, it slides up.
             This method causes no repaint.
             </summary>
         </member>
@@ -17701,6 +18741,12 @@
             Gets or sets the number of alternating item containers in the <see cref="T:JetBrains.UI.TreeGrid.TreeGridView"/>, which enables alternating containers to have a unique appearance.
             </summary>
         </member>
+        <member name="P:JetBrains.UI.TreeGrid.TreeGridView.InvalidationRequested">
+            <summary>
+            Special property to request invalidation of ItemsSource. It will lead to updating sorting and filtering.
+            Set true to request invalidation.
+            </summary>
+        </member>
         <member name="E:JetBrains.UI.TreeGrid.TreeGridView.SelectedItemChanged">
             <summary>
             Occurs when SelectedItem changes
@@ -18780,7 +19826,7 @@
             Helpers for setting up exception reporting when the product shell is not running yet.
             </summary>
         </member>
-        <member name="M:JetBrains.UI.ExceptionReport.ShellLessExceptionReporting.CreateAndInstall(JetBrains.DataFlow.Lifetime,JetBrains.Application.BuildScript.Application.HostInfo,JetBrains.Application.BuildScript.Application.IWindowBranding,System.Collections.Generic.ICollection{JetBrains.Application.BuildScript.Application.IApplicationPackage})">
+        <member name="M:JetBrains.UI.ExceptionReport.ShellLessExceptionReporting.CreateAndInstall(JetBrains.DataFlow.Lifetime,JetBrains.Application.BuildScript.Application.HostInfo,JetBrains.Application.BuildScript.Application.IWindowBranding,System.Lazy{System.Collections.Generic.IEnumerable{JetBrains.Application.BuildScript.PackageSpecification.JetPackageMetadata}})">
             <summary>
             An exception reporter which knows the static product details and can submit smth to the issue tracker.
             </summary>
@@ -19117,36 +20163,6 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="F:JetBrains.UI.Feedback.UI.UserIdentificatorHost.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.Feedback.UI.UserIdentificatorHost.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:JetBrains.UI.Feedback.UI.UserIdentificatorHost.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
-        </member>
-        <member name="T:JetBrains.UI.Feedback.UI.UserIdentificatorHostControl">
-            <summary>
-            Interaction logic for MainWindow.xaml
-            </summary>
-            <summary>
-            UserIdentificatorHostControl
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.Feedback.UI.UserIdentificatorHostControl.InitializeComponent">
-            <summary>
-            InitializeComponent
-            </summary>
-        </member>
         <member name="T:JetBrains.UI.Feedback.UI.ProgressControl">
             <summary>
             Interaction logic for ProgressControl.xaml
@@ -19351,6 +20367,11 @@
             Lazy-loaded (free-threaded manner).
             </summary>
         </member>
+        <member name="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconIdOwner.IconPack.EnsureLoaded">
+            <summary>
+            Loads the pack data from resources and into the field. Does this free-threaded, might be loading in parallel on several threads.
+            </summary>
+        </member>
         <member name="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconIdOwner.IconPack.ReadFromAvalonComponent(System.Uri,System.Object[])">
             <summary>
             Loads the Avalon resource with BAML serialization of the <see cref="T:System.Windows.ResourceDictionary"/>, then calls <see cref="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconIdOwner.IconPack.ReadFromDictionary(System.Windows.ResourceDictionary,System.Object[])"/>.
@@ -19364,16 +20385,11 @@
             <param name="expectedids">If the exact set and order of the IDs is known, validates that the loaded set is the same.</param>
             <returns></returns>
             <remarks>
-            <para>On the format.</para>
-            <para>Each dictionary entry is a <see cref="T:System.Windows.Media.Drawing"/> of some icon for some theme.</para>
-            <para>It has two attributes, <see cref="F:System.Windows.Automation.AutomationProperties.NameProperty"/> attached property is the icon ID, and the <see cref="F:System.Windows.Automation.AutomationProperties.ItemTypeProperty"/> attached property is the theme of this icon image.</para>
-            <para>The dictionary keys on entries have no meaning, but define the sorting order. In that order, images are sorted lexicographically, first by icon ID, then by theme. This way, you're guaranteed to read all images of the same icon in a row.</para>
+              <para>On the format.</para>
+              <para>Each dictionary entry is a <see cref="T:System.Windows.Media.Drawing"/> of some icon for some theme.</para>
+              <para>It has two attributes, <see cref="F:System.Windows.Automation.AutomationProperties.NameProperty"/> attached property is the icon ID, and the <see cref="F:System.Windows.Automation.AutomationProperties.ItemTypeProperty"/> attached property is the theme of this icon image.</para>
+              <para>The dictionary keys on entries have no meaning, but define the sorting order. In that order, images are sorted lexicographically, first by icon ID, then by theme. This way, you're guaranteed to read all images of the same icon in a row.</para>
             </remarks>
-        </member>
-        <member name="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconIdOwner.IconPack.EnsureLoaded">
-            <summary>
-            Loads the pack data from resources and into the field. Does this free-threaded, might be loading in parallel on several threads.
-            </summary>
         </member>
         <member name="T:JetBrains.UI.Icons.CompiledIcons.CompiledIconIdOwner.IconPack.ThemeDrawing">
             <summary>
@@ -19482,8 +20498,8 @@
         </member>
         <member name="T:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute">
             <summary>
-            <para>An attribute for marking icon identifier classes with icon IDs.</para>
-            <para>Icon identifier types should be used in cases when you have to reference an icon, but cannot use any runtime code expressions, such as in actions, option pages, and tool window definitions. Using string identifiers does not guarantee compile-time validation, unlike <c>typeof()</c> on icon identifier types.</para>
+              <para>An attribute for marking icon identifier classes with icon IDs.</para>
+              <para>Icon identifier types should be used in cases when you have to reference an icon, but cannot use any runtime code expressions, such as in actions, option pages, and tool window definitions. Using string identifiers does not guarantee compile-time validation, unlike <c>typeof()</c> on icon identifier types.</para>
             </summary>
         </member>
         <member name="F:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute.IconId">
@@ -19497,6 +20513,11 @@
             </summary>
         </member>
         <member name="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute.TryGetCompiledIconClassId(JetBrains.Application.Parts.PartCatalogueType,JetBrains.Util.OnError)">
+            <summary>
+            Takes the Themed Icon Class Accessor attributed with <see cref="T:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute"/> and extracts the IconID.
+            </summary>
+        </member>
+        <member name="M:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute.TryGetCompiledIconClassId(JetBrains.Application.Catalogs.PartCatalogType,JetBrains.Util.OnError)">
             <summary>
             Takes the Themed Icon Class Accessor attributed with <see cref="T:JetBrains.UI.Icons.CompiledIcons.CompiledIconClassAttribute"/> and extracts the IconID.
             </summary>
@@ -20107,7 +21128,7 @@
         </member>
         <member name="T:JetBrains.UI.MsoComponentManager.MsoComponentBase">
             <summary>
-            Base managed implementation of a MSO component
+            Base managed implementation of a MSO component with empty implementations of all methods and logging.
             </summary>
         </member>
         <member name="M:JetBrains.UI.MsoComponentManager.MsoComponentBase.FPreTranslateMessage(JetBrains.Interop.WinApi.MSG[])">
@@ -20885,7 +21906,7 @@
         <member name="T:JetBrains.Application.ExceptionReport.MessageBoxExceptionReportService">
             <summary>
             When the Issue Tracker is not available in a UI application, shows exceptions in message boxes.
-            This is also the case on early startup or when the <see cref="T:JetBrains.Application.IApplicationDescriptor"/> could not be obtained.
+            This is also the case on early startup of the environment/shell when no full exception reporter has been yet created.
             </summary>
         </member>
         <member name="F:JetBrains.Application.ExceptionReport.MessageBoxExceptionReportService.mySingleMessageBox">
@@ -21533,7 +22554,7 @@
             Returns whether the effect is supported in the current environment and was applied successfully.
             </summary>
         </member>
-        <member name="M:JetBrains.UI.Avalon.Helpers.Glassify(System.IntPtr,System.Boolean)">
+        <member name="M:JetBrains.UI.Avalon.Helpers.Glassify(System.Void*,System.Boolean)">
             <summary>
             Applies the aeroglass effect to the whole window, if possible.
             Returns whether the effect is supported in the current environment and was applied successfully.
@@ -22234,9 +23255,9 @@
         </member>
         <member name="M:JetBrains.UI.Options.OptionPagesList.GetOptionPages">
             <summary>
-            <para>Lists the known option pages.</para>
-            <para>When the option pages tree needs to be built, these are organized into a one-time tree of <see cref="T:JetBrains.UI.Options.OptionsPageDescriptor"/>s.</para>
-            <para>Generally, they're collected from the classes implementing <see cref="T:JetBrains.UI.Options.IOptionsPage"/> and marked with <see cref="T:JetBrains.UI.Options.OptionsPageAttribute"/>. You can promote your own page entities with <see cref="M:JetBrains.UI.Options.OptionPagesList.AddOptionsPage(JetBrains.DataFlow.Lifetime,System.Type,JetBrains.UI.Options.OptionsPageAttribute)"/> as needed.</para>
+              <para>Lists the known option pages.</para>
+              <para>When the option pages tree needs to be built, these are organized into a one-time tree of <see cref="T:JetBrains.UI.Options.OptionsPageDescriptor"/>s.</para>
+              <para>Generally, they're collected from the classes implementing <see cref="T:JetBrains.UI.Options.IOptionsPage"/> and marked with <see cref="T:JetBrains.UI.Options.OptionsPageAttribute"/>. You can promote your own page entities with <see cref="M:JetBrains.UI.Options.OptionPagesList.AddOptionsPage(JetBrains.DataFlow.Lifetime,System.Type,JetBrains.UI.Options.OptionsPageAttribute)"/> as needed.</para>
             </summary>
         </member>
         <member name="F:JetBrains.UI.Options.OptionPagesList.myManuallyAddedPages">
@@ -22382,7 +23403,7 @@
             An option page has three levels of existence:
             • ID, a unique string identifier.
             • Descriptor, an instance of the <see cref="T:JetBrains.UI.Options.OptionsPageDescriptor"/> class. Created when adding pages to the manager. Lives until removed.
-            • View, a WinForms control created from the Decriptor, lives only for the run of the Options dialog.
+            • View, a WinForms control created from the Descriptor, lives only for the run of the Options dialog.
             </remarks>
         </member>
         <member name="M:JetBrains.UI.Options.OptionsManager.GetOptionPages">
@@ -22602,39 +23623,6 @@
             The frame which is hosting this view in the IDE.
             </summary>
         </member>
-        <member name="T:JetBrains.UI.AnchoringRect">
-            <summary>
-            The basic implementation of the <see cref="T:JetBrains.UI.IAnchoringRect"/> interface.
-            </summary>
-        </member>
-        <member name="T:JetBrains.UI.IAnchoringRect">
-            <summary>
-            Represents a dynamic anchoring rectangle against this some controls could be laid out.
-            </summary>
-        </member>
-        <member name="P:JetBrains.UI.IAnchoringRect.Rectangle">
-            <summary>
-            Gets the current value of the anchoring rectangle.
-            Note that, depending on the context, it could be either in client, screen, or any other coordinates.
-            </summary>
-        </member>
-        <member name="M:JetBrains.UI.AnchoringRect.ToString">
-            <summary>
-            Returns a <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
-            </summary>
-            
-            <returns>
-            A <see cref="T:System.String"></see> that represents the current <see cref="T:System.Object"></see>.
-            </returns>
-            <filterpriority>2</filterpriority>
-        </member>
-        <member name="P:JetBrains.UI.AnchoringRect.Rectangle">
-            <summary>
-            Gets or sets the current value of the anchoring rectangle.
-            Note that, depending on the context, it could be either in client, screen, or any other coordinates.
-            The setter fires the “changed” event.
-            </summary>
-        </member>
         <member name="T:JetBrains.UI.PopupWindowManager.AvalonAnchoringRect">
             <summary>
             Anchors to a screen location of an Avalon object.
@@ -22831,6 +23819,11 @@
             Gets or sets whether the rectangle should be collapsed into a point, and, if yes, to which exactly point of the original rectangle.
             The inside modes are located on the inner sides of the rectangle, and outside ones are one point outside.
             </param>
+        </member>
+        <member name="M:JetBrains.UI.IAnchoringRectEx.KeepLastKnownGoodRect(JetBrains.UI.IAnchoringRect,JetBrains.DataFlow.Lifetime,System.Func{System.Windows.Rect,System.Boolean})">
+            <summary>
+            Returns an anchoring rect that allows only valid values from another rect. If a value is not valid, the rect keeps its previous (good) value.
+            </summary>
         </member>
         <member name="T:JetBrains.UI.PopupWindowManager.IPopupWindow">
             <summary>
@@ -24794,6 +25787,11 @@
             Note: the <see cref="T:JetBrains.UI.PopupMenu.JetPopupMenu"/> object is disposable. You must either avoid creating it by not touching the <see cref="T:System.Lazy`1"/> container, or use the value you get from it (either <see cref="M:JetBrains.UI.PopupMenu.JetPopupMenu.Show(JetBrains.DataFlow.LifetimeDefinition)"/> the menu, which will then dispose of it correctly, or <see cref="M:System.IDisposable.Dispose"/> of it explicitly).
             </summary>
         </member>
+        <member name="P:JetBrains.UI.StatusBar.JetStatusBarIndicator.ContextMenuRequested">
+            <summary>
+            Fire the signal to show context menu on demand
+            </summary>
+        </member>
         <member name="P:JetBrains.UI.StatusBar.JetStatusBarIndicator.Cursor">
             <summary>
             Gets or sets the mouse cursor for the indicator view.
@@ -25134,12 +26132,12 @@
             In this case they cannot actually know when IDE changes text on the status bar, so consumers interested in reading status bar text set by IDE (and not only by us) should first fire this signal to force the status bar state updated with up-to-date IDE settings.
             </summary>
         </member>
-        <member name="T:JetBrains.UI.Application.UiApplicationMessageBoxHandler">
+        <member name="T:JetBrains.UI.SrcView.StdApplicationUI.UiApplicationMessageBoxHandler">
             <summary>
             Message box: show real UI message boxes when in UI shell mode, use Descriptor for info, and such.
             </summary>
         </member>
-        <member name="M:JetBrains.UI.Application.UiApplicationMessageBoxHandler.UiApplicationMessageBox(System.IntPtr,System.String,System.String,JetBrains.Interop.WinApi.MessageBoxFlags)">
+        <member name="M:JetBrains.UI.SrcView.StdApplicationUI.UiApplicationMessageBoxHandler.UiApplicationMessageBox(System.IntPtr,System.String,System.String,JetBrains.Interop.WinApi.MessageBoxFlags)">
             <summary>
             Implements the MessageBox that is owned by the main window and supplies the product name correctly.
             </summary>
@@ -26761,7 +27759,6 @@
             <para>Manually registers a view for an automation object.</para>
             <para>To have your view listed automatically, use the <see cref="T:JetBrains.UI.Wpf.ViewAttribute"/>.</para>
             </summary>
-            <param name="lifetime"></param>
         </member>
         <member name="P:JetBrains.UI.Wpf.AutomationViewsRegistry.JetBrains#UI#Wpf#IAutomationViewsRegistry#RegisteredViews">
             <summary>

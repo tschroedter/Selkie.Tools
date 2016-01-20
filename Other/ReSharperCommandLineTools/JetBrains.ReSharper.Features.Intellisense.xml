@@ -868,6 +868,19 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="T:JetBrains.ReSharper.Features.Intellisense.src.Options.View.CompletionPerformanceDelayView">
+            <summary>
+            Interaction logic for CompletionPerformanceDelayView.xaml
+            </summary>
+            <summary>
+            CompletionPerformanceDelayView
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Features.Intellisense.src.Options.View.CompletionPerformanceDelayView.InitializeComponent">
+            <summary>
+            InitializeComponent
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Features.Intellisense.Options.ParameterInfoAutopopupView2">
             <summary>
             ParameterInfoAutopopupView2

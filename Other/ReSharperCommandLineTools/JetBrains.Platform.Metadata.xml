@@ -96,6 +96,12 @@
             Gets generic param constraints
             </summary>
         </member>
+        <member name="P:JetBrains.Metadata.Access.CustomAttributeProperties.TypeToken">
+            <summary>
+            .ctor method token
+            (the owner of that constructor method is the type of the custom attribute)
+            </summary>
+        </member>
         <member name="T:JetBrains.Metadata.Access.MemberReferenceProperties">
             <summary>
             Stores properties of a member reference
@@ -485,6 +491,9 @@
             ECMA-335 p.22
             </summary>
         </member>
+        <member name="P:JetBrains.Metadata.Access.ILReader.ILReaderMetadataAccess.PeFile">
+            <remarks> Returns null for metadata only stream</remarks>
+        </member>
         <member name="F:JetBrains.Metadata.Access.ILReader.TableManager.CODED_TOKEN_BITS">
             <summary>
             Contains number of bits to represent coded token.
@@ -507,6 +516,12 @@
             <summary>
             Metadata tables
             </summary>
+            <remarks>
+            Partition II: Metadata Definition and Semantics. 22 Metadata logical format: tables.
+            bh - Blob heap,
+            sh - String heap,
+            gh - GUID heap
+            </remarks>
         </member>
         <member name="T:JetBrains.Metadata.Access.Prologs">
             <summary>
@@ -516,6 +531,253 @@
         <member name="T:JetBrains.Metadata.Access.MetadataToken">
             <summary>
             Represents metadata token
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderLocalVariables(JetBrains.Metadata.Reader.API.IMethodBodyLocalVariable[])">
+            <summary>
+            II.15.4.1.3: .locals  [ init ] '(' LocalsSignature ')'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderLocal(JetBrains.Metadata.Reader.API.IMethodBodyLocalVariable)">
+            <summary>
+            Local variable
+            15.4.1.3: Local ::= [ '[' Int32 ']' ] Type [ Id ]
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMarshallingInformation(JetBrains.Metadata.Utils.IBlob,System.Boolean)">
+            <summary>
+            II.7.4, II.15.4, II.16.1: [ marshal '(' [ NativeType ] ')' ]
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderNativeType(JetBrains.Metadata.Reader.API.MarshalSpec.NativeType,JetBrains.Metadata.Reader.API.MarshalSpec.IMarshalSpec)">
+            <summary>
+            II.7.4
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderType(JetBrains.Metadata.Reader.API.IMetadataTypeInfo,JetBrains.Metadata.Reader.API.IImageBodyReader)">
+            <summary>
+            II.10: .class ClassHeader '{' ClassMember* '}'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderClassHeader(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
+            <summary>
+            Type (class, value type, or interface) header
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderClassAttributes(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
+            <summary>
+            II.10.1: ClassAttr*
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderType(JetBrains.Metadata.Reader.API.IMetadataType,JetBrains.Metadata.Reader.API.IMetadataType[],JetBrains.Metadata.Reader.API.IMetadataType[])">
+            <summary>
+            II.7.1: Type ::= ...
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderTypeReference(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
+            <summary>
+            II.7.3: TypeReference ::= [ ResolutionScope ] DottedName [ '/' DottedName ]*
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderResolutionScope(JetBrains.Metadata.Utils.AssemblyNameInfo)">
+            <summary>
+            II.7.1: ResolutionScope ::= '[' [ .module ] DottedName ']'
+            ('[' .module Filename ']' | '[' AssemblyRefName ']')
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderTypeSpec(JetBrains.Metadata.Reader.API.IMetadataType,JetBrains.Metadata.Reader.API.IMetadataType[],JetBrains.Metadata.Reader.API.IMetadataType[])">
+            <summary>
+            II.7.1: TypeSpec ::= ResolutionScope | TypeReference | Type
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderDottedName(System.String)">
+            <summary>
+            II.5.3: DottedName ::= Id ['.' Id]*
+            Id ::= ID | SQSTRING
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderId(System.String)">
+            <summary>
+             II.5.3: Id ::= ID | SQSTRING
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.IsID(System.String,System.Boolean)">
+            <summary>
+            Checks whether the s is ID (or ID ['.' ID]* if dotSeparatedIDs)
+            II.5.2: ID is a contiguous string of characters which starts with either an alphabetic character (A–Z, a–z)
+            or one of "_", "$", "@", "`" (grave accent), or "?",
+            and is followed by any number of alphanumeric characters (A–Z, a–z, 0–9) or the characters "_", "$", "@", "`", and "?". 
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderQString(System.String)">
+            <summary>
+            II.5.2: String surrounded by double quote (") marks
+            Within the quoted string the character "\" can be used as an escape character,
+            with "\t" representing a tab character, "\n" representing a newline character,
+            or "\" followed by three octal digits representing a byte with that value.
+            The "+" operator can be used to concatenate string literals.
+            This way, a long string can be broken across multiple lines by using "+" and a new string on each line.
+            An alternative is to use "\" as the last character in a line, in which case,
+            that character and the line break following it are not entered into the generated string.
+            Any white space characters (space, line-feed, carriage-return, and tab) between 
+            the "\" and the first non-white space character on the next line are ignored
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderSqString(System.String)">
+            <summary>
+            II.5.2: SQSTRING is just like QSTRING except that the former uses single quote (') marks instead of double
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderString(System.String,System.Boolean)">
+            <summary>
+            QSTRING or bytearray
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderGenericParameters(JetBrains.Metadata.Reader.API.IMetadataGenericArgument[])">
+            <summary>
+            II.10.1.7: Generic parameters with attributes and constraints
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderGenPar(JetBrains.Metadata.Reader.API.IMetadataGenericArgument)">
+            <summary>
+            II.10.1.7: GenPar::= [  [  GenParAttribs ]* [ '(' [ GenConstraints ] ')' ]  Id
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderSecurityDecl(JetBrains.Metadata.Reader.API.IMetadataSecurityOwner)">
+            <summary>
+            II.20: SecurityDecl ::= .permissionset SecAction = '(' Bytes ')'
+            | .permission SecAction TypeReference '(' NameValPairs ')'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderSecAction(JetBrains.Metadata.Reader.API.SecurityAction)">
+            <summary>
+            II.20: SecAction
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderFieldInit(System.Object,System.Boolean)">
+            <summary>
+            II.16.2
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderSpecialnameAttributes(JetBrains.Metadata.Reader.API.IMetadataTypeMember)">
+            <summary>
+            II.10.1.6, II.15.4.2.6, II.16.1.4, II.17, II.18
+            </summary>
+            <param name="typeMember"></param>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderAccessor(JetBrains.Metadata.Reader.API.IMetadataMethod,System.String)">
+            <summary>
+            II.17, II.18
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMethod(JetBrains.Metadata.Reader.API.IMetadataMethod,JetBrains.Metadata.Reader.API.IImageBodyReader)">
+            <summary>
+            II.15: .method MethodHeader '{' MethodBodyItem* '}'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMethodName(System.String)">
+            <summary>
+            II.15.4: MethodName ::= .cctor | .ctor | DottedName
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMethodAttributes(JetBrains.Metadata.Reader.API.IMetadataMethod)">
+            <summary>
+            II.15.4.2: MethAttr*
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderPlatformInvoke(JetBrains.Metadata.Reader.API.IMetadataMethod)">
+            <summary>
+            II.15.4.2.5: [ pinvokeimpl '(' QSTRING [ as QSTRING ] PinvAttr* ')' ]
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderCallConv(JetBrains.Metadata.Reader.API.IMetadataMethod)">
+            <summary>
+            II.15.3: CallConv ::= [ instance [ explicit ]] [ CallKind ]
+            A calling convention specifies how a method expects its arguments to be passed from the caller to the called method.
+            It consists of two parts:
+            the first deals with the existence and type of the this pointer,
+            while the second relates to the mechanism for transporting the arguments
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMethodParameters(JetBrains.Metadata.Reader.API.IMetadataMethod,System.Boolean,System.Boolean,System.Int32)">
+            <summary>
+            II.15.4: '(' Parameters ')'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderMethodImplementationAttributes(JetBrains.Metadata.Reader.API.IMetadataMethod)">
+            <summary>
+            II.15.4.3: ImplAttr*
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderImplementedMethods(JetBrains.Metadata.Reader.API.IMetadataMethod)">
+            <summary>
+            II.10.3.2
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderEvent(JetBrains.Metadata.Reader.API.IMetadataEvent)">
+            <summary>
+            II.18: .event EventHeader '{' EventMember* '}'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderEventHeader(JetBrains.Metadata.Reader.API.IMetadataEvent)">
+            <summary>
+            .event EventHeader
+            II.18: EventHeader ::= [ specialname ] [ rtspecialname ] [ TypeSpec ] Id
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderField(JetBrains.Metadata.Reader.API.IMetadataField)">
+            <summary>
+            Render field and custom field attributes
+            II.16: Field ::= .field FieldDecl
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderFieldHeader(JetBrains.Metadata.Reader.API.IMetadataField)">
+            <summary>
+            .field FieldDecl
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderFieldDecl(JetBrains.Metadata.Reader.API.IMetadataField)">
+            <summary>
+            II.16: FieldDecl ::= [ '[' Int32 ']' ] FieldAttr* Type Id [ '=' FieldInit | at DataLabel ]
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderFieldAttributes(JetBrains.Metadata.Reader.API.IMetadataField)">
+            <summary>
+            II.16.1: FieldAttr*
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderProperty(JetBrains.Metadata.Reader.API.IMetadataProperty)">
+            <summary>
+            II.17: .property PropHeader '{' PropMember* '}'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderPropertyHeader(JetBrains.Metadata.Reader.API.IMetadataProperty)">
+            <summary>
+            .property PropHeader
+            II.17: PropHeader ::= [ specialname ][ rtspecialname ] CallConv Type Id '(' Parameters ')'
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderLineComment">
+            <summary>
+            Writes single-line comment characters
+            (does not mark end of single-line comment)
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.RenderLineComment(System.String)">
+            <summary>
+            Writes single-line comment characters and comment string 
+            and automatically marks end of single-line comment
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.WriteTextWithLineComment(System.String,System.Object[])">
+            <summary>
+            Writes text with single-line comment characters inside it
+            and automatically marks end of single-line comment
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.IL.IlMetadataFormatter.CodeTextWithLineCommentsWriter.MarkLineCommentEnd">
+            <summary>
+            Adds new line requirenment
             </summary>
         </member>
         <member name="T:JetBrains.Metadata.IL.ExceptionHandler">
@@ -623,6 +885,16 @@
             Target instruction absolute offset (from the beginning of the method)
             </summary>
         </member>
+        <member name="T:JetBrains.Metadata.Reader.API.IAssemblyResolver">
+            <summary>
+            Interface for resolving assembly names to assemblies
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.Reader.API.IAssemblyResolver.ResolveAssembly(JetBrains.Metadata.Utils.AssemblyNameInfo,JetBrains.Util.FileSystemPath@,JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext)">
+            <summary>
+            Resolves assembly name to assembly metadata interface
+            </summary>
+        </member>
         <member name="T:JetBrains.Metadata.Reader.API.TargetFrameworkId">
             <summary>
             .kproj (ASP .Net 5.0 projects) may target different frameworks using different project properties and reference sets. 
@@ -632,6 +904,41 @@
         <member name="F:JetBrains.Metadata.Reader.API.TargetFrameworkId.Default">
             <summary>
             This is a temporary value used while refactoring
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Reader.API.TargetFrameworkId.AllowedToReferenceDefaultTargetFramework">
+            <summary>
+            DNX 4.5.1 is allowed to reference regular projects unlike all other combinations
+            </summary>
+        </member>
+        <member name="T:JetBrains.Metadata.Utils.IAssemblyItem2">
+            <summary>
+            Optional properties for an assembly item.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Metadata.Utils.IAssemblyItem">
+            <summary>
+            An assembly item, which can tell the name of the assembly and its bytes content.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Utils.IAssemblyItem.AssemblyName">
+            <summary>
+            Full name of this assembly.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Utils.IAssemblyItem.File">
+            <summary>
+            The byte content of the assembly, as well as its original file name.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Utils.IAssemblyItem2.ProgramDatabase">
+            <summary>
+            Optional program database (PDB) file for this DLL.
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Utils.IAssemblyItem2.XmlDocumentation">
+            <summary>
+            Optional XmlDoc file for this DLL.
             </summary>
         </member>
         <member name="F:JetBrains.Metadata.Utils.AssemblyItem.ProgramDatabase">
@@ -654,6 +961,72 @@
             <summary>
             Checks for the existing files and chooses the assembly extension from the list, eg “exe” or “dll”.
             Throws if not found.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyContentType">
+            <summary>
+            Provides information about the type of code contained in an assembly.
+            </summary>
+        </member>
+        <member name="T:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer">
+            <summary>
+            Compares assembly identities. 
+            Derived types may implement platform specific unification and portability policies.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ReferenceMatchesDefinition(System.String,JetBrains.Metadata.Utils.AssemblyNameInfo)">
+            <summary>
+            Compares assembly reference name (possibly partial) with definition identity.
+            </summary>
+            <param name="referenceDisplayName">Partial or full assembly display name.</param>
+            <param name="definition">Full assembly display name.</param>
+            <returns>True if the reference name matches the definition identity.</returns>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ReferenceMatchesDefinition(JetBrains.Metadata.Utils.AssemblyNameInfo,JetBrains.Metadata.Utils.AssemblyNameInfo)">
+            <summary>
+            Compares assembly reference identity with definition identity.
+            </summary>
+            <param name="reference">Reference assembly identity.</param>
+            <param name="definition">Full assembly display name.</param>
+            <returns>True if the reference identity matches the definition identity.</returns>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.Compare(JetBrains.Metadata.Utils.AssemblyNameInfo,JetBrains.Metadata.Utils.AssemblyNameInfo)">
+            <summary>
+            Compares reference assembly identity with definition identity and returns their relationship.
+            </summary>
+            <param name="reference">Reference identity.</param>
+            <param name="definition">Definition identity.</param>
+        </member>
+        <member name="T:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ComparisonResult">
+            <summary>
+            A set of possible outcomes of <see cref="T:JetBrains.Metadata.Utils.AssemblyNameInfo"/> comparison.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ComparisonResult.NotEquivalent">
+            <summary>
+            Reference doesn't match definition.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ComparisonResult.Equivalent">
+            <summary>
+            Strongly named reference matches strongly named definition (strong identity is identity with public key or token),
+            Or weak reference matches weak definition.
+            </summary>
+        </member>
+        <member name="F:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyNameInfoComparer.ComparisonResult.EquivalentIgnoringVersion">
+            <summary>
+            Reference matches definition except for version (reference version is lower or higher than definition version).
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyVersion.op_Explicit(System.Version)~JetBrains.Metadata.Utils.DotNetLegacy.AssemblyVersion">
+            <summary>
+            Converts <see cref="T:System.Version"/> to <see cref="T:JetBrains.Metadata.Utils.DotNetLegacy.AssemblyVersion"/>.
+            </summary>
+            <exception cref="T:System.InvalidCastException">Major, minor, build or revision number are less than 0 or greater than 0xFFFF.</exception>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.DotNetLegacy.DesktopAssemblyNameComparer.IsFrameworkAssembly(JetBrains.Metadata.Utils.AssemblyNameInfo)">
+            <summary>
+            Returns true if the identity is a Framework 4.5 or lower assembly.
             </summary>
         </member>
         <member name="M:JetBrains.Metadata.Utils.Pdb.CodeTextWriter.ConflictingNamesHelper.GetConflictingNames(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
@@ -793,16 +1166,6 @@
             Data class to encapsulate source module's path and the referenced assembly name to be resolved
             </summary>
         </member>
-        <member name="T:JetBrains.Metadata.Reader.API.IAssemblyResolver">
-            <summary>
-            Interface for resolving assembly names to assemblies
-            </summary>
-        </member>
-        <member name="M:JetBrains.Metadata.Reader.API.IAssemblyResolver.ResolveAssembly(JetBrains.Metadata.Utils.AssemblyNameInfo,JetBrains.Util.FileSystemPath@,JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext)">
-            <summary>
-            Resolves assembly name to assembly metadata interface
-            </summary>
-        </member>
         <member name="P:JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext.UniqueName">
             <summary>
             Presentable name for diagnostic issues
@@ -822,6 +1185,11 @@
         <member name="T:JetBrains.Metadata.Reader.API.GacAssemblyResolver">
             <summary>
             Searches in gac
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.Reader.API.GacAssemblyResolver.IsInGac(JetBrains.Util.FileSystemPath)">
+            <summary>
+            Gets whether the given assembly path is under some GAC location.
             </summary>
         </member>
         <member name="F:JetBrains.Metadata.Reader.API.GacAssemblyResolver.GacResolvePreferences.MatchExact">
@@ -1078,6 +1446,12 @@
             Gets flag indicating whether the member has special name flag
             </summary>
         </member>
+        <member name="P:JetBrains.Metadata.Reader.API.IMetadataTypeMember.IsRuntimeSpecialName">
+            <summary>
+            Gets flag indicating whether the member has runtime special name flag
+            (name shall be treated in a special way by the runtime)
+            </summary>
+        </member>
         <member name="P:JetBrains.Metadata.Reader.API.IMethodBodyLocalVariable.Method">
             <summary>
             Owner
@@ -1123,6 +1497,15 @@
             </summary>
             <remarks>
             Find all methods containing ldstr instruction with userStringToken operand
+            </remarks>
+        </member>
+        <member name="M:JetBrains.Metadata.Reader.API.IMethodBodyUsagesFinder.FindDefaultConstructorUsagesOfValueType(JetBrains.Metadata.Reader.API.IMetadataTypeInfo)">
+            <summary>
+            Find usages of default constructor of value type <paramref name="typeInfo"/> in method bodies of current assembly
+            (one IMethodBodyUsagesFinder was created from).
+            </summary>
+            <remarks>
+            Find all methods containing initobj instruction with typeInfo.Token operand
             </remarks>
         </member>
         <member name="M:JetBrains.Metadata.Reader.API.MetadataFieldEx.IsVolatile(JetBrains.Metadata.Reader.API.IMetadataField)">
@@ -1254,6 +1637,18 @@
             If adding to <see cref="T:JetBrains.Metadata.Reader.Impl.CombiningAssemblyResolver"/>, must be the last one.
             </summary>
         </member>
+        <member name="M:JetBrains.Metadata.Reader.Impl.FailAssemblyResolver.ReportDistinctError(JetBrains.Metadata.Utils.AssemblyNameInfo,JetBrains.Metadata.Reader.API.IModuleReferenceResolveContext)">
+            <summary>
+            Reports the error on assembly resolve, in case no errors have been reported for the same assembly yet.
+            </summary>
+            <param name="name"></param>
+            <param name="ctx">More info for the resolve originator. Does not take part in Distinct.</param>
+        </member>
+        <member name="M:JetBrains.Metadata.Reader.Impl.FieldSignatureBlobDecoder.DecodeFieldSig``2(JetBrains.Metadata.Utils.IBlob,JetBrains.Metadata.Reader.Impl.ITypeBuilder{``0,``1})">
+            <summary>
+            Partition II Metadata 23.2.4: FieldSig
+            </summary>
+        </member>
         <member name="T:JetBrains.Metadata.Reader.API.IMetadataTypeInfo">
             <summary>
             Interface for accessing types metadata
@@ -1354,6 +1749,11 @@
         <member name="P:JetBrains.Metadata.Reader.API.IMetadataTypeInfo.InteropStringFormat">
             <summary>
             Charset for pinvoke calls
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Reader.API.IMetadataTypeInfo.IsBeforeFieldInit">
+            <summary>
+            Gets flag indicating whether the type instructs the CLI that it need not initialize the type before a static method is called
             </summary>
         </member>
         <member name="P:JetBrains.Metadata.Reader.API.IMetadataTypeInfo.IsClass">
@@ -1829,6 +2229,11 @@
             Gets flag indicating whether the method is newslot
             </summary>
         </member>
+        <member name="P:JetBrains.Metadata.Reader.API.IMetadataMethod.IsStrict">
+            <summary>
+            Gets flag indicating whether the method overridability is the same as the visibility
+            </summary>
+        </member>
         <member name="P:JetBrains.Metadata.Reader.API.IMetadataMethod.IsVarArg">
             <summary>
             Gets flag indicating whether the method is vararg
@@ -2045,6 +2450,20 @@
         <member name="M:JetBrains.Metadata.Reader.Impl.MetadataManifestResource.GetDisposition">
             <summary>
             Gets "pointer" to the resource location, independent of ImageBodyReader
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Reader.API.PInvokeInfo.SupportsLastError">
+            <summary>
+            Native method supports C style last error querying
+            (Microsoft implementation of the CLI on MS Windows)
+            </summary>
+        </member>
+        <member name="P:JetBrains.Metadata.Reader.API.PInvokeInfo.NoMangle">
+            <summary>
+            Indicates that the name in the DLL should be used precisely as specified,
+            rather than attempting to add A (for ascii) or W (widechar) to find
+            platform-specific variants based on the type of string marshalling requested
+            (Microsoft implementation of the CLI on MS Windows)
             </summary>
         </member>
         <member name="M:JetBrains.Metadata.Reader.Impl.PermissionSetBlobDecoder.ReadArguments(JetBrains.Metadata.Utils.IBinaryReader,System.Int32,System.Int32,System.Boolean,JetBrains.Metadata.Reader.Impl.CustomAttributeBlobDecoder,System.Collections.Generic.List{JetBrains.Metadata.Reader.API.IMetadataCustomAttributeFieldInitialization},System.Collections.Generic.List{JetBrains.Metadata.Reader.API.IMetadataCustomAttributePropertyInitialization})">
@@ -2738,6 +3157,12 @@
             Source files
             </summary>
         </member>
+        <member name="P:JetBrains.Metadata.Utils.Pdb.PdbContent.PdbContent.OriginalPdbFilePath">
+            <summary>
+            Path to pdb file from which the data was obtained
+            </summary>
+            <remarks>Should be null for decompiler-generated PdbContent</remarks>
+        </member>
         <member name="T:JetBrains.Metadata.Utils.Pdb.PdbContent.PdbLocalVariable">
             <summary>
             System.Diagnostics.SymbolStore.ISymbolVariable
@@ -2808,7 +3233,7 @@
             (sorted in the increasing order of IL offsets)
             </summary>
         </member>
-        <member name="P:JetBrains.Metadata.Utils.Pdb.PdbContent.PdbMethod.GetSequencePointsSourceIndices">
+        <member name="P:JetBrains.Metadata.Utils.Pdb.PdbContent.PdbMethod.SequencePointsSourceIndices">
             <summary>
             Indices of source files in which current method is defined
             </summary>
@@ -3928,6 +4353,16 @@
         </member>
         <member name="F:JetBrains.Metadata.Utils.PE.Subsystem.XBOX">
             <summary>
+            </summary>
+        </member>
+        <member name="F:JetBrains.Metadata.Utils.StreamBinaryReader.myBufSizePositionInStream">
+            <summary>
+            A position in <see cref="F:JetBrains.Metadata.Utils.StreamBinaryReader.myStream"/> coordinates which corresponds to the end of the usable data in <see cref="F:JetBrains.Metadata.Utils.StreamBinaryReader.myBuf"/>.
+            </summary>
+        </member>
+        <member name="M:JetBrains.Metadata.Utils.StreamBinaryReader.AssertValidBuffer">
+            <summary>
+            Self-check to make sure that the pre-fetched buffer still corresponds the stream.
             </summary>
         </member>
         <member name="M:JetBrains.Metadata.Utils.TypeName.InvalidTypeNameException.#ctor(System.String)">

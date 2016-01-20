@@ -4,6 +4,38 @@
         <name>JetBrains.Platform.DocumentModel</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.DocumentModel.IDocumentOperationsHandler">
+            <summary>
+            Base interface for the pluggable part of the <see cref="!:VsDocumentWhidbey"/> implementation that switches between feeding on file system entities and Visual Studio RDT Text Buffers (preferred if a document is known to the RDT).
+            </summary>
+        </member>
+        <member name="P:JetBrains.DocumentModel.IDocumentOperationsHandler.Moniker">
+            <summary>
+            Gets the document moniker (an arbitrary string that helps with identifying this document).
+            </summary>
+        </member>
+        <member name="T:JetBrains.DocumentModel.FileSystemDocumentOperationsHandler">
+            <summary>
+            Pluggable part of the <see cref="!:VsDocumentWhidbey"/> implementation.
+            When the document is not open in Visual Studio RDT, operates on the disk files directly.
+            </summary>
+        </member>
+        <member name="M:JetBrains.DocumentModel.FileSystemDocumentOperationsHandler.ExpectChangeCallbackForOurActivity(System.Nullable{JetBrains.Util.TextRange},System.Nullable{JetBrains.Util.TextRange})">
+            <summary>
+            We're doing smth to VS that it will report back to us in an event, ack the event and let into the transaction.
+            Might be nested.
+            </summary>
+        </member>
+        <member name="P:JetBrains.DocumentModel.FileSystemDocumentOperationsHandler.FileDidNotExist">
+            <summary>
+            The file did not exist at the moment when the operation handler was created.
+            </summary>
+        </member>
+        <member name="P:JetBrains.DocumentModel.FileSystemDocumentOperationsHandler.Moniker">
+            <summary>
+            Gets the document moniker (an arbitrary string that helps with identifying this document).
+            </summary>
+        </member>
         <member name="M:JetBrains.DocumentModel.CommandProcessing.DocumentCommandProcessor.AddUndoRedoHandlers(JetBrains.DocumentModel.IDocument,System.Collections.Generic.IEnumerable{JetBrains.Util.IUndoRedoHandler})">
             <summary>
             ask gorelov

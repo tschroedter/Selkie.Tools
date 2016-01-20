@@ -84,6 +84,17 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="P:JetBrains.ReSharper.Refactorings.Rename.IDerivedRenamesEvaluator.SuggestedElementsHaveDerivedName">
+            <summary>
+            This options controls if new name of related symbol should be derived from the name of the initial symbol.
+            When it is 'false' the same name will be applied all related symbols of the evaluator.
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.Refactorings.Rename.RenameWorkflow">
+            <summary> 
+              Workflow for the rename refactoring
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Refactorings.Properties.Resources">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -832,6 +843,11 @@
             InitializeComponent
             </summary>
         </member>
+        <member name="P:JetBrains.ReSharper.Refactorings.PushPullTool.Fixes.FixFactory.Priority">
+            <summary>
+            The smaller the number, the higher fix's position in UI
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Refactorings.PushPullTool.UI.PullParameterTreeGridView">
             <summary>
               Interaction logic for PullParameterTreeGridView.xaml
@@ -855,7 +871,7 @@
             InitializeComponent
             </summary>
         </member>
-        <member name="M:JetBrains.ReSharper.Refactorings.Rename.RenameFromContexts.RenameFromDrivenContext(JetBrains.ReSharper.Feature.Services.Refactorings.IRefactoringDriver,JetBrains.ProjectModel.ISolution,JetBrains.ReSharper.Psi.IDeclaredElement,System.String,JetBrains.Application.Progress.NullProgressIndicator)">
+        <member name="M:JetBrains.ReSharper.Refactorings.Rename.RenameFromContexts.RenameFromDrivenContext(JetBrains.ReSharper.Feature.Services.Refactorings.IRefactoringDriver,JetBrains.ProjectModel.ISolution,JetBrains.ReSharper.Psi.IDeclaredElement,System.String,JetBrains.Application.Progress.IProgressIndicator)">
             <summary>
             Execute rename within driver of another refactoring 
             </summary>
@@ -1037,12 +1053,6 @@
         <member name="T:JetBrains.ReSharper.Refactorings.Rename.ParameterInOverloadRenameEvaluator">
             <summary>
             Correcponding parameter of overload.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ReSharper.Refactorings.Rename.IDerivedRenamesEvaluator.SuggestedElementsHaveDerivedName">
-            <summary>
-            This options controls if new name of related symbol should be derived from the name of the initial symbol.
-            When it is 'false' the same name will be applied all related symbols of the evaluator.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.Refactorings.SafeDeleteFolder.Impl.SafeDeleteFolderPage.components">
@@ -1683,11 +1693,6 @@
         <member name="T:JetBrains.ReSharper.Refactorings.Rename.RenameInitialControl">
             <summary>
             Summary description for RenameInitialControl.
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.Refactorings.Rename.RenameWorkflow">
-            <summary>
-            Workflow for the rename refactoring
             </summary>
         </member>
     </members>

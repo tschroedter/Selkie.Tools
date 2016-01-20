@@ -10,12 +10,27 @@
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.ICollection.Count">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.ICollection.get_Count">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.ICollection.SyncRoot">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.ICollection.get_SyncRoot">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.ICollection.IsSynchronized">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>0</argument> <!-- NONE -->
     </attribute>
@@ -30,9 +45,19 @@
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.Generic.ICollection`1.Count">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.Generic.ICollection`1.get_Count">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.ICollection`1.IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
     </attribute>
   </member>
   <member name="M:System.Collections.Generic.ICollection`1.get_IsReadOnly">
@@ -75,7 +100,17 @@
       <argument>6</argument> <!-- APPEND -->
     </attribute>
   </member>
+  <member name="P:System.Collections.IList.IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.IList.get_IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.IList.IsFixedSize">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>0</argument> <!-- NONE -->
     </attribute>
@@ -154,7 +189,17 @@
       <argument>6</argument> <!-- APPEND -->
     </attribute>
   </member>
+  <member name="P:System.Collections.IDictionary.Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.IDictionary.get_Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.IDictionary.Values">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
@@ -164,7 +209,17 @@
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.IDictionary.IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.IDictionary.get_IsReadOnly">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.IDictionary.IsFixedSize">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>0</argument> <!-- NONE -->
     </attribute>
@@ -209,11 +264,22 @@
       <argument>6</argument> <!-- APPEND -->
     </attribute>
   </member>
+  <member name="P:System.Collections.Generic.IDictionary`2.Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.Generic.IDictionary`2.get_Keys">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.Generic.IDictionary`2.Values">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+
   <member name="M:System.Collections.Generic.IDictionary`2.get_Values">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
@@ -237,6 +303,47 @@
   <member name="M:System.Collections.Generic.IDictionary`2.TryGetValue(`0,`1@)">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="M:System.Collections.Generic.Dictionary`2.get_Comparer">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.Dictionary`2.Comparer">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.Dictionary`2.Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="M:System.Collections.Generic.Dictionary`2.get_Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.Dictionary`2.Values">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+
+  <member name="M:System.Collections.Generic.Dictionary`2.get_Values">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="M:System.Collections.Generic.Dictionary`2.GetEnumerator">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- APPEND -->
     </attribute>
   </member>
   <member name="M:System.ICloneable.Clone">
@@ -269,22 +376,7 @@
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
-  <member name="M:System.Collections.Generic.Dictionary`2.get_Keys">
-    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
-      <argument>1</argument> <!-- READ -->
-    </attribute>
-  </member>
-  <member name="M:System.Collections.Generic.Dictionary`2.get_Values">
-    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
-      <argument>1</argument> <!-- READ -->
-    </attribute>
-  </member>
-  <member name="M:System.Collections.Generic.Dictionary`2.ContainsValue(`1)">
-    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
-      <argument>1</argument> <!-- READ -->
-    </attribute>
-  </member>
-  <member name="M:System.Collections.Generic.Dictionary`2.GetEnumerator">
+  <member name="P:System.Collections.Generic.IReadOnlyCollection`1.Count">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
@@ -299,12 +391,22 @@
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
+  <member name="P:System.Collections.Generic.IReadOnlyDictionary`2.Keys">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
   <member name="M:System.Collections.Generic.IReadOnlyDictionary`2.get_Keys">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
   </member>
   <member name="M:System.Collections.Generic.IReadOnlyDictionary`2.get_Values">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.IReadOnlyDictionary`2.Values">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
     </attribute>
@@ -317,6 +419,11 @@
   <member name="M:System.Collections.Generic.IReadOnlyDictionary`2.TryGetValue(`0,`1@)">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.ArrayList.Capacity">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
     </attribute>
   </member>
   <member name="M:System.Collections.ArrayList.get_Capacity">
@@ -452,6 +559,11 @@
   <member name="M:System.Collections.Generic.IReadOnlyList`1.get_Item(System.Int32)">
     <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
       <argument>1</argument> <!-- READ -->
+    </attribute>
+  </member>
+  <member name="P:System.Collections.Generic.List`1.Capacity">
+    <attribute ctor="M:JetBrains.Annotations.CollectionAccessAttribute.#ctor(JetBrains.Annotations.CollectionAccessType)">
+      <argument>0</argument> <!-- NONE -->
     </attribute>
   </member>
   <member name="M:System.Collections.Generic.List`1.get_Capacity">

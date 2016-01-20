@@ -1966,26 +1966,17 @@
             Filters out all type members that are neither method, field nor property
             </summary>
         </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestElementPerProviderCache">
+        <member name="M:JetBrains.ReSharper.UnitTestFramework.QueryProvider.EvaluatableTreeFindingExpressionVisitor.IsCurrentExpressionEvaluatable(System.Linq.Expressions.Expression)">
             <summary>
-            Stores number of tests for each provider available.
+            Determines whether the given <see cref="T:System.Linq.Expressions.Expression"/> is one of the expressions defined by <see cref="T:System.Linq.Expressions.ExpressionType"/> for which
+            <see cref="T:System.Linq.Expressions.ExpressionVisitor"/> has a dedicated Visit method. <see cref="M:System.Linq.Expressions.ExpressionVisitor.Visit(System.Linq.Expressions.Expression)"/> handles those by calling the respective Visit method.
             </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestSessionAndElementId">
-            <summary>
-            Key to store tests results per session.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestSessionAndElementId.SessionId">
-            <summary>
-            Id of session as part of which test was executed.
-            May be empty if test was executed via API in background.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestSessionAndElementId.ElementId">
-            <summary>
-            Persistent test id.
-            </summary>
+            <param name="expression">The expression to check. Must not be <see langword="null"/>.</param>
+            <returns>
+            <see langword="true"/> if <paramref name="expression"/> is one of the expressions defined by <see cref="T:System.Linq.Expressions.ExpressionType"/> and 
+            <see cref="T:System.Linq.Expressions.ExpressionVisitor"/> has a dedicated Visit method for it; otherwise, <see langword="false"/>. 
+            Note that <see cref="F:System.Linq.Expressions.ExpressionType.Extension"/>-type expressions are considered 'not supported' and will also return <see langword="false"/>.
+            </returns>
         </member>
         <member name="T:JetBrains.ReSharper.UnitTestFramework.IFakeUnitTestElement">
             <summary>
@@ -2047,8 +2038,11 @@
         </member>
         <member name="P:JetBrains.ReSharper.UnitTestFramework.IUnitTestElement.Categories">
             <summary>
-            Gets list of categories for element. Use <see cref="!:UnitTestElementCategoryFactory.Create"/> to get categories from strings.
+            Gets list of categories for element. 
             </summary>
+            <remarks>
+            Use <see cref="!:IUnitTestCategoryFactory.Create"/> to get categories from strings.
+            </remarks>
         </member>
         <member name="P:JetBrains.ReSharper.UnitTestFramework.IUnitTestElement.Parent">
             <summary>
@@ -2093,127 +2087,6 @@
             Implement provider as a solution component.
             </summary>
         </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.IUnitTestElements">
-            <summary>
-            Set of unit tests.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ReSharper.UnitTestFramework.IUnitTestElements.Elements">
-            <summary>
-            All elements in set.
-            For performance reasons it is recommend to implement it as hash set.
-            </summary>
-        </member>
-        <member name="P:JetBrains.ReSharper.UnitTestFramework.IUnitTestElements.ExplicitElements">
-            <summary>
-            Explicitly selected elements. Used in actions operating on selections and to explicitly run ignored tests.
-            For performance reasons it is recommend to implement it as hash set.
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestElementByCategoryCache">
-            <summary>
-            Unit Test categories cache. Helps to find out categories used in solution.
-            Doesn't store elements due to memory optimizations.
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestElementShortNameCache">
-            <summary>
-            Unit Test elements short names cache. Helps to find out fast whether element with given short name exists.
-            Doesn't store neither short names, nor elements due to memory optimizations.
-            </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResult(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement)">
-            <summary>
-            Result of most recent execution of given test.
-            </summary>
-            <param name="element"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResult(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Result of execution test in a given session. If there is no session use overload with session parameter.
-            </summary>
-            <param name="element"></param>
-            <param name="session"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResultData(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Get full output and exceptions occured in test executed in a given session.
-            </summary>
-            <param name="element"></param>
-            <param name="session"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.RemoveResults(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement})">
-            <summary>
-            Completely remove results of given tests (e. g. when test is removed).
-            </summary>
-            <param name="element"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.RemoveResult(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Remove result of test execution in a given session.
-            </summary>
-            <param name="element"></param>
-            <param name="session"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.RemoveResults(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement},JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Remove results of tests execution in a given session.
-            </summary>
-            <param name="elements"></param>
-            <param name="session"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResults(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement},JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Optimized version of <see cref="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResult(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)"/> to get multiple results at once.
-            </summary>
-            <param name="elements"></param>
-            <param name="session"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResultsOnly(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement},JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Optimized version of <see cref="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.GetResult(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)"/> to get multiple results at once.
-            </summary>
-            <param name="elements"></param>
-            <param name="session"></param>
-            <returns></returns>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.MarkOutdated(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement})">
-            <summary>
-            Marks given elements idle and outdated and drops suspicious (running, aborted, etc) states.
-            </summary>
-            <param name="elements"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.MarkPending(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Drops test result and marks it as pending.
-            </summary>
-            <param name="element"></param>
-            <param name="session"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.MarkPending(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement},JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Drops tests results and marks them as pending.
-            </summary>
-            <param name="elements"></param>
-            <param name="session"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.ClearResultsFrom(JetBrains.ReSharper.UnitTestFramework.IUnitTestSession)">
-            <summary>
-            Removes all results from given session.
-            </summary>
-            <param name="session"></param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestResultManager.MarkIgnored(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement,System.String)">
-            <summary>
-            Marks element statically ignored and doesn't fire status change event.
-            </summary>
-            <param name="element"></param>
-            <param name="explicitReason"></param>
-        </member>
         <member name="T:JetBrains.ReSharper.UnitTestFramework.HostProviderAvailability">
             <summary>
             <see cref="T:JetBrains.ReSharper.UnitTestFramework.IHostProvider"/> availability.
@@ -2234,25 +2107,20 @@
             Ready.
             </summary>
         </member>
-        <member name="P:JetBrains.ReSharper.UnitTestFramework.Elements.IUnitTestElementManager.UnitTestElementsChanged">
-            <summary>
-            Fired when any change to any element happens, as well as on adding and removing elements.
-            Used for updating Unit Test Explorer tool window.
-            </summary>
-        </member>
         <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsSource.ExploreSolution(JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsObserver)">
             <summary>
             Explores given solution, but not containing projects
             </summary>
             <param name="observer"></param>
         </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsSource.ExploreProjects(System.Collections.Generic.IDictionary{JetBrains.ProjectModel.IProject,JetBrains.Util.FileSystemPath},JetBrains.Metadata.Reader.API.MetadataLoader,JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsObserver)">
+        <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsSource.ExploreProjects(System.Collections.Generic.IDictionary{JetBrains.ProjectModel.IProject,JetBrains.Util.FileSystemPath},JetBrains.Metadata.Reader.API.MetadataLoader,JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsObserver,System.Threading.CancellationToken)">
             <summary>
             Explore given assembly
             </summary>
             <param name="projects"></param>
             <param name="loader"></param>
             <param name="observer"></param>
+            <param name="cancellationToken"></param>
         </member>
         <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsSource.ExploreFile(JetBrains.ReSharper.Psi.Tree.IFile,JetBrains.ReSharper.UnitTestFramework.IUnitTestElementsObserver,System.Func{System.Boolean})">
             <summary>
@@ -2351,25 +2219,9 @@
         </member>
         <member name="M:JetBrains.ReSharper.UnitTestFramework.UnitTestBackgroundProjectExplorer.ExploreProjects(System.Collections.Generic.ICollection{JetBrains.ProjectModel.IProject})">
             <summary>
-            Starts background exploration of given projects and waits till projects are explored.
+              Starts background exploration of given projects and waits till projects are explored.
             </summary>
             <param name="projects">Projects to explore</param>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.Elements.UnitTestElementManager.AddElement(JetBrains.ReSharper.UnitTestFramework.IUnitTestElement)">
-            <summary>
-            Adds new Unit Test Element to the system
-            </summary>
-            <param name="element"></param>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.UnitTestElementsAndTheirChildrenRecursive">
-            <summary>
-            Set of unit test elements and all their ancestors evaluated lazily.
-            </summary>
-        </member>
-        <member name="T:JetBrains.ReSharper.UnitTestFramework.UnitTestElementsFromCategory">
-            <summary>
-            Represents a set of all unit tests from given category. Evaluated lazily.
-            </summary>
         </member>
         <member name="T:JetBrains.ReSharper.UnitTestFramework.UnitTestSessionPersistentData">
             <summary>
@@ -2380,13 +2232,6 @@
             <summary>
             Compares UnitTestElement in given type order, then by ShortName.
             </summary>
-        </member>
-        <member name="M:JetBrains.ReSharper.UnitTestFramework.UnitTestElements.GetElementsRecursive(System.Collections.Generic.IEnumerable{JetBrains.ReSharper.UnitTestFramework.IUnitTestElement})">
-            <summary>
-            Adds all children for leaf elements
-            </summary>
-            <param name="elements"></param>
-            <returns></returns>
         </member>
         <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestRun.GetElementByRemoteTaskId(System.String)">
             <summary>
@@ -2406,6 +2251,14 @@
         <member name="M:JetBrains.ReSharper.UnitTestFramework.IUnitTestRun.GetTaskIdsToElements">
             <summary>
             Returns map from RemoteTask id to IUnitTestElement for all tasks/elements in run
+            </summary>
+        </member>
+        <member name="T:JetBrains.ReSharper.UnitTestFramework.UnitTestResultPropagationData">
+            <summary>
+            Optimization: 
+            Used to quickly calculate aggregating Status of the element when one of its children changes its status.
+            Contains count of immediate children of an element by UnitTestStatus.
+            Must be reset everytime the element it is calculated for changes.
             </summary>
         </member>
         <member name="T:JetBrains.ReSharper.UnitTestFramework.IMsTestUntilVs09Zone">

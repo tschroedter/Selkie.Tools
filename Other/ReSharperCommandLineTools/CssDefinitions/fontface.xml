@@ -35,7 +35,7 @@
       </group>
     </group>
   </property>
-  <property id="font-weight" declared-in="1.0" rules="@font-face" initial="all" tooltip="The weight of a face relative to others in the same font family." url="http://www.w3.org/TR/2000/03/WD-SVG-20000303/fonts.html#FontElementFontWeightAttribute">
+  <property id="font-weight" declared-in="1.0" rules="@font-face" initial="all" tooltip="The weight of a face relative to others in the same font family." url="https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight">
     <group type="or">
       <name value="all" />
       <group>

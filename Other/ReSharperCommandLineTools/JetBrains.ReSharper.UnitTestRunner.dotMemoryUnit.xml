@@ -137,21 +137,11 @@
               <code>themediconmanager.GetIcon&lt;UnitTestingPrivateThemedIcons.DotMemoryUnit&gt;()        // Icon image for rendering</code>
             </example>
         </member>
-        <member name="M:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.DotMemoryUnitTaskRunnerHostController.Run(JetBrains.ReSharper.UnitTestFramework.IUnitTestRun)">
+        <member name="M:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.DotMemoryUnitTaskRunnerHostController.RunCore(JetBrains.ReSharper.UnitTestFramework.IUnitTestRun)">
             <summary>
             Run should be thread safe
             </summary>
             <param name="run"></param>
-        </member>
-        <member name="F:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.WcfClient.ServicePropertyName">
-            <summary>
-            This const contains the name of the <see cref="P:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.WcfClient`1.Service"/> property
-            </summary>
-        </member>
-        <member name="P:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.WcfClient`1.Service">
-            <summary>
-            The name of the property should be the same as <see cref="F:JetBrains.ReSharper.UnitTestRunner.dotMemoryUnit.WcfClient.ServicePropertyName"/> const
-            </summary>
         </member>
     </members>
 </doc>

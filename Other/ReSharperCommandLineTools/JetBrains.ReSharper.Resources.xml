@@ -4,6 +4,11 @@
         <name>JetBrains.ReSharper.Resources</name>
     </assembly>
     <members>
+        <member name="T:JetBrains.ReSharper.Resources.AssemblyReferenceClass_PsiFeaturesResources">
+            <summary>
+            Forces the compiler to add assembly references.
+            </summary>
+        </member>
         <member name="T:JetBrains.ReSharper.Resources.resources.Clipart.ReSharperClipart">
             <summary>
               A strongly-typed resource class, for looking up localized strings, etc.
@@ -1446,6 +1451,21 @@
             Psi features based product constants...
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.AC">
+            <summary>
+            “Annotations Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ASSIST">
+            <summary>
+            “ASSIST” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.AccessIntro_by_ID">
+            <summary>
+            “AccessIntro_by_ID Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Accessing_Decompiled_Files">
             <summary>
             “Accessing Decompiled Files” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -1458,7 +1478,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Architecture__Project_Dependencies_Exploration">
             <summary>
-            “Exploring Project Dependency Graph” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Exploring Project Dependency Diagram” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Arranging_Member_Qualifiers">
@@ -1466,9 +1486,14 @@
             “Arranging Optional Member Qualifiers” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Arranging_Parentheses">
+            <summary>
+            “Arranging Parentheses” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Assemblies_from_Global_Assembly_Cache">
             <summary>
-            “Assemblies from Global Assembly Cache” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Opening Assemblies from Global Assembly Cache” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Attributes_Style">
@@ -1476,14 +1501,44 @@
             “Attributes Style” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.BL">
+            <summary>
+            “By Language Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Building_Solution">
+            <summary>
+            “Building Solution” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Built_In_Type_Naming">
+            <summary>
+            “Built-In Type References Style” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.CA">
             <summary>
             “Code Analysis Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.CA_Chunks">
+            <summary>
+            “CA Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.CA_Static_Chunks">
             <summary>
             “CA_Static_Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.CL">
+            <summary>
+            “Chunk LIbrary” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Cleanup_Chunks">
+            <summary>
+            “Code Cleanup Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Annotations_in_Source_Code">
@@ -1498,7 +1553,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Code_Annotations">
             <summary>
-            “Code Annotations” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Using Annotations to Refine Code Inspection” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Code_Inspections">
@@ -1563,7 +1618,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Project_Hierarchy">
             <summary>
-            “Project Hierarchy” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Exploring Project Hierarchy” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Quick_Fixes">
@@ -1613,12 +1668,12 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__String_Formatting_Methods">
             <summary>
-            “Defining Custom String Formatting Methods” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Analysis and Helpers for String Literals” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Value_Analysis">
             <summary>
-            “Value Analysis” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Value and Nullability Analysis” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis__Value_Tracking">
@@ -1628,22 +1683,22 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis_in_CPP">
             <summary>
-            “Code Analysis in C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis_in_HTML">
             <summary>
-            “Code Analysis in HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis_in_VB_NET">
             <summary>
-            “Code Analysis in Visual Basic .NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in Visual Basic .NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Analysis_in_XML">
             <summary>
-            “Code Analysis in XML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in XML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Cleanup__Creating_Custom_Profiles">
@@ -1669,11 +1724,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Coverage_during_Manual_Testing">
             <summary>
             “Coverage Analysis of Manual Test Sessions” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Coverage_of_Unit_Tests">
-            <summary>
-            “Execution and Coverage Analysis of Unit Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Generation__Delegating_Members">
@@ -1801,9 +1851,19 @@
             “Code Templates in ASP.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Templates_in_CPP">
+            <summary>
+            “Code Templates in C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Templates_in_HTML">
             <summary>
             “Code Templates in HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Templates_in_TypeScript">
+            <summary>
+            “Code Templates in TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Code_Templates_in_VB">
@@ -1816,9 +1876,14 @@
             “Code Viewer” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance_Code_Completion_Auto">
+            <summary>
+            “Automatic completion” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Auto_Inserting_Parentheses_and_Quotes">
             <summary>
-            “Auto-Inserting Parentheses and Quotes” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Auto-Inserting Matching Delimiters” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Code_Completion">
@@ -1833,7 +1898,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Code_Completion__Generative">
             <summary>
-            “Generative Completion” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Generating Code with Code Completion” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Code_Completion__Smart">
@@ -1864,11 +1929,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Complete_Statement">
             <summary>
             “Complete Statement” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Configuring_Delimiters_Matching">
-            <summary>
-            “Configuring Delimiters Matching” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Context_Actions">
@@ -1918,7 +1978,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Multiple_Entries_Clipboard">
             <summary>
-            “Pasting with Multiple Entries Clipboard” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Pasting Items from Clipboard History” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Naming_Style">
@@ -1938,7 +1998,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Surrounding_with_Region">
             <summary>
-            “Surrounding with Region” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Adding and Removing #region Blocks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coding_Assistance__Syntax_Highlighting">
@@ -1991,14 +2051,14 @@
             “Coding Assistance in XML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Completion_Tips_and_Tricks">
+            <summary>
+            “Completion Tips and Tricks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Configuring_Caches_Location">
             <summary>
             “Configuring Caches” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Configuring_Code_Completion">
-            <summary>
-            “Configuring Code Completion” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Configuring_Code_Viewer">
@@ -2026,24 +2086,19 @@
             “Configuring ReSharper” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coverage_of_Selected_Unit_Tests">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Continuous_Testing">
             <summary>
-            “Coverage of Selected Unit Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Continuous Testing” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coverage_of_Unit_Test_Session">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Contract_Annotations">
             <summary>
-            “Coverage of Unit Test Session” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Contract Annotations” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coverage_of_Unit_Tests_in_the_Solution_Part">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Copying_Symbol_Information_to_Clipboard">
             <summary>
-            “Coverage of Unit Tests in Solution Part” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Coverage_of_Unit_Tests_in_the_Whole_Solution">
-            <summary>
-            “Coverage of Unit Tests in the Whole Solution” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Copying Symbol Information to Clipboard” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Creating_a_File_Template">
@@ -2076,9 +2131,14 @@
             “Excluding Nodes from Coverage Snapshot” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Executing_Analyzing_Tests">
+            <summary>
+            “Executing Tests and Analyzing Results” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Exploring_Assemblies">
             <summary>
-            “Exploring Assemblies” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Exploring and Decompiling Assemblies” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Exploring_Folders">
@@ -2093,12 +2153,17 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Exploring_Type_Dependency_Graph">
             <summary>
-            “Exploring Type Dependency Graph” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Exploring Type Dependency Diagram” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Exporting_Assembly_to_Project">
             <summary>
             “Exporting Assembly to Project” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Feedback_Center">
+            <summary>
+            “Feedback Center” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.File_Header_Style">
@@ -2111,9 +2176,44 @@
             “File and Type Layout” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Finding_Code_Dependent_on_Modules">
+            <summary>
+            “Finding Code Dependent on Referenced Modules” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Finding_Code_Issues">
             <summary>
-            “Finding Code Issues” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Finding Code Issues with Code Inspection” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Finding_Exploring_and_Installing_NuGet_Packages">
+            <summary>
+            “Finding, Exploring, and Installing NuGet Packages” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Finding_Usages_of_External_Symbols">
+            <summary>
+            “Finding Usages of External Symbols” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.First_Steps">
+            <summary>
+            “First Steps with ReSharper” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Fix_in_Scope_Chunks">
+            <summary>
+            “Welcome Back, Fix_in_Scope_Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Fix_in_Scope_Static_Chunks">
+            <summary>
+            “Fix_in_Scope_Static_Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.GC">
+            <summary>
+            “General Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Generating_PDB_Files">
@@ -2121,19 +2221,34 @@
             “Generating PDB Files” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Generating_Type_Members">
+            <summary>
+            “Generating Type Members” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Getting_Started">
+            <summary>
+            “Getting Started” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.IL_Viewer">
+            <summary>
+            “IL Viewer” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Inspecting_Code_in_Specific_Scope">
             <summary>
             “Finding Code Issues in Specific Scope” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__Concepts">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Installation_Guide">
             <summary>
-            “Concepts” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Installation Guide” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__Conventions">
             <summary>
-            “Conventions” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “How to Use This Help” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__Feature_Map">
@@ -2151,11 +2266,6 @@
             “ReSharper's Network Activity” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__ReSharper_vs_Visual_Studio">
-            <summary>
-            “ReSharper vs. Plain Visual Studio” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__Troubleshooting">
             <summary>
             “Troubleshooting” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -2164,6 +2274,16 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Introduction__Whats_New">
             <summary>
             “What's New” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Jumping_to_Line_of_Code">
+            <summary>
+            “Jumping to Line of Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.LC">
+            <summary>
+            “Localization Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Localization_Inspection">
@@ -2201,9 +2321,29 @@
             “Matching Coverage Snapshot with Project Structure” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Menupath_by_ID">
+            <summary>
+            “Menupath_by_ID Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Merging_Coverage_Snapshots">
+            <summary>
+            “Merging Coverage Snapshots” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Modifiers_Style">
             <summary>
             “Arranging Modifiers” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Monitoring_Memory_with_dotMemory_Unit">
+            <summary>
+            “Monitoring Memory with dotMemory Unit” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.NC">
+            <summary>
+            “Navigation Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Namespace_Imports_Style">
@@ -2224,6 +2364,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigating_to_String_LIterals">
             <summary>
             “Navigating to String LIterals” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_Go_To_Metadata_Token">
+            <summary>
+            “Go To Metadata Token” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Bookmarks">
@@ -2251,11 +2396,6 @@
             “Finding Usages” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Finding_Usages__Finding_Dependencies_and_Referenced_Code">
-            <summary>
-            “Finding Dependencies and Referenced Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Finding_Usages__Finding_Usages_Advanced">
             <summary>
             “Finding Usages of Related Entities” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -2278,7 +2418,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Finding_Usages__Viewing_Filtering_and_Grouping_Results">
             <summary>
-            “Viewing, Filtering, and Grouping Results” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Analyzing Search Results” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Go_to_Base">
@@ -2468,7 +2608,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Navigating_to_External_Sources">
             <summary>
-            “Navigating to Compiled Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Navigation and Search in Compiled Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Navigating_to_Overriding_Implementing_or_Hiding_Methods">
@@ -2501,24 +2641,9 @@
             “Peek Definition” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__SSR__Creating_and_Managing_Patterns">
-            <summary>
-            “Creating and Managing Patterns” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__SSR__Replacing_Code_with_Pattern">
-            <summary>
-            “Replacing Code with Pattern” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__SSR__Searching_for_Code_with_Pattern">
-            <summary>
-            “Searching for Code with Pattern” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Search">
             <summary>
-            “Search by Name” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Navigation by Name” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Navigation_and_Search__Structural_Search_and_Replace">
@@ -2556,9 +2681,29 @@
             “Navigation to Covering Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.NuGet_Browser">
+            <summary>
+            “NuGet Browser” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.OC">
+            <summary>
+            “Options Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Opening_Assembly_Files">
             <summary>
             “Opening and Closing Assemblies” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Postfix_Templates">
+            <summary>
+            “Postfix Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Postfix_Templates_Generated">
+            <summary>
+            “Postfix Generated” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Project_Level_Assistance">
@@ -2576,9 +2721,24 @@
             “Providing Feedback” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.RC">
+            <summary>
+            “Refactoring Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.REF">
+            <summary>
+            “Chunks for Reference Section” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language_CPP">
             <summary>
             “C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language_Protobuf">
+            <summary>
+            “Google Protocol Buffers (Protobuf)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__CSS">
@@ -2593,7 +2753,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__CSS__Code_Analysis_and_Coding_Assistance">
             <summary>
-            “Code Analysis in CSS” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in CSS” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__CSS__Navigation">
@@ -2633,7 +2793,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__JavaScript__Code_Analysis_and_Coding_Assistance">
             <summary>
-            “Code Analysis in JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__JavaScript__Navigation">
@@ -2653,7 +2813,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__JavaScript__Unit_Testing">
             <summary>
-            “Unit Testing in JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Unit Testing Assistance in JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__MSBuild">
@@ -2668,7 +2828,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__TypeScript__Code_Analysis_and_Coding_Assistance">
             <summary>
-            “Code Analysis in TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__TypeScript__Navigation">
@@ -2713,7 +2873,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__XAML__Code_Analysis_and_Coding_Assistance">
             <summary>
-            “Code Analysis in XAML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in XAML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__XAML__Navigation_and_Search">
@@ -2734,6 +2894,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.ReSharper_by_Language__XML__Code_Cleanup">
             <summary>
             “Code Cleanup” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactor_This">
+            <summary>
+            “Refactor This” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Adjust_Namespaces">
@@ -2769,11 +2934,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Convert_Interface_to_Abstract_Class">
             <summary>
             “Convert Interface to Abstract Class” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Convert_Iterator_to_Method">
-            <summary>
-            “Convert Iterator to Method” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Convert_Method_to_Indexer">
@@ -2893,17 +3053,12 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Make_Method_Non_Static">
             <summary>
-            “Make Method/Property Non-Static” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Make Method Non-Static” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Make_Method_Static">
             <summary>
             “Make Method/Property Static” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Move">
-            <summary>
-            “Move” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Move_Types_into_Matching_Files">
@@ -2933,7 +3088,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Move__Type_to_Folder">
             <summary>
-            “Move Type  to Another Folder” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Move to Folder” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Move__Type_to_Outer_Scope">
@@ -2949,11 +3104,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Push_Members_Down">
             <summary>
             “Push Members Down” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Push_Pull_Parameters">
-            <summary>
-            “Push/Pull Parameters” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Refactorings__Remove_Unused_References">
@@ -3001,6 +3151,27 @@
             “Refactorings for HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference_Options_Languages_Protobuf">
+            <summary>
+            “Protobuf” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference_Options_Languages_TypeScript_Generated_Code">
+            <summary>
+            “Generated Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference_Options_Protobuf_Formatting_Style">
+            <summary>
+            “Formatting_Style” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference_Windows_Continuous_Testing_Session">
+            <summary>
+            “Continuous Testing Session” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "F:JetBrains.ReSharper.ReSharperHelpIds.Reference_Windows_ReSharper_Build" -->
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Action_Bar">
             <summary>
             “Action Bar” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -3099,11 +3270,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Index">
             <summary>
             “Reference” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Inspection_Options">
-            <summary>
-            “Inspection Options” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Keyboard_Shortcuts">
@@ -3250,6 +3416,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Environment__Plugins">
             <summary>
             “Plugins” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Environment__Postfix_Templates">
+            <summary>
+            “Postfix Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Environment__Search_and_Navigation" -->
@@ -3606,6 +3777,11 @@
             “Formatting Style” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Languages__TypeScript__Inspections">
+            <summary>
+            “Inspections” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Languages__TypeScriptt__Import_Aliases">
             <summary>
             “Import Aliases” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -3726,6 +3902,11 @@
             “Localization” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Tools__ReSharper_Build">
+            <summary>
+            “ReSharper Build” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Tools__To_Do_Items">
             <summary>
             “To-do Items” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -3774,6 +3955,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__dotCover__Remote_Coverage">
             <summary>
             “Remote Coverage” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__dotCover__Continuous_Testing">
+            <summary>
+            “Continuous Testing” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Process_Explorer">
@@ -3841,14 +4027,189 @@
             “Predefined File Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_ASP_NET__CSHARP_">
+            <summary>
+            “Predefined File Templates for ASP.NET (C#)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_ASP_NET__VB_">
+            <summary>
+            “Predefined File Templates for ASP.NET (VB.NET)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_CPP">
+            <summary>
+            “Predefined File Templates for C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_CSHARP">
+            <summary>
+            “Predefined File Templates for C#” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_Razor__CSHARP_">
+            <summary>
+            “Predefined File Templates for Razor (C#)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_TypeScript">
+            <summary>
+            “Predefined File Templates for TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_VB_NET">
+            <summary>
+            “Predefined File Templates for VB.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_XAML">
+            <summary>
+            “Predefined File Templates for XAML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_XAML__CSHARP_">
+            <summary>
+            “Predefined File Templates for XAML (C#)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__File_Templates_XAML__VB_">
+            <summary>
+            “Predefined File Templates for XAML (VB.NET)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates">
             <summary>
             “Predefined Live Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_ASP_NET">
+            <summary>
+            “Predefined Live Templates for ASP.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_CPP">
+            <summary>
+            “Predefined Live Templates for C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_CSHARP">
+            <summary>
+            “Predefined Live Templates for C#” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_CSS">
+            <summary>
+            “Predefined Live Templates for CSS” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_Global_Usage">
+            <summary>
+            “Predefined Live Templates for Global Usage” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_HTML">
+            <summary>
+            “Predefined Live Templates for HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_HTML_Like">
+            <summary>
+            “Predefined Live Templates for HTML-like Files” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_JavaScript">
+            <summary>
+            “Predefined Live Templates for JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_Razor">
+            <summary>
+            “Predefined Live Templates for Razor” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_Resx">
+            <summary>
+            “Predefined Live Templates for Resx” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_TypeScript">
+            <summary>
+            “Predefined Live Templates for TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_VB_NET">
+            <summary>
+            “Predefined Live Templates for VB.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Live_Templates_XML">
+            <summary>
+            “Predefined Live Templates for XML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates">
             <summary>
             “Predefined Surround Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_ASP_NET">
+            <summary>
+            “Predefined Surround Templates for ASP.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_ASP_NET_CSHARP_">
+            <summary>
+            “Predefined Surround Templates for ASP.NET (C#)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_ASP_NET_VB_NET_">
+            <summary>
+            “Predefined Surround Templates for ASP.NET (VB.NET)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_CPP">
+            <summary>
+            “Predefined Surround Templates for C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_CSHARP">
+            <summary>
+            “Predefined Surround Templates for C#” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_HTML">
+            <summary>
+            “Predefined Surround Templates for HTML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_HTML_Like">
+            <summary>
+            “Predefined Surround Templates for HTML-like Files” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_JavaScript">
+            <summary>
+            “Predefined Surround Templates for JavaScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_Razor">
+            <summary>
+            “Predefined Surround Templates for Razor” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_TypeScript">
+            <summary>
+            “Predefined Surround Templates for TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_VB_NET">
+            <summary>
+            “Predefined Surround Templates for VB.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates_Explorer__Surround_Templates_XML">
+            <summary>
+            “Predefined Surround Templates for XML” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Templates__Predefined">
@@ -3863,7 +4224,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__VS_Options_Page">
             <summary>
-            “ReSharper Page in Visual Studio Options” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Product Page in Visual Studio Options” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Validate_Regular_Expression">
@@ -4006,6 +4367,11 @@
             “Safe Delete Resource” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Run_Configurations">
+            <summary>
+            “Using Run Configurations” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Running_Applications_under_dotCover_Control">
             <summary>
             “Recording Coverage of Manual Test Session” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -4014,6 +4380,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Running_Coverage_Analysis_from_the_Command_LIne">
             <summary>
             “Running Coverage Analysis from the Command LIne” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.SC">
+            <summary>
+            “Code Style Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Saving_and_Loading_Coverage_Snapshot">
@@ -4028,7 +4399,12 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Sharing_Configuration_Options">
             <summary>
-            “Managing and Sharing Options” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Managing and Sharing ReSharper Settings” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Source_Templates">
+            <summary>
+            “Source Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Specifying_License_Information">
@@ -4056,6 +4432,26 @@
             “dotPeek Symbol Server and PDB Generation” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.TB">
+            <summary>
+            “Toolbar Items” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.TC">
+            <summary>
+            “Template Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.TR">
+            <summary>
+            “Template Reference Chunks” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Template_Macros">
+            <summary>
+            “Template Macros” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Templates__Applying_Templates">
             <summary>
             “Applying Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
@@ -4069,11 +4465,6 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Templates__Applying_Templates__Creating_Source_Code_Using_Live_Templates">
             <summary>
             “Creating Source Code Using Live Templates” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Templates__Applying_Templates__Inserting_Imported_Code_Snippets">
-            <summary>
-            “Using Imported Code Snippets” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Templates__Applying_Templates__Surrounding_Code_Fragments_with_Templates">
@@ -4171,9 +4562,24 @@
             “Template Scopes” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Test_Categories">
+            <summary>
+            “Working with Test Categories” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Tips">
+            <summary>
+            “Tips” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Troubleshooting__ReSharper_Exception_Browser">
             <summary>
             “ReSharper Exception Browser” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.UT">
+            <summary>
+            “UT” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing__Analyzing_Code_Coverage_with_dotCover">
@@ -4186,24 +4592,29 @@
             “Unit Testing Assistance” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing__Navigating_to_Source_Code">
-            <summary>
-            “Navigating to Source Code” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
-            </summary>
-        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing__Profiling_Unit_Tests">
             <summary>
-            “Profiling Unit Tests with dotTrace Performance” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Profiling Unit Tests with dotTrace” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing__Recognizing_Unit_Tests">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing_in_CPP">
             <summary>
-            “Recognizing Unit Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Unit Testing Assistance in C++” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing__Running_and_Debugging_Unit_Tests">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing_in_Document">
             <summary>
-            “Working with Unit Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Working with Unit Tests in Current Document” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing_in_Solution">
+            <summary>
+            “Working with Unit Tests in Project or Solution” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Unit_Testing_in_TypeScript">
+            <summary>
+            “Unit Testing Assistance in TypeScript” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Using_Auto_Properties">
@@ -4214,6 +4625,11 @@
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Using_Filters_in_Code_Completion">
             <summary>
             “Using Filters in Code Completion” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Using_Unit_Test_Sessions">
+            <summary>
+            “Using Unit Test Sessions” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Using_product_as_a_Symbol_Server">
@@ -4236,9 +4652,19 @@
             “Viewing Total Coverage of Particular Unit Test Item” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Viewing_Intermediate_Language">
+            <summary>
+            “Viewing Intermediate Language (IL)” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Viewing_Metadata_Tokens">
+            <summary>
+            “Viewing Metadata Tokens” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            </summary>
+        </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Viewing_References_Hierarchy">
             <summary>
-            “Viewing References Hierarchy” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Exploring Hierarchy of References” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Visual_Dependency_Analysis">
@@ -4258,7 +4684,7 @@
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Web_Development__Code_Analysis_and_Coding_Assistance">
             <summary>
-            “Code Analysis in ASP.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Code Inspection and Quick-Fixes in ASP.NET” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Web_Development__Code_Generation_and_Templates">
@@ -4441,9 +4867,9 @@
             “Setting up Coverage Filters” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.dotCover__Starting_Coverage_Assessment_for_Unit_Tests">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.dotPeek_Getting_Started">
             <summary>
-            “Running Coverage Analysis of Unit Tests” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Getting Started” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="F:JetBrains.ReSharper.ReSharperHelpIds.dotPeek_Introduction">
@@ -4456,9 +4882,9 @@
             “dotCover Standalone Application” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
-        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Languages__TypeScript__Inspections">
+        <member name="F:JetBrains.ReSharper.ReSharperHelpIds.Reference__Options__Tools__Stack_Trace_Explorer_Options">
             <summary>
-            “Inspections” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
+            “Stack Trace Explorer Options” help topic ID. Use with <see cref="!:UIApplicationShell.ShowProductHelp"/>.
             </summary>
         </member>
         <member name="M:JetBrains.ReSharper.Resources.ReSharperEditions.IsCSharpEditionIncluded(JetBrains.Application.Environment.RunsProducts.ProductConfigurations)">
@@ -4515,6 +4941,11 @@
         <member name="M:JetBrains.ReSharper.Resources.Shell.ReadLockCookie.Execute(System.Action)">
             <summary>
             Executes the <see cref="!:action"/> under a read lock.
+            </summary>
+        </member>
+        <member name="M:JetBrains.ReSharper.Resources.Shell.ReadLockCookie.Execute``1(System.Func{``0})">
+            <summary>
+            Executes the <see cref="!:func"/> under a read lock.
             </summary>
         </member>
         <member name="T:JetBrains.ReSharper.Resources.Shell.Shell">
