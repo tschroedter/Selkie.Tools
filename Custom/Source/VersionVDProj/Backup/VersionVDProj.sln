@@ -1,0 +1,33 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VersionVDProj", "VersionVDProj.csproj", "{85DA1E26-3010-4CE8-A7F1-2ED180775C68}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TestMergeModuleProject", "TestMergeModuleProject\TestMergeModuleProject.vdproj", "{04EA38F9-26E2-4643-8B05-FFA487A23047}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "TestDeploymentProject", "TestDeploymentProject\TestDeploymentProject.vdproj", "{56713E8E-D797-44F0-9B91-FB61D8723D7D}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{85DA1E26-3010-4CE8-A7F1-2ED180775C68}.Debug.ActiveCfg = Debug|.NET
+		{85DA1E26-3010-4CE8-A7F1-2ED180775C68}.Debug.Build.0 = Debug|.NET
+		{85DA1E26-3010-4CE8-A7F1-2ED180775C68}.Release.ActiveCfg = Release|.NET
+		{85DA1E26-3010-4CE8-A7F1-2ED180775C68}.Release.Build.0 = Release|.NET
+		{04EA38F9-26E2-4643-8B05-FFA487A23047}.Debug.ActiveCfg = Debug
+		{04EA38F9-26E2-4643-8B05-FFA487A23047}.Release.ActiveCfg = Release
+		{56713E8E-D797-44F0-9B91-FB61D8723D7D}.Debug.ActiveCfg = Debug
+		{56713E8E-D797-44F0-9B91-FB61D8723D7D}.Release.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal
