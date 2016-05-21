@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System.IO;
+using System.Linq;
+using System.Text;
 using System.Xml.Linq;
 using JetBrains.Annotations;
 
@@ -23,7 +25,9 @@ namespace Selkie.NuGet.PackageToDependency
 
         public void Read()
         {
-            m_Document = XDocument.Load(m_Filename);
+            var reader = new StreamReader(m_Filename, Encoding.UTF32);
+
+            m_Document = XDocument.Load(reader);
 
             var root = m_Document.Root;
 
