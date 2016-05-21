@@ -25,9 +25,7 @@ namespace Selkie.NuGet.PackageToDependency
 
         public void Read()
         {
-            var reader = new StreamReader(m_Filename, Encoding.UTF32);
-
-            m_Document = XDocument.Load(reader);
+            m_Document = XDocument.Load(m_Filename);
 
             var root = m_Document.Root;
 
