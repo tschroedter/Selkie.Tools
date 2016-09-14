@@ -1,7 +1,0 @@
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\bin\Debug\Selkie.NuGet.PackageToDependency.dll
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\bin\Debug\Selkie.NuGet.PackageToDependency.pdb
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\bin\Debug\JetBrains.Annotations.dll
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\bin\Debug\JetBrains.Annotations.xml
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\obj\Debug\Selkie.NuGet.PackageToDependency.csprojResolveAssemblyReference.cache
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\obj\Debug\Selkie.NuGet.PackageToDependency.dll
-C:\Development\GitHub\Selkie\Tools\Custom\Source\DependencyUpdater\Selkie.NuGet.PackageToDependency\obj\Debug\Selkie.NuGet.PackageToDependency.pdb
